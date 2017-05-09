@@ -7,7 +7,7 @@ Com [Bootstrap]+[FontAwesome]
 
 ###Dev Team
 * [Diego Neves]
-* [Frankey Santos]
+* [Frankley Santos]
 
 [Teófilo Otoni]:http://teofilootoni.mg.gov.br
 [PHP]:https://php.net
