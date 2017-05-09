@@ -153,6 +153,7 @@
         </tr>
         <tr>
          <td colspan="4"><label>Qual dos itens ha na sua casa?</label>
+          <?php echo ($_SESSION['RECADASTRO']['TemEmCasa'])?>
           <div>[ ]&nbsp;TV</div>
           <div>[ ]&nbsp;Video Cassete e/ou DVD</div>
           <div>[ ]&nbsp;Radio</div>
