@@ -5,7 +5,7 @@ Desenvolvido em [PHP] com banco de dados [MariaDB], utilizando [HTML 5] e [CSS 3
 Com [Bootstrap]+[FontAwesome]
 
 
-###Dev Team
+### Dev Team
 * [Diego Neves]
 * [Frankley Santos]
 
