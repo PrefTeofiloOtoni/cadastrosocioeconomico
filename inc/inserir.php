@@ -5,14 +5,45 @@
 	$_SESSION['RECADASTRO']=$_POST;
 	extract ($_POST);
 	
-	if(!isset($Info_word)) $Info_word=0; 
-	if(!isset($Info_excel)) $Info_excel=0; 
-	if(!isset($Info_internet)) $Info_internet=0; 
-	if(!isset($Pensao_Paga)) $Pensao_Paga=0; 
-	if(!isset($Pensao_Recebe)) $Pensao_Recebe=0; 
-	if(!isset($Deficiente)) $Deficiente=0; 
-	if(!isset($Idoso)) $Idoso=0; 
-	if(!isset($PlanoDeSaude)) $PlanoDeSaude=0; 
+	if(!isset($Ling_Outros)){
+		$Ling_Outros=0;
+		$_SESSION['RECADASTRO']['Ling_Outros']=0;
+		$_SESSION['RECADASTRO']['Ling_extra']='NULL';
+	}
+
+	if(!isset($Info_word)){
+		$Info_word=0;
+		$_SESSION['RECADASTRO']['Info_word']=0;
+	}
+	if(!isset($Info_excel)){
+		$Info_excel=0;
+		$_SESSION['RECADASTRO']['Info_excel']=0;
+	}
+	if(!isset($Info_internet)){
+		$Info_internet=0;
+		$_SESSION['RECADASTRO']['Info_internet']=0;
+	}
+	if(!isset($Pensao_Paga)){
+		$Pensao_Paga=0;
+		$_SESSION['RECADASTRO']['Pensao_Paga']=0;
+	}
+	if(!isset($Pensao_Recebe)){
+		$Pensao_Recebe=0;
+		$_SESSION['RECADASTRO']['Pensao_Recebe']=0;
+	}
+	if(!isset($Deficiente)){
+		$Deficiente=0;
+		$_SESSION['RECADASTRO']['Deficiente']=0;
+	}
+	if(!isset($Idoso)){
+		$Idoso=0;
+		$_SESSION['RECADASTRO']['Idoso']=0;
+	}
+	if(!isset($PlanoDeSaude)){
+		$PlanoDeSaude=0;
+		$_SESSION['RECADASTRO']['PlanoDeSaude']=0;
+	}
+	$_SESSION['RECADASTRO']['TemEmCasa']=$TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13;
 
 	$SQL="UPDATE funcionarios SET ";
 	$SQL.="\n	Nascto='".@utf8_encode($Nascto)."',";
@@ -51,6 +82,8 @@
 	$SQL.="\n	Trans_Tipo='".@utf8_encode($Trans_Tipo)."',";
 	$SQL.="\n	Ling_Ingles='".@utf8_encode($Ling_Ingles)."',";
 	$SQL.="\n	Ling_Espanhol='".@utf8_encode($Ling_Espanhol)."',";
+	$SQL.="\n	Ling_Outros='".@utf8_encode($Ling_Outros)."',";
+	$SQL.="\n	Ling_extra='".@utf8_encode($Ling_extra)."',";
 	$SQL.="\n	Info_word=".@utf8_encode($Info_word).",";
 	$SQL.="\n	Info_excel=".@utf8_encode($Info_excel).",";
 	$SQL.="\n	Info_internet=".@utf8_encode($Info_internet).",";
@@ -64,7 +97,7 @@
 	$SQL.="\n	Deficiente=".@utf8_encode($Deficiente).",";
 	$SQL.="\n	Deficiente_Grau='".@utf8_encode($Deficiente_Grau)."',";
 	$SQL.="\n	Idoso=".@utf8_encode($Idoso).",";
-	$SQL.="\n	TemEmCasa='".@utf8_encode($TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13)."',";
+	$SQL.="\n	TemEmCasa='".@utf8_encode($TemEmCasa)."',";
 	$SQL.="\n	PlanoDeSaude=".@utf8_encode($PlanoDeSaude).",";
 	$SQL.="\n	PlanoDeSaude_Qual='".@utf8_encode($PlanoDeSaude_Qual)."',";
 	$SQL.="\n	Observacoes='".@utf8_encode($Observacoes)."',";
