@@ -25,10 +25,10 @@
   <![endif]-->
   </head>
   <body>
-   <div class="container" style="padding-top:50px">
-    <h2 class="page-header" align="center">RECADASTRAMENTO DOS SERVIDORES PÚBLICOS MUNICIPAIS</h2>
-    <h3 align="center">QUESTIONÁRIO DE PERFIL SOCIOECONÔMICO</h3>
-    <h3>ATENÇÃO:</h3>
+   <div class="container">
+    <h3 class="page-header" align="center">RECADASTRAMENTO DOS SERVIDORES PÚBLICOS MUNICIPAIS</h3>
+    <h4 align="center">QUESTIONÁRIO DE PERFIL SOCIOECONÔMICO</h4>
+    <h4>ATENÇÃO:</h4>
     <h4>A veracidade das respostas e a devolução deste questionário são necessárias e indispensáveis.</h4>
     <h4>Todas as questões visam à coleta de informações para recadastramento dos servidores ativos. Portanto, por favor, não deixe nenhuma questão sem resposta!</h4>
     <div class="col-lg-12">
@@ -58,7 +58,6 @@
        </tr>
        <tr>
         <td colspan="3"><label>Grau de Excolaridade:</label> <?php echo strtoupper(getGrau_escolar($_SESSION['RECADASTRO']['Grau_escolar']));?> <?php echo strtoupper($_SESSION['RECADASTRO']['Status_escolar'])?></div>
-
         </td>
         <td><label>Formacao Profissional:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Formacao'])?></td>
         </tr>
@@ -87,26 +86,22 @@
         <tr>
          <td><label>Cor/Etnia:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Cor'])?></td>
          <td><label>Estado Civíl:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['EstCivil'])?> </td> 
-         <td colspan="2"><label>Possui CadUnico:</label> <?php echo strtoupper(getCadUnico($_SESSION['RECADASTRO']['CadUnico']))?>
-	<?php if(getCadUnico($_SESSION['RECADASTRO']['CadUnico']=="S")) echo "<label>NIS:</label> ". strtoupper($_SESSION['RECADASTRO']['NIS'])?></td> 
+         <td colspan="2"><label>Possui CadUnico:</label> <?php echo strtoupper(getSimNao($_SESSION['RECADASTRO']['CadUnico']))?>
+	<?php if($_SESSION['RECADASTRO']['CadUnico']=="S") echo "<label>NIS:</label> ". strtoupper($_SESSION['RECADASTRO']['NIS'])?></td> 
         </tr>
-        <tr>
-         <td colspan="4"><label>Tempo de residência em Teofilo Otoni:</label> <?php echo strtoupper(getTimeRes($_SESSION['RECADASTRO']['TimeRes']))?></td>
-        </tr>
+        <tr><td colspan="4"><label>Tempo de residência em Teofilo Otoni:</label> <?php echo strtoupper(getTimeRes($_SESSION['RECADASTRO']['TimeRes']))?></td></tr>
         <tr>
          <td><label>Condições de Moradia:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Hab_Tipo'])?></td>
          <td><?php echo strtoupper($_SESSION['RECADASTRO']['Hab_Modo'])?></td>
          <td><label>Quitada:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Hab_Quit'])?></td>
-         <td><label>Valor:</label> R$<?php echo strtoupper($_SESSION['RECADASTRO']['Hab_Valor'])?></td>
+         <td><?php if($_SESSION['RECADASTRO']['Hab_Quit']=="sim"){?> <label>Valor:</label> R$<?php echo strtoupper($_SESSION['RECADASTRO']['Hab_Valor']); }?></td>
         </tr>
-        <tr>
-	 <td colspan="4"><label>Tipo de transporte que voce utiliza pra trabalhar:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Trans_Forma'])?>
-        </tr>
+        <tr><td colspan="4"><label>Tipo de transporte que voce utiliza pra trabalhar:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Trans_Forma'])?></td></tr>
         <tr>
          <td colspan="4"><label>Lingua estrangeira:</label><br />
           <label>Ingles:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Ling_Ingles'])?><br />
           <label>Espanhol:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Ling_Espanhol'])?><br />
-          <?php echo "<label>".strtoupper($_SESSION['RECADASTRO']['Ling_Outros'])."</label>: "; echo strtoupper($_SESSION['RECADASTRO']['Ling_Extra'])?>
+          <?php echo "<label>".getOutrosIdiomas($_SESSION['RECADASTRO']['Ling_Outros'])."</label> ";?>
          </td>
         </tr>
         <tr>
@@ -114,38 +109,35 @@
           <?php echo getInfo($_SESSION['RECADASTRO']['Info_word'])?> <label>Word</label><br />
           <?php echo getInfo($_SESSION['RECADASTRO']['Info_excel'])?> <label>Excel</label><br />
           <?php echo getInfo($_SESSION['RECADASTRO']['Info_internet'])?> <label>Internet</label><br />
-          <label>Outros:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Info_Outros'])?>
+          <?php if(!isset($_SESSION['RECADASTRO']['Info_Outros'])){ ?> <label>Outros:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Info_Outros']); }?>
          </td>
         </tr>
         <tr>
          <td colspan ="4">
           <table class='table table-striped table-bordered table-hover'>
            <tr><td colspan="5" align="center"><strong>Composicao Familiar</strong></td></tr>
-           <tt><td><strong>Nome</strong></td><td><strong>Idade</strong></td><td><strong>Parentesco</strong></td><td><strong>Ocupação</strong></td><td><strong>Remuneração</strong></td></tt>
+           <tr><td><strong>Nome</strong></td><td><strong>Idade</strong></td><td><strong>Parentesco</strong></td><td><strong>Ocupação</strong></td><td><strong>Remuneração</strong></td></tr>
           </table>
          </td>
         </tr>
         <tr>
-         <td colspan="4"><label>Você paga pensao alimentícia p/ filhos e/ou ex-conjuge?:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Pensao_Paga'])?>, 
-          <label>Valor:</label> R$<?php echo strtoupper($_SESSION['RECADASTRO']['Pensao_Paga_Val'])?>
+         <td colspan="4"><label>Você paga pensao alimentícia p/ filhos e/ou ex-conjuge?:</label> <?php echo strtoupper(getSimNao($_SESSION['RECADASTRO']['Pensao_Paga']))?>
+          <?php if($_SESSION['RECADASTRO']['Pensao_Paga']==1){ ?> , <label>Valor:</label> R$<?php echo strtoupper($_SESSION['RECADASTRO']['Pensao_Paga_Val']); } ?>
          </td>
         </tr>
         <tr>
-         <td colspan="4"><label>Você recebe pensao alimenticia para seus filhos?</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Pensao_Recebe'])?>, <label>Valor:</label> R$<?php echo strtoupper($_SESSION['RECADASTRO']['Pensao_Recebe_Val'])?>
+         <td colspan="4"><label>Você recebe pensao alimenticia para seus filhos?</label> <?php echo strtoupper(getSimNao($_SESSION['RECADASTRO']['Pensao_Recebe']))?>
+         <?php if($_SESSION['RECADASTRO']['Pensao_Recebe']==1){ ?>, <label>Valor:</label> R$<?php echo strtoupper($_SESSION['RECADASTRO']['Pensao_Recebe_Val']); }?>
          </td>
         </tr>
+        <tr><td colspan="4"><label>Quem é a pessoa que mais contribui na renda familiar?</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Renda_Maior'])?></td></tr> 
+        <tr><td colspan="4"><label>Renda mensal individual:</label> <?php echo getRenda($_SESSION['RECADASTRO']['Renda_Mensal_Individual'])?></td></tr>
+        <tr><td colspan="4"><label>Renda mensal familiar (incluindo você):</label> <?php echo getRenda($_SESSION['RECADASTRO']['Renda_Mensal_Capita'])?></td></tr>
         <tr>
-         <td colspan="4"><label>Quem é a pessoa que mais contribui na renda familiar?</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Renda_Maior'])?></td>
-        </tr> 
-        <tr>
-         <td colspan="4"></label>Renda mensal individual:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Renda_Mensal_Individual'])?></td>
-        </tr>
-        <tr>
-         <td colspan="4"><label>Renda mensal familiar (incluindo você):</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Renda_Mensal_Capita'])?></td>
-        </tr>
-        <tr>
-         <td colspan="4"><label>Existe em seu domicilio pessoa portadora de deficiencia?</label> <?php echo getSimNao($_SESSION['RECADASTRO']['Deficiente'])?>
-          <label>Parentesco:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Deficiente_Grau'])?>
+         <td colspan="4">
+          <label>Existe em seu domicilio pessoa portadora de deficiencia?</label> 
+          <?php echo getSimNao($_SESSION['RECADASTRO']['Deficiente'])?><?php if($_SESSION['RECADASTRO']['Deficiente']==1){ ?>
+          <label>Parentesco:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Deficiente_Grau']); }?>
          </td>
         </tr>
         <tr>
@@ -153,25 +145,12 @@
         </tr>
         <tr>
          <td colspan="4"><label>Qual dos itens ha na sua casa?</label>
-          <?php echo ($_SESSION['RECADASTRO']['TemEmCasa'])?>
-          <div>[ ]&nbsp;TV</div>
-          <div>[ ]&nbsp;Video Cassete e/ou DVD</div>
-          <div>[ ]&nbsp;Radio</div>
-          <div>[ ]&nbsp;Microcomputador</div>
-          <div>[ ]&nbsp;Automovel</div>
-          <div>[ ]&nbsp;Motocicleta</div>
-          <div>[ ]&nbsp;Maquina de Lavar Roupa</div>
-          <div>[ ]&nbsp;Geladeira</div>
-          <div>[ ]&nbsp;Telefone Fixo</div>
-          <div>[ ]&nbsp;Telefone Celular</div>
-          <div>[ ]&nbsp;Acesso a internet</div>
-          <div>[ ]&nbsp;TV por assinatura</div>
-          <div>[ ]&nbsp;Empregada mensalista</div>
+          <?php getTemEmCasa($_SESSION['RECADASTRO']['TemEmCasa'])?>
          </td>
         </tr>
         <tr>
          <td colspan="4"><label>Você possui algum plano de assistencia medica?:</label> <?php echo getSimNao($_SESSION['RECADASTRO']['PlanoDeSaude'])?>
-          <label>Qual?</label> <?php echo strtoupper($_SESSION['RECADASTRO']['PlanoDeSaude_Qual'])?></td>
+         <?php if($_SESSION['RECADASTRO']['PlanoDeSaude']==1){ ?> <label>Qual?</label> <?php echo strtoupper($_SESSION['RECADASTRO']['PlanoDeSaude_Qual']); }?></td>
        </tr>
        <tr>
         <td colspan="4">
@@ -179,9 +158,14 @@
          <p><?php echo strtoupper($_SESSION['RECADASTRO']['Observacoes'])?></p> 
         </td>
        </tr>
+      </table>
+      <table>
+       <tr>
+        <td colspan="4"><p><center>Declaro que as informações acima são verdadeiras e estou ciente de estar sujeito às penas da legislação pertinente caso tenha afirmado falsamente os dados</center></p></td>
+       </tr>
        <tr>
         <td colspan="4">
-         <p><center>Teófilo Otoni, <?php echo date('d')." de ".date('m')." de ".date('Y');?> </center></p>
+         <p><center>Teófilo Otoni, <?php echo date('d')." de ".getMes(date('n'))."  de ".date('Y');?> </center></p>
          <p><center>_____________________________________</center></p>
          <p><center><?php echo strtoupper($_SESSION['RECADASTRO']['Nome'])?></center></p>
         </td>
@@ -196,11 +180,7 @@
     <span class="pull-right">Powered By: <i class="fa fa-linux"></i><i class="fa fa-html5"></i><i class="fa fa-css3"></i></span>
    </p>
   </footer>
-  <!-- Bootstrap core JavaScript
-  ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="../resources/js/bootstrap.js"></script>
-   
  </body>
 </html>
