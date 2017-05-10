@@ -1,5 +1,4 @@
 <?php
-	
 	function getGrau_escolar($var){
 		switch($var){
 			case 'fund':
@@ -44,7 +43,7 @@
 		}
 	}
 
-	function getCadUnico($var){
+	function getSimNao($var){
 		switch($var){
 			case 'S':
 				return "Sim";
@@ -53,11 +52,6 @@
 			case 'N':
 				return "Não";
 			break;
-		}
-	}
-
-	function getSimNao($var){
-		switch($var){
 			case '1':
 				return "Sim";
 			break;
@@ -65,6 +59,14 @@
 			case '0':
 				return "Não";
 			break;
+		}
+	}
+
+	function getOutrosIdiomas($var){
+		if($var==0){
+			return false;
+		}else{
+			return $var;
 		}
 	}
 
@@ -87,12 +89,54 @@
 	function getInfo($var){
 		switch($var){
 			case '0':
-				echo "[ ]";
+				echo "[&nbsp;&nbsp;]";
 			break;
 
 			case '1':
 				echo "[X]";
 			break;
+		}
+	}
+
+	function getTemEmCasa($var){
+		$array=explode("#",$var);
+                $i=0;
+                while($i<sizeof($array)){
+			if($array[$i]!=''){
+	                        echo "<div>[X] <label>".$array[$i]."</label></div>";
+			}
+			$i++;
+                }
+	}
+
+	function getRenda($var){
+		switch($var){
+			case '1':
+				echo "Até 02 salários mínimos";
+			break;
+			case '2':
+				echo "de 02 a  04 salários mínimos";
+			break;
+			case '3':
+				echo "Superior a 05 salários mínimos";
+			break;
+		}	
+	}
+
+	function getMes($var){
+		switch($var){
+			case '1':	return "Janeiro";	break;
+			case '2':	return "Fevereiro";	break;
+			case '3':	return "Março";		break;
+			case '4':	return "Abril";		break;
+			case '5':	return "Maio";		break;
+			case '6':	return "Junho";		break;
+			case '7':	return "Julho";		break;
+			case '8':	return "Agosto";	break;
+			case '9':	return "Setembro";	break;
+			case '10':	return "Outubro";	break;
+			case '11':	return "Novembro";	break;
+			case '12':	return "Dezembro";	break;
 		}
 	}
 ?>
