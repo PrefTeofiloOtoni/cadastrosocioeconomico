@@ -1,5 +1,6 @@
 <?php
 	include ("conecta.php");
+	include ("functions.php");
         session_start();
 
 	$_SESSION['RECADASTRO']=$_POST;
@@ -45,8 +46,8 @@
 	}
 	$_SESSION['RECADASTRO']['TemEmCasa']=$TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13;
 	$TemEmCasa=$TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13;
+
 	$SQL="UPDATE funcionarios SET ";
-	$SQL.="\n	Nascto='".@utf8_encode($Nascto)."',";
 	$SQL.="\n 	Mae='".@utf8_encode($Mae)."',";
 	$SQL.="\n 	Pai='".@utf8_encode($Pai)."',";
 	$SQL.="\n 	Naturalidade='".@utf8_encode($Naturalidade)."',";
@@ -54,12 +55,9 @@
 	$SQL.="\n 	RG_NUM='".@utf8_encode($RG_NUM)."',";
 	$SQL.="\n 	RG_ORG='".@utf8_encode($RG_ORG)."',";
 	$SQL.="\n 	RG_UF='".@utf8_encode($RG_UF)."',";
-	$SQL.="\n 	CPF='".@utf8_encode($CPF)."',";
 	$SQL.="\n 	Grau_escolar='".@utf8_encode($Grau_escolar)."',";
 	$SQL.="\n 	Status_escolar='".@utf8_encode($Status_escolar)."',";
 	$SQL.="\n 	Formacao='".@utf8_encode($Formacao)."',";
-	$SQL.="\n 	Cargo='".@utf8_encode($Cargo)."',";
-	$SQL.="\n 	Lotacao='".@utf8_encode($Lotacao)."',";
 	$SQL.="\n 	End_Rua='".@utf8_encode($End_Rua)."',";
 	$SQL.="\n 	End_Num='".@utf8_encode($End_Num)."',";
 	$SQL.="\n 	End_Comp='".@utf8_encode($End_Comp)."',";

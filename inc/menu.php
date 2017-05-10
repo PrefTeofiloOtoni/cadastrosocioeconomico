@@ -11,7 +11,7 @@
      </div>
      <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-       <li><a href="http://teofilootoni.mg.gov.br" target="_blank"><i class="fa fa-2x fa-wordpress"></i>&nbsp;Site</a</li>
+       <li><a href="http://teofilootoni.mg.gov.br" target="_blank"><i class="fa fa-2x fa-wordpress"></i>&nbsp;Site</a></li>
        <li><a href="http://csti.teofilootoni.mg.gov.br" target="_blank"><i class="fa fa-2x fa-globe"></i>&nbsp;GLPI</a></li>
       </ul>
      </div><!--/.navbar-collapse -->

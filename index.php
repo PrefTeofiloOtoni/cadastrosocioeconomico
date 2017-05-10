@@ -1,8 +1,8 @@
-<?php include("inc/header.php"); ?>
+<?php include("inc/functions.php"); include("inc/header.php"); ?>
   <body>
 <?php include("inc/menu.php"); ?>
    <div class="container" style="padding-top:50px">
-    <h2 class="page-header" align="center">RECADASTRAMENTO DOS SERVIDORES PUBLICOS MUNICIPAIS</h2>
+    <h2 class="page-header" align="center">RECADASTRAMENTO DOS SERVIDORES PÚBLICOS MUNICIPAIS</h2>
     <h3 align="center">QUESTIONÁRIO DE PERFIL SOCIOECONÔMICO</h3>
     <h3>ATENÇÃO:</h3>
     <h4>A veracidade das respostas e a devolução deste questionário são necessárias e indispensáveis.</h4>
