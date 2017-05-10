@@ -2,6 +2,7 @@
 	.visible-print { display: inherit !important; }
 	.hidden-print  { display: none !important; }
 	
+	*{ font-family: arial}
 	body {
 		font-family: arial;
 	}

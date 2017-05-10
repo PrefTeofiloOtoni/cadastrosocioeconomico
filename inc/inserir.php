@@ -44,7 +44,7 @@
 		$_SESSION['RECADASTRO']['PlanoDeSaude']=0;
 	}
 	$_SESSION['RECADASTRO']['TemEmCasa']=$TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13;
-
+	$TemEmCasa=$TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13;
 	$SQL="UPDATE funcionarios SET ";
 	$SQL.="\n	Nascto='".@utf8_encode($Nascto)."',";
 	$SQL.="\n 	Mae='".@utf8_encode($Mae)."',";
