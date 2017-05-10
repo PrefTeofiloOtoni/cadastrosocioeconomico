@@ -17,8 +17,9 @@
   <!--link rel="icon" href="resources/img/debian.svg" /-->
   <title>PMTO | Recadastramento</title>
   <!-- Bootstrap core CSS -->
-  <link href="/resources/css/bootstrap.css" rel="stylesheet">
-  <link href="/resources/css/print.css" rel="stylesheet" media="print">
+  <link href="/resources/css/bootstrap.css" rel="stylesheet" />
+  <link href="/resources/css/print.css" rel="stylesheet" media="print" />
+  <script src="/resources/js/functions.js"></script>
   <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>

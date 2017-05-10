@@ -12,7 +12,7 @@
            <option value="">Escolha...</option>
            <option value="Efetivo" <?php if($_SESSION['RECADASTRO'][0]['Vinculo']=="Efetivo")echo "selected"; ?>>Efetivo</option>
            <option value="Contratado" <?php if($_SESSION['RECADASTRO'][0]['Vinculo']=="Contratado")echo "selected"; ?>>Contratado</option>
-           <option value="Aposentado" <?php if($_SESSION['RECADASTRO'][0]['Vinculo']=="Aposentado")echo "selected"; ?>>Inativo</option>
+           <option value="Inativo" <?php if($_SESSION['RECADASTRO'][0]['Vinculo']=="Inativo")echo "selected"; ?>>Inativo</option>
           </select>
          </td>
          <td colspan="2"><label>Matricula:</label><input type="text" name="Matricula" id="Matricula" value="<?php echo $_SESSION['RECADASTRO'][0]['Matricula']?>" class="form-control" placeholder="000000" required /></td>
@@ -91,14 +91,14 @@
          <td colspan="1"><label>CEP:</label><input type="text" name="End_CEP" id="End_CEP" value="" class="form-control" placeholder="39800000" required /></td>
         </tr>
         <tr>
-         <td colspan="1"><label>Telefone Fixo:</label><input type="text" name="Fone_Fixo" id="Fone_Fixo" value="" class="form-control" placeholder="3335292200" /></td>
+         <td colspan="1"><label>Telefone Fixo:</label><input type="text" name="Fone_Fixo" id="Fone_Fixo" value="" class="form-control" placeholder="3335292200" maxlength="14" onkeyup="mascara(this,mfixo)"/></td>
          <td>
           <label>Tipo:</label><select class="form-control" name="Fone_Tipo">
            <option value="">Escolha...</option>
            <option value="proprio">Próprio</option>
            <option value="recado">Recado</option>
          </td>
-         <td colspan="2"><label>Telefone Celular:</label><input type="text" name="Fone_Cel" id="Fone_Cel" value="" class="form-control" placeholder="33988363080" /></td>
+         <td colspan="2"><label>Telefone Celular:</label><input type="text" name="Fone_Cel" id="Fone_Cel" value="" class="form-control" placeholder="33988363080" maxlength="15" onkeyup="mascara(this,mcel)"/></td>
         </tr>
         <tr>
          <td colspan="3"><label>E-Mail:</label><input type="email" name="Email" id="Email" value="" class="form-control" placeholder="E-Mail" /></td>
@@ -216,21 +216,24 @@
         </tr>
         <tr>
          <td colspan ="4">
-          <table class='table table-striped table-bordered table-hover'>
+          <table class='table table-striped table-bordered table-hover' id="TabParentesco">
+            <input type="hidden" name="familiaqnt" id="familiaqnt" value="0" />
            <tr><td colspan="5" align="center"><strong>Composição Familiar</strong></td></tr>
-           <tr><td>Nome</td><td>Data de Nascimento</td><td>Parentesco</td><td>Ocupação</td><td>Remuneração</td></tr>
+           <tr><td>Nome</td><td>Data de Nascimento</td><td>Parentesco</td><td>Ocupação</td><td>Remuneração</td>
+           </tr>   
           </table>
+          <div><button class="btn btn-large btn-success" onclick="adicionarLinha()" type="button">Adicionar Membros</button></div>
          </td>
         </tr>
         <tr>
-         <td colspan="4"><label>Você paga pensao alimenticia p/ filhos e/ou ex-conjuge?</label>
+         <td colspan="4"><label>Você paga pensão alimenticia p/ filhos e/ou ex-conjuge?</label>
           <input type="radio" name="Pensao_Paga" value="1" />&nbsp;Sim&nbsp;
           <input type="radio" name="Pensao_Paga" value="0" />&nbsp;Não<br />
           <label>Valor:</label><input type="text" name="Pensao_Paga_Val" id="Pensao_Paga_Val" value="" class="form-control" placeholder="00000" />
          </td>
         </tr>
         <tr>
-         <td colspan="4"><label>Você recebe pensao alimenticia para seus filhos?</label><br />
+         <td colspan="4"><label>Você recebe pensão alimenticia para seus filhos?</label><br />
           <input type="radio" name="Pensao_Recebe" value="1" />&nbsp;Sim&nbsp;
           <input type="radio" name="Pensao_Recebe" value="0" />&nbsp;Não<br />
           <label>Valor:</label><input type="text" name="Pensao_Recebe_Val" id="Pensao_Recebe_Val" value="" class="form-control" placeholder="00000" />
