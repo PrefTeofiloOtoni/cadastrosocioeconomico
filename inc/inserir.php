@@ -50,6 +50,7 @@
 	$SQL.="\n 	Mae='".@utf8_encode($Mae)."',";
 	$SQL.="\n 	Pai='".@utf8_encode($Pai)."',";
 	$SQL.="\n 	Naturalidade='".@utf8_encode($Naturalidade)."',";
+	$SQL.="\n 	UF='".@utf8_encode($UF)."',";
 	$SQL.="\n 	RG_NUM='".@utf8_encode($RG_NUM)."',";
 	$SQL.="\n 	RG_ORG='".@utf8_encode($RG_ORG)."',";
 	$SQL.="\n 	RG_UF='".@utf8_encode($RG_UF)."',";
@@ -64,6 +65,8 @@
 	$SQL.="\n 	End_Comp='".@utf8_encode($End_Comp)."',";
 	$SQL.="\n 	End_Bairro='".@utf8_encode($End_Bairro)."',";
 	$SQL.="\n 	End_CEP='".@utf8_encode($End_CEP)."',";
+	$SQL.="\n 	End_Cidade='".@utf8_encode($End_Cidade)."',";
+	$SQL.="\n 	End_UF='".@utf8_encode($End_UF)."',";
 	$SQL.="\n 	Fone_Fixo='".@utf8_encode($Fone_Fixo)."',";
 	$SQL.="\n 	Fone_Tipo='".@utf8_encode($Fone_Tipo)."',";
 	$SQL.="\n	Fone_Cel='".@utf8_encode($Fone_Cel)."',";

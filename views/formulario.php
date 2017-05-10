@@ -22,7 +22,40 @@
           <input type="text" name="Mae" id="Mae" value="<?php echo $_SESSION['RECADASTRO'][0]['Mae']?>" class="form-control" placeholder="Mãe" />
           <input type="text" name="Pai" id="Pai" value="<?php echo $_SESSION['RECADASTRO'][0]['Pai']?>" class="form-control" placeholder="Pai" />
          </td>
-         <td><label>Naturilidade:</label><input type="text" name="Naturalidade" id="Naturalidade" value="<?php echo $_SESSION['RECADASTRO'][0]['Naturalidade']?>" class="form-control" placeholder="Naturalidade" required /></td>
+         <td>
+          <label>Naturilidade:</label>
+          <input type="text" name="Naturalidade" id="Naturalidade" value="<?php echo $_SESSION['RECADASTRO'][0]['Naturalidade']?>" class="form-control" placeholder="Naturalidade" required />
+          <select class="form-control" name="UF">
+           <option value="">Escolha...</option>
+           <option value="AC" <?php if($_SESSION['RECADASTRO'][0]['UF']=="AC")echo "selected"; ?>>Acre</option>
+           <option value="AL" <?php if($_SESSION['RECADASTRO'][0]['UF']=="AL")echo "selected"; ?>>Alagoas</option>
+           <option value="AP" <?php if($_SESSION['RECADASTRO'][0]['UF']=="AP")echo "selected"; ?>>Amapá</option>
+           <option value="AM" <?php if($_SESSION['RECADASTRO'][0]['UF']=="AM")echo "selected"; ?>>Amazonas</option>
+           <option value="BA" <?php if($_SESSION['RECADASTRO'][0]['UF']=="BA")echo "selected"; ?>>Bahia</option>
+           <option value="CE" <?php if($_SESSION['RECADASTRO'][0]['UF']=="CE")echo "selected"; ?>>Ceará</option>
+           <option value="DF" <?php if($_SESSION['RECADASTRO'][0]['UF']=="DF")echo "selected"; ?>>Distrito Federal</option>
+           <option value="ES" <?php if($_SESSION['RECADASTRO'][0]['UF']=="ES")echo "selected"; ?>>Espirito Santo</option>
+           <option value="GO" <?php if($_SESSION['RECADASTRO'][0]['UF']=="GO")echo "selected"; ?>>Goiás</option>
+           <option value="MA" <?php if($_SESSION['RECADASTRO'][0]['UF']=="MA")echo "selected"; ?>>Maranhão</option>
+           <option value="MS" <?php if($_SESSION['RECADASTRO'][0]['UF']=="MS")echo "selected"; ?>>Mato Grosso do Sul</option>
+           <option value="MT" <?php if($_SESSION['RECADASTRO'][0]['UF']=="MT")echo "selected"; ?>>Mato Grosso</option>
+           <option value="MG" <?php if($_SESSION['RECADASTRO'][0]['UF']=="MG")echo "selected"; ?>>Minas Gerais</option>
+           <option value="PA" <?php if($_SESSION['RECADASTRO'][0]['UF']=="PA")echo "selected"; ?>>Pará</option>
+           <option value="PB" <?php if($_SESSION['RECADASTRO'][0]['UF']=="PB")echo "selected"; ?>>Paraíba</option>
+           <option value="PR" <?php if($_SESSION['RECADASTRO'][0]['UF']=="PR")echo "selected"; ?>>Paraná</option>
+           <option value="PE" <?php if($_SESSION['RECADASTRO'][0]['UF']=="PE")echo "selected"; ?>>Pernambuco</option>
+           <option value="PI" <?php if($_SESSION['RECADASTRO'][0]['UF']=="PI")echo "selected"; ?>>Piauí</option>
+           <option value="RJ" <?php if($_SESSION['RECADASTRO'][0]['UF']=="RJ")echo "selected"; ?>>Rio de Janeiro</option>
+           <option value="RN" <?php if($_SESSION['RECADASTRO'][0]['UF']=="RN")echo "selected"; ?>>Rio Grande do Norte</option>
+           <option value="RS" <?php if($_SESSION['RECADASTRO'][0]['UF']=="RS")echo "selected"; ?>>Rio Grande do Sul</option>
+           <option value="RO" <?php if($_SESSION['RECADASTRO'][0]['UF']=="RO")echo "selected"; ?>>Rondônia</option>
+           <option value="RR" <?php if($_SESSION['RECADASTRO'][0]['UF']=="RR")echo "selected"; ?>>Roraima</option>
+           <option value="SC" <?php if($_SESSION['RECADASTRO'][0]['UF']=="SC")echo "selected"; ?>>Santa Catarina</option>
+           <option value="SP" <?php if($_SESSION['RECADASTRO'][0]['UF']=="SP")echo "selected"; ?>>São Paulo</option>
+           <option value="SE" <?php if($_SESSION['RECADASTRO'][0]['UF']=="SE")echo "selected"; ?>>Sergipe</option>
+           <option value="TO" <?php if($_SESSION['RECADASTRO'][0]['UF']=="TO")echo "selected"; ?>>Tocantins</option>
+          </select>
+         </td>
         </tr>
         <tr>
          <td><label>RG:</label><input type="text" name="RG_NUM" id="RG_NUM" value="<?php echo $_SESSION['RECADASTRO'][0]['RG_NUM']?>" class="form-control" placeholder="RG" required /></td>
@@ -82,17 +115,51 @@
          <td><label>Secretaria de Lotaçao:</label><input type="text" name="Lotacao" id="Lotacao" value="" class="form-control" placeholder="Secretaria de Lotação" required /></td>
         </tr>
         <tr>
-         <td colspan="3"><label>Endereço:</label><input type="text" name="End_Rua" id="End_Rua" value="" class="form-control" placeholder="Rua" required /></td>
+         <td colspan="2"><label>Endereço:</label><input type="text" name="End_Rua" id="End_Rua" value="" class="form-control" placeholder="Rua" required /></td>
          <td colspan="1"><label>Numero:</label><input type="text" name="End_Num" id="End_Num" value="" class="form-control" placeholder="Número" required /></td>
+         <td colspan="1"><label>Complemento:</label><input type="text" name="End_Comp" id="End_Comp" value="" class="form-control" placeholder="Complemento" /></td>
         </tr>
         <tr>
-         <td colspan="1"><label>Complemento:</label><input type="text" name="End_Comp" id="End_Comp" value="" class="form-control" placeholder="Complemento" /></td>
-         <td colspan="2"><label>Bairro:</label><input type="text" name="End_Bairro" id="End_Bairro" value="" class="form-control" placeholder="Centro" required /></td>
+         <td colspan="1"><label>Bairro:</label><input type="text" name="End_Bairro" id="End_Bairro" value="" class="form-control" placeholder="Centro" required /></td>
          <td colspan="1"><label>CEP:</label><input type="text" name="End_CEP" id="End_CEP" value="" class="form-control" placeholder="39800000" required /></td>
+         <td colspan="1"><label>Cidade:</label><input type="text" name="End_Cidade" id="End_Cidade" value="" class="form-control" placeholder="" required /></td>
+         <td colspan="1">
+          <label>UF:</label>
+          <select class="form-control" name="End_UF">
+           <option value="">Escolha...</option>
+           <option value="AC" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="AC")echo "selected"; ?>>Acre</option>
+           <option value="AL" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="AL")echo "selected"; ?>>Alagoas</option>
+           <option value="AP" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="AP")echo "selected"; ?>>Amapá</option>
+           <option value="AM" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="AM")echo "selected"; ?>>Amazonas</option>
+           <option value="BA" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="BA")echo "selected"; ?>>Bahia</option>
+           <option value="CE" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="CE")echo "selected"; ?>>Ceará</option>
+           <option value="DF" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="DF")echo "selected"; ?>>Distrito Federal</option>
+           <option value="ES" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="ES")echo "selected"; ?>>Espirito Santo</option>
+           <option value="GO" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="GO")echo "selected"; ?>>Goiás</option>
+           <option value="MA" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="MA")echo "selected"; ?>>Maranhão</option>
+           <option value="MS" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="MS")echo "selected"; ?>>Mato Grosso do Sul</option>
+           <option value="MT" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="MT")echo "selected"; ?>>Mato Grosso</option>
+           <option value="MG" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="MG")echo "selected"; ?>>Minas Gerais</option>
+           <option value="PA" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="PA")echo "selected"; ?>>Pará</option>
+           <option value="PB" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="PB")echo "selected"; ?>>Paraíba</option>
+           <option value="PR" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="PR")echo "selected"; ?>>Paraná</option>
+           <option value="PE" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="PE")echo "selected"; ?>>Pernambuco</option>
+           <option value="PI" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="PI")echo "selected"; ?>>Piauí</option>
+           <option value="RJ" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="RJ")echo "selected"; ?>>Rio de Janeiro</option>
+           <option value="RN" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="RN")echo "selected"; ?>>Rio Grande do Norte</option>
+           <option value="RS" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="RS")echo "selected"; ?>>Rio Grande do Sul</option>
+           <option value="RO" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="RO")echo "selected"; ?>>Rondônia</option>
+           <option value="RR" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="RR")echo "selected"; ?>>Roraima</option>
+           <option value="SC" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="SC")echo "selected"; ?>>Santa Catarina</option>
+           <option value="SP" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="SP")echo "selected"; ?>>São Paulo</option>
+           <option value="SE" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="SE")echo "selected"; ?>>Sergipe</option>
+           <option value="TO" <?php if($_SESSION['RECADASTRO'][0]['End_UF']=="TO")echo "selected"; ?>>Tocantins</option>
+          </select>
+         </td>
         </tr>
         <tr>
          <td colspan="1"><label>Telefone Fixo:</label><input type="text" name="Fone_Fixo" id="Fone_Fixo" value="" class="form-control" placeholder="3335292200" maxlength="14" onkeyup="mascara(this,mfixo)"/></td>
-         <td>
+         <td colspan="1">
           <label>Tipo:</label><select class="form-control" name="Fone_Tipo">
            <option value="">Escolha...</option>
            <option value="proprio">Próprio</option>

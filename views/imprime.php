@@ -48,7 +48,9 @@
          <p><i>Mãe:</i> <?php echo strtoupper($_SESSION['RECADASTRO']['Mae'])?></p>
          <p><i>Pai:</i> <?php echo strtoupper($_SESSION['RECADASTRO']['Pai'])?></p>
         </td>
-        <td><label>Naturilidade:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Naturalidade'])?> </td>
+        <td>
+         <label>Naturilidade:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Naturalidade']."-".$_SESSION['RECADASTRO']['UF'])?><br /> 
+        </td>
        </tr>
        <tr>
         <td><label>RG:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['RG_NUM'])?></td>
@@ -66,13 +68,15 @@
          <td><label>Secretaria de Lotação:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Lotacao'])?></td>
         </tr>
         <tr>
-         <td colspan="3"><label>Endereço:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Rua'])?></td>
+         <td colspan="2"><label>Endereço:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Rua'])?></td>
          <td colspan="1"><label>Número:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Num'])?></td>
+         <td colspan="1"><label>Complemento:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Comp'])?></td>
         </tr>
         <tr>
-         <td colspan="1"><label>Complemento:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Comp'])?></td>
-         <td colspan="2"><label>Bairro:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Bairro'])?></td>
+         <td colspan="1"><label>Bairro:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Bairro'])?></td>
          <td colspan="1"><label>CEP:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_CEP'])?></td>
+         <td colspan="1"><label>Cidade:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Cidade'])?></td>
+         <td colspan="1"><label>UF:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_UF'])?></td>
         </tr>
         <tr>
          <td colspan="1"><label>Telefone Fixo:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Fone_Fixo'])?></td>

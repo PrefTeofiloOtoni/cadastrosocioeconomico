@@ -139,4 +139,9 @@
 			case '12':	return "Dezembro";	break;
 		}
 	}
+
+	function getData($var){
+		$tmp=export("-",$var);
+		return $tmp['0']."/".$tmp['1']."/".$tmp['2'];
+	}
 ?>
