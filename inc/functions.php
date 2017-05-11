@@ -1,4 +1,14 @@
 <?php
+	@include("conecta.php");
+	
+	function conecta(){
+		try{
+			return new PDO( "mysql:host=".@getenv(BDHOST).";dbname=".@getenv(BDNAME),@getenv(BDUSER),@getenv(BDPASS));
+	        }catch(PDOException $e ){
+	                echo 'Erro ao conectar com o MySQL: '.$e->getMessage();
+		}
+	}
+
 	function getGrau_escolar($var){
 		switch($var){
 			case 'fund':
@@ -45,6 +55,12 @@
 
 	function getSimNao($var){
 		switch($var){
+			case 'sim':
+				return "Sim";
+			break;
+			case 'nao':
+				return "Não";
+			break;
 			case 'S':
 				return "Sim";
 			break;
@@ -153,5 +169,21 @@
 	function getCPF($var){
 		$tmp=str_split($var);
 		return $tmp['0'].$tmp['1'].$tmp['2'].".".$tmp['3'].$tmp['4'].$tmp['5'].".".$tmp['6'].$tmp['7'].$tmp['8']."-".$tmp['9'].$tmp['10'];
+	}
+	
+	function getComposicaoFamiliar($var){
+		$PDO=conecta();
+		$SQL="SELECT * FROM familiares WHERE CPF='".$var."'";
+		$result = $PDO->query($SQL);
+		$rows   = $result->fetchAll();
+		for ($i=0;$i<sizeof($rows);$i++){
+			echo "<tr>
+                               <td>".$rows[$i]['Nome']."</td>
+                               <td>".$rows[$i]['DataNasc']."</td>
+                               <td>".$rows[$i]['Parentesco']."</td>
+                               <td>".$rows[$i]['Ocupacao']."</td>
+                               <td>".$rows[$i]['Remuneracao']."</td>
+                              </tr>";
+		}
 	}
 ?>

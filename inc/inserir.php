@@ -1,5 +1,5 @@
 <?php
-	include ("conecta.php");
+	#include ("conecta.php");
 	include ("functions.php");
         session_start();
 
@@ -104,11 +104,38 @@
 	$SQL.="\n	Observacoes='".@utf8_encode($Observacoes)."',";
 	$SQL.="\n	Preenchido=1 ";
 	$SQL.="\nWHERE CPF='".@utf8_encode($CPF)."';";
-	print $SQL;
+
+	$PDO=conecta();
 
 	if($result = $PDO->query($SQL)){
+		if($familiaqnt>0){
+			for ($i=0;$i<$familiaqnt;$i++){
+				$tmpNome='FamiliarNome'.$i;
+				$tmpNascto="FamiliarDataNasc".$i;
+				$tmpParentesco="FamiliarParentesco".$i;
+				$tmpOcupacao="FamiliarOcupacao".$i;
+				$tmpRemuneracao="FamiliarRemuneracao".$i;
+
+				$SQLParente="INSERT INTO familiares (
+					CPF,
+					Nome,
+					DataNasc,
+					Parentesco,
+					Ocupacao,
+					Remuneracao)
+					VALUES(
+						'".$CPF."',
+						'".$$tmpNome."',	
+						'".$$tmpNascto."',	
+						'".$$tmpParentesco."',	
+						'".$$tmpOcupacao."',	
+						'".$$tmpRemuneracao."');";
+
+				$RES=$PDO->query($SQLParente);
+		}
+	}
 		header('location: http://recadastro.teofilootoni.mg.gov.br/views/imprime.php');
 	}else{
-		echo "Erro";
+		header('location: http://recadastro.teofilootoni.mg.gov.br/?MSG=Erro ao Inserir, Entre em contato com o CPD');
 	}
 ?>

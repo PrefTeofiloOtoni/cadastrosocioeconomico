@@ -1,17 +1,34 @@
      <h4>Todos os dados obtidos deste questionário serão confidenciais!</h4>
      <form class="form-signin" action="inc/inserir.php" method="POST">
       <table class='table table-striped table-bordered table-hover'>
-       <tr><td colspan="4"><label>Nome:</label> <?php echo $_SESSION['RECADASTRO'][0]['Nome']?></td></tr>
        <tr>
-        <td><label>Data de Nascimento:</label><?php echo getData($_SESSION['RECADASTRO'][0]['Nascto'])?></td>
-        <td><label>Vínculo:</label> <?php echo $_SESSION['RECADASTRO'][0]['Vinculo']; ?></td>
-        <td><label>Situação:</label> <?php echo $_SESSION['RECADASTRO'][0]['Situacao']; ?></td>
-        <td><label>Matrícula:</label> <?php echo $_SESSION['RECADASTRO'][0]['Matricula']?></td>
+        <td colspan="4">
+         <label>Nome:</label> <?php echo $_SESSION['RECADASTRO'][0]['Nome']?>
+         <input type="hidden" name="Nome" id="Nome" value="<?php echo $_SESSION['RECADASTRO'][0]['Nome']?>" />
+        </td>
+       </tr>
+       <tr>
+        <td>
+         <label>Data de Nascimento:</label><?php echo getData($_SESSION['RECADASTRO'][0]['Nascto'])?>
+         <input type="hidden" name="Nascto" id="Nascto" value="<?php echo $_SESSION['RECADASTRO'][0]['Nascto']?>" />
+        </td>
+        <td>
+         <label>Vínculo:</label> <?php echo $_SESSION['RECADASTRO'][0]['Vinculo']; ?>
+         <input type="hidden" name="Vinculo" id="Vinculo" value="<?php echo $_SESSION['RECADASTRO'][0]['Vinculo']?>" />
+        </td>
+        <td>
+         <label>Situação:</label> <?php echo $_SESSION['RECADASTRO'][0]['Situacao']; ?>
+         <input type="hidden" name="Situacao" id="Situacao" value="<?php echo $_SESSION['RECADASTRO'][0]['Situacao']?>" />
+        </td>
+        <td>
+         <label>Matrícula:</label> <?php echo $_SESSION['RECADASTRO'][0]['Matricula']?>
+         <input type="hidden" name="Matricula" id="Matricula" value="<?php echo $_SESSION['RECADASTRO'][0]['Matricula']?>" />
+        </td>
        </tr>
        <tr>
         <td colspan="3"><label>Filiação:</label>
-         <input type="text" name="Mae" id="Mae" value="<?php echo $_SESSION['RECADASTRO'][0]['Mae']?>" class="form-control" placeholder="Mãe" />
-         <input type="text" name="Pai" id="Pai" value="<?php echo $_SESSION['RECADASTRO'][0]['Pai']?>" class="form-control" placeholder="Pai" />
+         <input type="text" name="Mae" id="Mae" value="<?php echo utf8_encode($_SESSION['RECADASTRO'][0]['Mae'])?>" class="form-control" placeholder="Mãe" />
+         <input type="text" name="Pai" id="Pai" value="<?php echo utf8_encode($_SESSION['RECADASTRO'][0]['Pai'])?>" class="form-control" placeholder="Pai" />
         </td>
         <td>
          <label>Naturalidade:</label>
@@ -110,14 +127,17 @@
        </tr>
        <tr>
         <td colspan="2"><label>Endereço:</label><input type="text" name="End_Rua" id="End_Rua" value="" class="form-control" placeholder="Rua" required /></td>
-        <td colspan="1"><label>Número:</label><input type="text" name="End_Num" id="End_Num" value="" class="form-control" placeholder="Número" required /></td>
-        <td colspan="1"><label>Complemento:</label><input type="text" name="End_Comp" id="End_Comp" value="" class="form-control" placeholder="Complemento" /></td>
+        <td><label>Número:</label><input type="text" name="End_Num" id="End_Num" value="" class="form-control" placeholder="Número" required /></td>
+        <td><label>Complemento:</label><input type="text" name="End_Comp" id="End_Comp" value="" class="form-control" placeholder="Complemento" /></td>
        </tr>
        <tr>
-        <td colspan="1"><label>Bairro:</label><input type="text" name="End_Bairro" id="End_Bairro" value="" class="form-control" placeholder="Centro" required /></td>
-        <td colspan="1"><label>CEP:</label><input type="text" name="End_CEP" id="End_CEP" value="" class="form-control" placeholder="39800000" required /></td>
-        <td colspan="1"><label>Cidade:</label><input type="text" name="End_Cidade" id="End_Cidade" value="" class="form-control" placeholder="" required /></td>
-        <td colspan="1">
+        <td><label>Bairro:</label><input type="text" name="End_Bairro" id="End_Bairro" value="" class="form-control" placeholder="Centro" required /></td>
+	<td>
+         <label>CEP:</label>
+         <input type="text" name="End_CEP" id="End_CEP" value="" class="form-control" placeholder="39800000" maxlength="11" onkeyup="mascara(this,mcep)"  required />
+        </td>
+        <td><label>Cidade:</label><input type="text" name="End_Cidade" id="End_Cidade" value="" class="form-control" placeholder="" required /></td>
+        <td>
          <label>UF:</label>
          <select class="form-control" name="End_UF">
           <option value="">Escolha...</option>
@@ -152,8 +172,8 @@
         </td>
        </tr>
        <tr>
-        <td colspan="1"><label>Telefone Fixo:</label><input type="text" name="Fone_Fixo" id="Fone_Fixo" value="" class="form-control" maxlength="14" onkeyup="mascara(this,mfixo)"/></td>
-        <td colspan="1">
+        <td><label>Telefone Fixo:</label><input type="text" name="Fone_Fixo" id="Fone_Fixo" value="" class="form-control" maxlength="14" onkeyup="mascara(this,mfixo)"/></td>
+        <td>
          <label>Tipo:</label><select class="form-control" name="Fone_Tipo">
           <option value="">Escolha...</option>
           <option value="proprio">Próprio</option>
@@ -200,7 +220,7 @@
         </td>
        </tr>
        <tr>
-        <td colspan="4"><label>Tempo de residência em Teófilo Otoni:</label>
+        <td colspan="4"><label>Tempo de residência em Teófilo Otoni:</label><br />
          <input type="radio" name="TimeRes" value="1" />&nbsp;ate 5 anos
          <input type="radio" name="TimeRes" value="2" />&nbsp;mais de 5 anos ate 10 anos
          <input type="radio" name="TimeRes" value="3" />&nbsp;mais de 10 anos
@@ -237,17 +257,21 @@
        <tr>
         <td colspan="2">
          <label>Tipo de transporte que você utiliza pra trabalhar:</label>
-         <select class="form-control" name="Trans_Forma">
+         <select class="form-control" name="Trans_Forma" id="Trans_Forma" onchange=mostraTipo()>
           <option value="">Escolha...</option>
           <option value="bicicleta">Bicicleta</option>
-          <option value="proprio">Proprio</option>
+          <option value="carro">Carro</option>
+          <option value="moto">Moto</option>
           <option value="coletivo" >Transporte Coletivo</option>
           <option value="outros">Outros</option>
          </select>
         </td>
-        <td colspan="2"><label>Tipo:</label><br />
-         <input type="radio" name="Trans_Tipo" value="moto" />&nbsp;Carro
-         <input type="radio" name="Trans_Tipo" value="carro" />&nbsp;Moto
+	<td colspan="2">
+         <div id="Trans_Tipo" style="display:none">
+          <label>Próprio:</label><br />
+          <input type="radio" name="Trans_Tipo" value="sim" />&nbsp;Sim
+          <input type="radio" name="Trans_Tipo" value="nao" />&nbsp;Não
+         </div>
         </td>
        </tr>
        <tr>
@@ -261,11 +285,7 @@
          <input type="radio" name="Ling_Espanhol" value="tecnico" />&nbsp;Técnico
          <input type="radio" name="Ling_Espanhol" value="fluente" />&nbsp;Fluente<br />
          <strong>Outros:</strong>
-         <input type="text" name="Ling_extra" id="Hab_extra" value="" class="form-control" placeholder="Outros Idiomas" /><br />
-         <input type="radio" name="Ling_Outros" value="nenhum" />&nbsp;Nenhum
-         <input type="radio" name="Ling_Outros" value="basico" />&nbsp;Básico
-         <input type="radio" name="Ling_Outros" value="tecnico" />&nbsp;Técnico
-         <input type="radio" name="Ling_Outros" value="fluente" />&nbsp;Fluente
+         <input type="text" name="Ling_extra" id="Hab_extra" value="" class="form-control" placeholder="Outros Idiomas" />
         </td>
        </tr>
        <tr>
@@ -366,6 +386,6 @@
         </td>
        </tr>
       </table>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Enviar e Imprimir</button> 
-      <a href="/inc/sair.php" class="btn btn-lg btn-danger btn-block">Limpar</a>
+      <button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-print"></i></button> 
+      <a href="/inc/sair.php" class="btn btn-lg btn-danger"><i class="fa fa-close"></i></a>
      </form>

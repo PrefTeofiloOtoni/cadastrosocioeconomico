@@ -5,6 +5,12 @@
 	*{ font-family: arial}
 	body {
 		font-family: arial;
+		margin-top: 1cm;
+		margin-right: 1cm;
+		margin-bottom: 1cm;
+		margin-left: 1cm;
+		page-break-after: always ;
+
 	}
 
 	article {
