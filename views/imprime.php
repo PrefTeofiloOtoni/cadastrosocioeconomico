@@ -25,11 +25,8 @@
   <![endif]-->
   </head>
   <body>
-   <div class="col-md-12 hidden-print">
-    <a href="#" onclick="window.print()" class="btn btn-warning"><i class="fa fa-print"></i></a>
-    <a href="/inc/sair.php" class="btn btn-danger"><i class="fa fa-close"></i></a>
-   </div>
    <div class="container">
+    <div class="bg-info">ASDADASD</div><div><br /></div>
     <h3 class="page-header" align="center">RECADASTRAMENTO DOS SERVIDORES PÚBLICOS MUNICIPAIS</h3>
     <h4 align="center">QUESTIONÁRIO DE PERFIL SOCIOECONÔMICO</h4>
     <h4>ATENÇÃO:</h4>
@@ -202,8 +199,9 @@
      </table>
     </div>
     <div class="col-md-12 hidden-print">
-     <a href="#" onclick="window.print()" class="btn btn-warning"><i class="fa fa-print"></i></a>
-     <a href="/inc/sair.php" class="btn btn-danger"><i class="fa fa-close"></i></a>
+     <a href="/" class="btn btn-info">Corrigir</a>
+     <a href="#" onclick="window.print()" class="btn btn-warning">Confirmar e Imprimir</a>
+     <a href="/inc/sair.php" class="btn btn-danger">Sair</a>
     </div>
    </div>
   <footer class="container hidden-print">

@@ -1,5 +1,4 @@
 <?php
-	#include ("conecta.php");
 	include ("functions.php");
         session_start();
 
@@ -97,6 +96,7 @@
 	$SQL.="\n	Renda_Mensal_Capita=".@utf8_encode($Renda_Mensal_Capita).",";
 	$SQL.="\n	Deficiente=".@utf8_encode($Deficiente).",";
 	$SQL.="\n	Deficiente_Grau='".@utf8_encode($Deficiente_Grau)."',";
+	$SQL.="\n	Deficiente_Qual='".@utf8_encode($Deficiente_Qual)."',";
 	$SQL.="\n	Idoso=".@utf8_encode($Idoso).",";
 	$SQL.="\n	TemEmCasa='".@utf8_encode($TemEmCasa)."',";
 	$SQL.="\n	PlanoDeSaude=".@utf8_encode($PlanoDeSaude).",";
@@ -106,13 +106,13 @@
 	$SQL.="\nWHERE CPF='".@utf8_encode($CPF)."';";
 
 	$PDO=conecta();
-
 	if($result = $PDO->query($SQL)){
 		if($familiaqnt>0){
 			for ($i=0;$i<$familiaqnt;$i++){
 				$tmpNome='FamiliarNome'.$i;
 				$tmpNascto="FamiliarDataNasc".$i;
 				$tmpParentesco="FamiliarParentesco".$i;
+				$tmpEscolaridade="FamiliarEscolaridade".$i;
 				$tmpOcupacao="FamiliarOcupacao".$i;
 				$tmpRemuneracao="FamiliarRemuneracao".$i;
 
@@ -121,6 +121,7 @@
 					Nome,
 					DataNasc,
 					Parentesco,
+					Escolaridade,
 					Ocupacao,
 					Remuneracao)
 					VALUES(
@@ -128,6 +129,7 @@
 						'".$$tmpNome."',	
 						'".$$tmpNascto."',	
 						'".$$tmpParentesco."',	
+						'".$$tmpEscolaridade."',	
 						'".$$tmpOcupacao."',	
 						'".$$tmpRemuneracao."');";
 
