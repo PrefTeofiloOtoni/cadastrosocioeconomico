@@ -5,11 +5,11 @@
 	$_SESSION['RECADASTRO']=$_POST;
 	extract ($_POST);
 	
-	if(!isset($Ling_Outros)){
-		$Ling_Outros=0;
-		$_SESSION['RECADASTRO']['Ling_Outros']=0;
-		$_SESSION['RECADASTRO']['Ling_extra']='NULL';
-	}
+#	if(!isset($Ling_Outros)){
+#		$Ling_Outros=0;
+#		$_SESSION['RECADASTRO']['Ling_Outros']=0;
+#		$_SESSION['RECADASTRO']['Ling_extra']='NULL';
+#	}
 
 	if(!isset($Info_word)){
 		$Info_word=0;

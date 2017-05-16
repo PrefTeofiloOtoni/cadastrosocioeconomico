@@ -1,7 +1,7 @@
   <footer class="container hidden-print">
    <hr />
    <p>&copy; CPD PMTO
-    <span class="pull-right">Powered By: <i class="fa fa-linux"></i><i class="fa fa-html5"></i><i class="fa fa-css3"></i></span>
+    <span class="pull-right">Powered By: <i class="fa fa-github"></i><i class="fa fa-linux"></i><i class="fa fa-html5"></i><i class="fa fa-css3"></i></span>
    </p>
   </footer>
   <!-- Bootstrap core JavaScript

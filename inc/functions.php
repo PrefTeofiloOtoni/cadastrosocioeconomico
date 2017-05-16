@@ -114,14 +114,49 @@
 		}
 	}
 
-	function getTemEmCasa($var){
+	function getTemEmCasa($var,$opt){
+		$arrayPodeTerEmCasa = array(
+			"TV" => 0,
+			"Video Cassete e/ou DVD"=> 0,
+			"Rádio"=> 0,
+			"Microcomputador"=> 0,
+			"Automóvel" => 0,
+			"Motocicleta" => 0,
+			"Máquina de Lavar Roupa" => 0,
+			"Geladeira" => 0,
+			"Telefone Fixo" => 0,
+			"Telefone Celular" => 0,
+			"Acesso a internet" => 0,
+			"TV por assinatura" => 0,
+			"Empregada mensalista" => 0		
+		);
+
+
 		$array=explode("#",$var);
-                $i=0;
-                while($i<sizeof($array)){
-			if($array[$i]!=''){
-	                        echo "<div>[X] <label>".$array[$i]."</label></div>";
-			}
+		$i=0;
+
+		while($i<sizeof($array)-1){
+			$arrayPodeTerEmCasa[$array[$i]]='1';
 			$i++;
+		}
+		$index=array_keys($arrayPodeTerEmCasa);
+
+		if($opt==0){
+			$i=0;
+			while($i<sizeof($arrayPodeTerEmCasa)){
+				if($arrayPodeTerEmCasa[$index[$i]]==1) $check="checked";
+				else $check=" ";
+				echo "<div><label><input type=\"checkbox\" name=\"TemEmCasa".($i+1)."\" value=\"".$index[$i]."#\" ".$check."  />&nbsp;".$index[$i]."</label></div>"."\n";
+				$i++;
+			}
+		}elseif($opt=1){
+			$i=0;
+			while($i<sizeof($arrayPodeTerEmCasa)){
+				if($arrayPodeTerEmCasa[$index[$i]]==1) $check="X";
+				else $check="&nbsp;&nbsp;";
+				echo "<div><label>[".$check."]".$index[$i]."</label></div>"."\n";
+				$i++;
+			}
                 }
 	}
 
@@ -156,11 +191,6 @@
 		}
 	}
 
-	function getData($var){
-		$tmp=explode("-",$var);
-		return $tmp['0']."/".$tmp['1']."/".$tmp['2'];
-	}
-
 	function padronizaData($var){
 		$tmp=explode("/",$var);
 		return $tmp['0']."-".$tmp['1']."-".$tmp['2'];
@@ -171,19 +201,58 @@
 		return $tmp['0'].$tmp['1'].$tmp['2'].".".$tmp['3'].$tmp['4'].$tmp['5'].".".$tmp['6'].$tmp['7'].$tmp['8']."-".$tmp['9'].$tmp['10'];
 	}
 	
-	function getComposicaoFamiliar($var){
+	function getComposicaoFamiliar($var,$opt){
 		$PDO=conecta();
 		$SQL="SELECT * FROM familiares WHERE CPF='".$var."'";
 		$result = $PDO->query($SQL);
 		$rows   = $result->fetchAll();
-		for ($i=0;$i<sizeof($rows);$i++){
-			echo "<tr>
-                               <td>".$rows[$i]['Nome']."</td>
-                               <td>".$rows[$i]['DataNasc']."</td>
-                               <td>".$rows[$i]['Parentesco']."</td>
-                               <td>".$rows[$i]['Ocupacao']."</td>
-                               <td>".$rows[$i]['Remuneracao']."</td>
-                              </tr>";
+
+		if($opt==0){
+			for ($i=0;$i<sizeof($rows);$i++){
+echo "<tr>";
+echo "<td><input type=\"text\" name=\"FamiliarNome".$i."\"  value=\"".$rows[$i]['Nome']."\" class=\"form-control\" placeholder=\"Nome\"></td>";
+echo "<td><input type=\"text\" name=\"FamiliarDataNasc".$i."\"  value=\"".$rows[$i]['DataNasc']."\" class=\"form-control\" maxlength=\"10\" placeholder=\"Data de Nascimento\" onkeyup=dataConta(this)></td>";
+echo "<td><input type=\"text\" name=\"FamiliarParentesco".$i."\"  value=\"".$rows[$i]['Parentesco']."\" class=\"form-control\" placeholder=\"Parentesco\"></td>";
+echo "<td><input type=\"text\" name=\"FamiliarEscolaridade".$i."\"  value=\"".$rows[$i]['Escolaridade']."\" class=\"form-control\" placeholder=\"Escolaridade\"></td>";
+echo "<td><input type=\"text\" name=\"FamiliarOcupacao".$i."\"  value=\"".$rows[$i]['Ocupacao']."\" class=\"form-control\" placeholder=\"Ocupação\"></td>";
+echo "<td><input type=\"text\" name=\"FamiliarRemuneracao".$i."\" onkeyup=moeda(this) value=\"".$rows[$i]['Remuneracao']."\" class=\"form-control\" placeholder=\"Remuneração\"></td>";
+echo "<td><button class=\"btn btn-large btn-danger fa fa-trash\" onclick=\"deleteRow(this.parentNode.parentNode.rowIndex)\"></button></td>";
+
+
+
+			}
+	
+		}elseif($opt=1){
+			for ($i=0;$i<sizeof($rows);$i++){
+				echo "<tr>
+        	                       <td>".$rows[$i]['Nome']."</td>
+                	               <td>".$rows[$i]['DataNasc']."</td>
+                        	       <td>".$rows[$i]['Parentesco']."</td>
+	                               <td>".$rows[$i]['Escolaridade']."</td>
+        	                       <td>".$rows[$i]['Ocupacao']."</td>
+                	               <td>".$rows[$i]['Remuneracao']."</td>
+                        	      </tr>";
+			}
+		}
+	}
+
+	function ifExisteText($data,$field,$label){
+		if(!empty($data)){
+			echo "<strong>".$label.": </strong>". utf8_encode($data);
+			echo "<input type=\"hidden\" name=\"".$field."\" id=\"".$field."\" value=\"".utf8_encode($data)."\" />";
+		}else{  
+			echo "<label>".$label.": </label>". utf8_encode($data);
+			echo "<input type=\"text\" name=\"".$field."\" id=\"".$field."\" class=\"form-control\" placeholder=\"".$label."\" />";
+		}
+	}
+
+	function getEstCivil($var){
+		switch($var){
+			case 'solteiro':	return "Solteiro";	break;
+			case 'casado':		return "Casado";	break;
+			case 'separado':	return "Separado";	break;
+			case 'viuvo':		return "Viúvo";		break;
+			case 'uniao_estavel':	return "União Estável";	break;
 		}
 	}
 ?>

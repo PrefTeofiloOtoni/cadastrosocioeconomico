@@ -8,19 +8,14 @@ function adicionarLinha(){
 	
 	var newCell1 = newRow.insertCell(1);
 	newCell1.innerHTML = '<td><input type="text" name="FamiliarDataNasc'+indice+'"  value="" class="form-control" maxlength="10" placeholder="Data de Nascimento" onkeyup=dataConta(this)></td>';
-	
 	var newCell2 = newRow.insertCell(2);
 	newCell2.innerHTML = '<td><input type="text" name="FamiliarParentesco'+indice+'"  value="" class="form-control" placeholder="Parentesco"></td>';
-	
 	var newCell3 = newRow.insertCell(3);
 	newCell3.innerHTML = '<td><input type="text" name="FamiliarEscolaridade'+indice+'"  value="" class="form-control" placeholder="Escolaridade"></td>';	
-
 	var newCell4 = newRow.insertCell(4);
 	newCell4.innerHTML = '<td><input type="text" name="FamiliarOcupacao'+indice+'"  value="" class="form-control" placeholder="Ocupação"></td>';
-	
 	var newCell5 = newRow.insertCell(5);
-	newCell5.innerHTML = '<td><input type="text" name="FamiliarRemuneracao'+indice+'"  value="" class="form-control" placeholder="Remuneração"></td>';
-	
+	newCell5.innerHTML = '<td><input type="text" name="FamiliarRemuneracao'+indice+'" onkeyup=moeda(this)  value="" class="form-control" placeholder="Remuneração"></td>';
 	var newCell6 = newRow.insertCell(6);
 	newCell6.innerHTML = '<td><button class="btn btn-large btn-danger fa fa-trash" onclick="deleteRow(this.parentNode.parentNode.rowIndex)"></button></td>';
 	var indice=document.getElementById('familiaqnt').value++;
@@ -116,7 +111,8 @@ function mostraimovel(){
 		document.getElementById("Hab_propria").style.display="none";
 	}
 
-	if((document.getElementById("Hab_Modo").value=="alugada") || (document.getElementById("Hab_Quit").value=="nao")) {
+	if((document.getElementById("Hab_Modo").value=="alugada")
+		|| (document.getElementById("Hab_Quit").value=="nao")){
 		document.getElementById("Hab_valor").style.display="block";
 	}else{
 		document.getElementById("Hab_valor").style.display="none";
@@ -129,4 +125,12 @@ function moeda(z){
 	v=v.replace(/\D/g,"")
 	v=v.replace(/(\d{1})(\d{1,2})$/,"$1,$2")
 	z.value = v; 
+}
+
+function deficienteOutra(){
+	if(document.getElementById("Deficiente_Qual").value=="Outra"){
+		document.getElementById("Def_tmp").style.display="block";
+	}else{
+		document.getElementById("Def_tmp").style.display="none";
+	}
 }
