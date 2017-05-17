@@ -37,7 +37,7 @@
    <div class="col-lg-12">
     <h4>Todos os dados obtidos deste questionário serão confidenciais!</h4>
     <table class='table table-striped table-bordered'>
-     <tr><td colspan="4"><label>Nome:</label> <?php echo ucfirst($_SESSION['RECADASTRO']['Nome'])?></td></tr>
+     <tr><td colspan="4"><label>Nome:</label> <?php echo ucfirst(utf8_decode($_SESSION['RECADASTRO']['Nome']))?></td></tr>
      <tr>
       <td><label>Data de Nascimento:</label> <?php echo ucfirst($_SESSION['RECADASTRO']['Nascto'])?></td>
       <td><label>Vínculo:</label> <?php echo ucfirst($_SESSION['RECADASTRO']['Vinculo'])?> </td>

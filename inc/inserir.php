@@ -5,12 +5,6 @@
 	$_SESSION['RECADASTRO']=$_POST;
 	extract ($_POST);
 	
-#	if(!isset($Ling_Outros)){
-#		$Ling_Outros=0;
-#		$_SESSION['RECADASTRO']['Ling_Outros']=0;
-#		$_SESSION['RECADASTRO']['Ling_extra']='NULL';
-#	}
-
 	if(!isset($Info_word)){
 		$Info_word=0;
 		$_SESSION['RECADASTRO']['Info_word']=0;
@@ -25,11 +19,15 @@
 	}
 	if(!isset($Pensao_Paga)){
 		$Pensao_Paga=0;
+		$Pensao_Paga_Val=NULL;
 		$_SESSION['RECADASTRO']['Pensao_Paga']=0;
+		$_SESSION['RECADASTRO']['Pensao_Paga_Val']=NULL;
 	}
 	if(!isset($Pensao_Recebe)){
 		$Pensao_Recebe=0;
+		$Pensao_Recebe_Val=NULL;
 		$_SESSION['RECADASTRO']['Pensao_Recebe']=0;
+		$_SESSION['RECADASTRO']['Pensao_Recebe_Val']=NULL;
 	}
 	if(!isset($Deficiente)){
 		$Deficiente=0;
@@ -43,6 +41,19 @@
 		$PlanoDeSaude=0;
 		$_SESSION['RECADASTRO']['PlanoDeSaude']=0;
 	}
+	if(!isset($Transferencia)){
+		$Transferencia=0;
+		$_SESSION['RECADASTRO']['Transferencia']=0;
+		$_SESSION['RECADASTRO']['Transferencia_Qual']=NULL;
+	}
+	if(!isset($CadUnico)){
+		$CadUnico=0;
+		$_SESSION['RECADASTRO']['CadUnico']=0;
+		$_SESSION['RECADASTRO']['NIS']=NULL;
+	}
+
+
+
 	$_SESSION['RECADASTRO']['TemEmCasa']=$TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13;
 	$TemEmCasa=$TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13;
 
@@ -109,6 +120,7 @@
 	if($result = $PDO->query($SQL)){
 		if($familiaqnt>0){
 			for ($i=0;$i<$familiaqnt;$i++){
+				$tmpID='FamiliarID'.$i;
 				$tmpNome='FamiliarNome'.$i;
 				$tmpNascto="FamiliarDataNasc".$i;
 				$tmpParentesco="FamiliarParentesco".$i;
@@ -116,24 +128,37 @@
 				$tmpOcupacao="FamiliarOcupacao".$i;
 				$tmpRemuneracao="FamiliarRemuneracao".$i;
 
-				$SQLParente="INSERT INTO familiares (
-					CPF,
-					Nome,
-					DataNasc,
-					Parentesco,
-					Escolaridade,
-					Ocupacao,
-					Remuneracao)
-					VALUES(
-						'".$CPF."',
-						'".$$tmpNome."',	
-						'".$$tmpNascto."',	
-						'".$$tmpParentesco."',	
-						'".$$tmpEscolaridade."',	
-						'".$$tmpOcupacao."',	
-						'".$$tmpRemuneracao."');";
+				if(isset($$tmpID)){
+					$SQLParente="UPDATE familiares SET 
+						Nome='".$$tmpNome."',
+						DataNasc='".$$tmpNascto."',
+						Parentesco='".$$tmpParentesco."',
+						Escolaridade='".$$tmpEscolaridade."',
+						Ocupacao='".$$tmpOcupacao."',
+						Remuneracao='".$$tmpRemuneracao."'
+					WHERE CPF='".$CPF."' AND
+						ID=".$$tmpID."";
+				}else{
+					$SQLParente="INSERT INTO familiares (
+						CPF,
+						Nome,
+						DataNasc,
+						Parentesco,
+						Escolaridade,
+						Ocupacao,
+						Remuneracao)
+						VALUES(
+							'".$CPF."',
+							'".$$tmpNome."',	
+							'".$$tmpNascto."',	
+							'".$$tmpParentesco."',	
+							'".$$tmpEscolaridade."',	
+							'".$$tmpOcupacao."',	
+							'".$$tmpRemuneracao."');";
+				}
 
 				$RES=$PDO->query($SQLParente);
+
 		}
 	}
 		header('location: http://recadastro.teofilootoni.mg.gov.br/views/imprime.php');

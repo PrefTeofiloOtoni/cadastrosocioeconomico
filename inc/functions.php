@@ -200,7 +200,23 @@
 		$tmp=str_split($var);
 		return $tmp['0'].$tmp['1'].$tmp['2'].".".$tmp['3'].$tmp['4'].$tmp['5'].".".$tmp['6'].$tmp['7'].$tmp['8']."-".$tmp['9'].$tmp['10'];
 	}
-	
+
+	function listarFuncionarios(){
+		$PDO=conecta();
+		$SQL="SELECT CPF,Nome,Mae,Pai FROM funcionarios ORDER BY Nome";
+		$result = $PDO->query($SQL);
+		$rows   = $result->fetchAll();
+
+		for ($i=0;$i<sizeof($rows);$i++){
+			echo "<tr>";
+			echo "<td>".$rows[$i]['CPF']."</td>";
+			echo "<td>".utf8_encode($rows[$i]['Nome'])."</td>";
+			echo "<td>".utf8_encode($rows[$i]['Mae'])."</td>";
+			echo "<td>".utf8_encode($rows[$i]['Pai'])."</td>";
+			echo "</tr>";
+		}
+	}
+
 	function getComposicaoFamiliar($var,$opt){
 		$PDO=conecta();
 		$SQL="SELECT * FROM familiares WHERE CPF='".$var."'";
@@ -210,7 +226,7 @@
 		if($opt==0){
 			for ($i=0;$i<sizeof($rows);$i++){
 echo "<tr>";
-echo "<td><input type=\"text\" name=\"FamiliarNome".$i."\"  value=\"".$rows[$i]['Nome']."\" class=\"form-control\" placeholder=\"Nome\"></td>";
+echo "<td><input type=\"hidden\" name=\"FamiliarID".$i."\" value=\"".$rows[$i]['ID']."\" /> <input type=\"text\" name=\"FamiliarNome".$i."\"  value=\"".$rows[$i]['Nome']."\" class=\"form-control\" placeholder=\"Nome\"></td>";
 echo "<td><input type=\"text\" name=\"FamiliarDataNasc".$i."\"  value=\"".$rows[$i]['DataNasc']."\" class=\"form-control\" maxlength=\"10\" placeholder=\"Data de Nascimento\" onkeyup=dataConta(this)></td>";
 echo "<td><input type=\"text\" name=\"FamiliarParentesco".$i."\"  value=\"".$rows[$i]['Parentesco']."\" class=\"form-control\" placeholder=\"Parentesco\"></td>";
 echo "<td><input type=\"text\" name=\"FamiliarEscolaridade".$i."\"  value=\"".$rows[$i]['Escolaridade']."\" class=\"form-control\" placeholder=\"Escolaridade\"></td>";

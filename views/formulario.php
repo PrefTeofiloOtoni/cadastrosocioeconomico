@@ -3,7 +3,7 @@
       <table class='table table-striped table-bordered table-hover'>
        <tr>
         <td colspan="4">
-         <label>Nome:</label> <?php echo $_SESSION['RECADASTRO']['Nome']?>
+         <label>Nome:</label> <?php echo utf8_encode($_SESSION['RECADASTRO']['Nome'])?>
          <input type="hidden" name="Nome" id="Nome" value="<?php echo $_SESSION['RECADASTRO']['Nome']?>" />
         </td>
        </tr>
@@ -316,10 +316,10 @@
        </tr>
        <tr>
 	<td colspan ="4">
-	<input type="hidden" name="familiaqnt" id="familiaqnt" value="<?php if(empty($_SESSION['RECADASTRO']['familiaqnt'])) echo 0; else echo $_SESSION['RECADASTRO'][familiaqnt] ?>" />
+	<input type="hidden" name="familiaqnt" id="familiaqnt" value="<?php if(empty($_SESSION['RECADASTRO']['familiaqnt'])) echo 0; else echo $_SESSION['RECADASTRO']['familiaqnt'] ?>" />
          <table class='table table-striped table-bordered table-hover' id="TabParentesco">
           <tr><td colspan="6" align="center"><strong>Composição Familiar</strong></td></tr>
-	  <tr><td><strong>Nome<strong></td><td><strong>Data de Nascimento</strong></td><td><strong>Parentesco</strong></td><td><strong>Escolaridade</strong></td><td><strong>Ocupação</strong></td><td><strong>Remuneração</strong></td></tr>
+	  <tr><td><strong>Nome</strong></td><td><strong>Data de Nascimento</strong></td><td><strong>Parentesco</strong></td><td><strong>Escolaridade</strong></td><td><strong>Ocupação</strong></td><td><strong>Remuneração</strong></td></tr>
           <?php getComposicaoFamiliar($_SESSION['RECADASTRO']['CPF'],0) ;?>
          </table>
          <div><button class="btn btn-large btn-success" onclick="adicionarLinha()" type="button">Adicionar Membros</button></div>
@@ -376,7 +376,7 @@
 	   <option value="Fala" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Fala") echo "selected"?>>Fala</option>
 	   <option value="Outra" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Outra") echo "selected"?>>Outra</option>
 	  </select>
-          <span id="Def_tmp" style="display:none;">Outra: <input type="text" class="form-control" value="" name="Def_Outra" id="Def_Outra" /></span>
+	  <span id="Def_tmp" style="display:<?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Outra") echo "block"; else echo "none";?>">Outra: <input type="text" class="form-control" value="<?php echo $_SESSION['RECADASTRO']['Deficiencia_Qual']?>" name="Def_Outra" id="Def_Outra" /></span>
          </td>
         </tr>
         <tr>
