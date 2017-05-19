@@ -28,7 +28,7 @@ function adicionarLinha(){
 	tmp13 = tmp13+'<option value="Pós-Graduação">Pos-Graduação</option>'
 	tmp13 = tmp13+'<option value="Mestrado">Mestrado</option>'
 	tmp13 = tmp13+'<option value="Doutorado">Doutorado</option>'
-	tmp13 = tmp13+'<option value="Pós-Doutorado">Pós-Doutorado</option>';
+	tmp13 = tmp13+'<option value="Pós-Doutorado">Pós-Doutorado</option></select></td>';
 	newCell3.innerHTML = tmp13;	
 	var newCell4 = newRow.insertCell(4);
 	newCell4.innerHTML = '<td><input type="text" name="FamiliarOcupacao'+indice+'"  value="" class="form-control" placeholder="Ocupação"></td>';
@@ -153,3 +153,32 @@ function deficienteOutra(){
 	}
 }
 
+function SetRequired(){
+/*	document.getElementById("Status_escolar").attributes="required";
+	document.getElementById("CadUnico").attributes"required";
+/*	document.getElementById("TimeRes").attributes.required="required";
+	document.getElementById("Ling_Ingles").attributes.required="required";
+	document.getElementById("Ling_Espanhol").attributes.required="required";
+	document.getElementById("Pensao_Paga").attributes.required="required";
+	document.getElementById("Pensao_Recebe").attributes.required="required";
+	document.getElementById("Renda_Maior").attributes.required="required";
+	document.getElementById("Renda_Mensal_Individual").attributes.required="required";
+	document.getElementById("Renda_Mensal_Capita").attributes.required="required";
+	document.getElementById("Deficiente").attributes.required="required";
+	document.getElementById("Transferencia").attributes.required="required";
+	document.getElementById("Idoso").attributes.required="required";
+	document.getElementById("PlanoDeSaude").attributes.required="required";
+*/
+	}
+
+function verficaradio(){
+	selecionado=document.getElementById("Status_escolar").checked;
+	if (selecionado) {
+		window.alert("Você selecionou o checkbox.");
+		//document.getElementById("Status_escolar").attributes.required="required"=true;
+	}
+	else {	
+		window.alert(selecionado);
+		return false;
+	}
+}
