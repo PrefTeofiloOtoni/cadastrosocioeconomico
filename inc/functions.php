@@ -225,17 +225,14 @@
 
 		if($opt==0){
 			for ($i=0;$i<sizeof($rows);$i++){
-echo "<tr>";
-echo "<td><input type=\"hidden\" name=\"FamiliarID".$i."\" value=\"".$rows[$i]['ID']."\" /> <input type=\"text\" name=\"FamiliarNome".$i."\"  value=\"".$rows[$i]['Nome']."\" class=\"form-control\" placeholder=\"Nome\"></td>";
-echo "<td><input type=\"text\" name=\"FamiliarDataNasc".$i."\"  value=\"".$rows[$i]['DataNasc']."\" class=\"form-control\" maxlength=\"10\" placeholder=\"Data de Nascimento\" onkeyup=dataConta(this)></td>";
-echo "<td><input type=\"text\" name=\"FamiliarParentesco".$i."\"  value=\"".$rows[$i]['Parentesco']."\" class=\"form-control\" placeholder=\"Parentesco\"></td>";
+				echo "<tr>";
+                                echo "<td><input type=\"hidden\" name=\"FamiliarID".$i."\" value=\"".$rows[$i]['ID']."\" /> <input type=\"text\" name=\"FamiliarNome".$i."\"  value=\"".$rows[$i]['Nome']."\" class=\"form-control\" placeholder=\"Nome\"></td>";
+                                echo "<td><input type=\"text\" name=\"FamiliarDataNasc".$i."\"  value=\"".$rows[$i]['DataNasc']."\" class=\"form-control\" maxlength=\"10\" placeholder=\"Data de Nascimento\" onkeyup=dataConta(this)></td>";
+                                echo "<td><input type=\"text\" name=\"FamiliarParentesco".$i."\"  value=\"".$rows[$i]['Parentesco']."\" class=\"form-control\" placeholder=\"Parentesco\"></td>";
 echo "<td><input type=\"text\" name=\"FamiliarEscolaridade".$i."\"  value=\"".$rows[$i]['Escolaridade']."\" class=\"form-control\" placeholder=\"Escolaridade\"></td>";
 echo "<td><input type=\"text\" name=\"FamiliarOcupacao".$i."\"  value=\"".$rows[$i]['Ocupacao']."\" class=\"form-control\" placeholder=\"Ocupação\"></td>";
 echo "<td><input type=\"text\" name=\"FamiliarRemuneracao".$i."\" onkeyup=moeda(this) value=\"".$rows[$i]['Remuneracao']."\" class=\"form-control\" placeholder=\"Remuneração\"></td>";
 echo "<td><button class=\"btn btn-large btn-danger fa fa-trash\" onclick=\"deleteRow(this.parentNode.parentNode.rowIndex)\"></button></td>";
-
-
-
 			}
 	
 		}elseif($opt=1){

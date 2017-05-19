@@ -1,5 +1,5 @@
      <h4>Todos os dados obtidos deste questionário serão confidenciais!</h4>
-     <form class="form-signin" action="inc/inserir.php" method="POST">
+     <form class="form-signin" action="inc/inserir.php" method="POST" onsubmit="return validar();">
       <table class='table table-striped table-bordered table-hover'>
        <tr>
         <td colspan="4">
@@ -27,12 +27,12 @@
        </tr>
        <tr>
        <td colspan="3"><label>Filiação:</label>
-	<br /><?php ifExisteText($_SESSION['RECADASTRO']['Mae'],'Mae','Mãe'); ?>
-	<br /><?php ifExisteText($_SESSION['RECADASTRO']['Pai'],'Pai','Pai'); ?>
+        <br /><?php ifExisteText($_SESSION['RECADASTRO']['Mae'],'Mae','Mãe'); ?>
+        <br /><?php ifExisteText($_SESSION['RECADASTRO']['Pai'],'Pai','Pai'); ?>
        </td>
        <td>
         <label>Naturalidade:</label>
-	<?php ifExisteText($_SESSION['RECADASTRO']['Naturalidade'],'Naturalidade','Cidade'); ?>
+        <?php ifExisteText($_SESSION['RECADASTRO']['Naturalidade'],'Naturalidade','Cidade'); ?>
         <?php if(!empty($_SESSION['RECADASTRO']['UF'])){
                   echo "<br /><strong>UF: </strong>". utf8_encode($_SESSION['RECADASTRO']['UF']);
                   echo "<input type=\"hidden\" name=\"UF\" id=\"UF\" value=\"".$_SESSION['RECADASTRO']['UF']."\" />";
@@ -77,8 +77,7 @@
           <strong>UF:</strong><?php if(!empty($_SESSION['RECADASTRO']['RG_UF'])){
                   echo utf8_encode($_SESSION['RECADASTRO']['RG_UF']);
                   echo "<input type=\"hidden\" name=\"RG_UF\" id=\"RG_UF\" value=\"".$_SESSION['RECADASTRO']['RG_UF']."\" />";
-          }else{
- ?>
+          }else{ ?>
           <select class="form-control" name="RG_UF">
            <option value="">Escolha...</option>
            <option value="AC">Acre</option>
@@ -111,7 +110,11 @@
           </select>
         <?php } ?>
          </td>
-        <td><strong>CPF:</strong> <?php echo getCPF($_SESSION['RECADASTRO']['CPF'])?><input type="hidden" name="CPF" id="CPF" value="<?php echo $_SESSION['RECADASTRO']['CPF']?>" /></td>
+         <td>
+          <strong>CPF:</strong> 
+           <?php echo getCPF($_SESSION['RECADASTRO']['CPF'])?>
+           <input type="hidden" name="CPF" id="CPF" value="<?php echo $_SESSION['RECADASTRO']['CPF']?>" />
+        </td>
        </tr>
        <tr>
         <td colspan="3">
@@ -126,10 +129,10 @@
           <option value="doc" <?php if($_SESSION['RECADASTRO']['Grau_escolar']=="doc")echo "selected"; ?>>Doutorado</option>
           <option value="posdoc" <?php if($_SESSION['RECADASTRO']['Grau_escolar']=="posdoc")echo "selected"; ?>>Pós-Doutorado</option>
          </select>
-	 <input type="radio" name="Status_escolar" value="completo" <?php if($_SESSION['RECADASTRO']['Status_escolar']=="completo")echo "checked";  ?> />&nbsp;Completo
-	 <input type="radio" name="Status_escolar" value="incompleto" <?php if($_SESSION['RECADASTRO']['Status_escolar']=="incompleto")echo "checked";?> />&nbsp;Incompleto
+         <input type="radio" name="Status_escolar" value="completo" <?php if(!empty($_SESSION['RECADASTRO']['Status_escolar'])&&($_SESSION['RECADASTRO']['Status_escolar']=="completo"))echo "checked";  ?> />&nbsp;Completo
+         <input type="radio" name="Status_escolar" value="incompleto" <?php if(!empty($_SESSION['RECADASTRO']['Status_escolar'])&&($_SESSION['RECADASTRO']['Status_escolar']=="incompleto")) echo "checked";?> />&nbsp;Incompleto
         </td>
-	<td><label>Formação Profissional:</label><input type="text" name="Formacao" id="Formacao" value="<?php echo $_SESSION['RECADASTRO']['Formacao'];?>" class="form-control" placeholder="Formação Profissional" /></td>
+        <td><label>Formação Profissional:</label><input type="text" name="Formacao" id="Formacao" value="<?php echo $_SESSION['RECADASTRO']['Formacao'];?>" class="form-control" placeholder="Formação Profissional" /></td>
        </tr>
        <tr>
        <td colspan="3"><label>Cargo Atual:</label><input type="text" name="Cargo" id="Cargo" value="<?php echo $_SESSION['RECADASTRO']['Cargo'];?>" class="form-control" placeholder="Cargo Atual" required /></td>
@@ -141,12 +144,12 @@
        <td><label>Complemento:</label><input type="text" name="End_Comp" id="End_Comp" value="<?php echo $_SESSION['RECADASTRO']['End_Comp'];?>" class="form-control" placeholder="Complemento" /></td>
        </tr>
        <tr>
-       <td><label>Bairro:</label><input type="text" name="End_Bairro" id="End_Bairro" value="<?php echo $_SESSION['RECADASTRO']['End_Bairro'];?>" class="form-control" placeholder="Centro" required /></td>
-	<td>
+       <td><label>Bairro:</label><input type="text" name="End_Bairro" id="End_Bairro" value="<?php echo $_SESSION['RECADASTRO']['End_Bairro'];?>" class="form-control" placeholder="Insira o Bairro" required /></td>
+       <td>
          <label>CEP:</label>
-	 <input type="text" name="End_CEP" id="End_CEP" value="<?php echo $_SESSION['RECADASTRO']['End_CEP'];?>" class="form-control" placeholder="39800000" maxlength="10" onkeyup="mascara(this,mcep)"  required />
+          <input type="text" name="End_CEP" id="End_CEP" value="<?php echo $_SESSION['RECADASTRO']['End_CEP'];?>" class="form-control" maxlength="10" onkeyup="mascara(this,mcep)"  placeholder="Digite somente números" required />
         </td>
-	<td><label>Cidade:</label><input type="text" name="End_Cidade" id="End_Cidade" value="<?php echo $_SESSION['RECADASTRO']['End_Cidade'];?>" class="form-control" placeholder="" required /></td>
+        <td><label>Cidade:</label><input type="text" name="End_Cidade" id="End_Cidade" value="<?php echo $_SESSION['RECADASTRO']['End_Cidade'];?>" class="form-control" placeholder="Cidade" required /></td>
         <td>
          <label>UF:</label>
          <select class="form-control" name="End_UF">
@@ -182,7 +185,7 @@
         </td>
        </tr>
        <tr>
-       <td><label>Telefone Fixo:</label><input type="text" name="Fone_Fixo" id="Fone_Fixo" value="<?php echo $_SESSION['RECADASTRO']['Fone_Fixo'];?>" class="form-control" maxlength="14" onkeyup="mascara(this,mfixo)"/></td>
+       <td><label>Telefone Fixo:</label><input type="text" name="Fone_Fixo" id="Fone_Fixo" value="<?php echo $_SESSION['RECADASTRO']['Fone_Fixo'];?>" class="form-control" maxlength="14" onkeyup="mascara(this,mfixo)" placeholder="digite somente números"/></td>
         <td>
          <label>Tipo:</label><select class="form-control" name="Fone_Tipo">
           <option value="">Escolha...</option>
@@ -190,7 +193,7 @@
 	  <option value="recado"  <?php if($_SESSION['RECADASTRO']['Fone_Tipo']=="recado")  echo "selected"; ?>>Recado</option>
          </select>
         </td>
-	<td colspan="2"><label>Telefone Celular:</label><input type="text" name="Fone_Cel" id="Fone_Cel" value="<?php echo $_SESSION['RECADASTRO']['Fone_Cel'];?>" class="form-control" maxlength="15" onkeyup="mascara(this,mcel)"/></td>
+	<td colspan="2"><label>Telefone Celular:</label><input type="text" name="Fone_Cel" id="Fone_Cel" value="<?php echo $_SESSION['RECADASTRO']['Fone_Cel'];?>" class="form-control" maxlength="15" onkeyup="mascara(this,mcel)" placeholder="digite somente números"/></td>
        </tr>
        <tr>
        <td colspan="3"><label>E-Mail:</label><input type="email" name="Email" id="Email" value="<?php echo $_SESSION['RECADASTRO']['Email'];?>" class="form-control" placeholder="E-Mail" /></td>
@@ -224,18 +227,18 @@
 	  <option value="viuvo" <?php if($_SESSION['RECADASTRO']['EstCivil']=="viuvo")echo "selected"; ?>>Viuvo(a)</option>
          </select>
         </td> 
-        <td colspan="2"><label>Possui CadUnico:</label>
-	<input type="radio" name="CadUnico" value="S" <?php if($_SESSION['RECADASTRO']['CadUnico']=="S")echo "checked"; ?> onclick="document.getElementById('NIS').disabled = false;" />&nbsp;Sim
-	<input type="radio" name="CadUnico" value="N" <?php if($_SESSION['RECADASTRO']['CadUnico']=="N")echo "checked"; ?>  onclick="document.getElementById('NIS').disabled = true;
-         document.getElementById('NIS').value=null;"/>&nbsp;Não<br />
-		 <strong>NIS:</strong><input type="text" name="NIS" id="NIS" value="<?php echo $_SESSION['RECADASTRO']['NIS'];?>" class="form-control" placeholder="NIS" <?php if($_SESSION['RECADASTRO']['CadUnico']!="S") echo "disabled" ?> />
+      	<td colspan="2"><label>Possui CadUnico:</label>
+         <input type="radio" name="CadUnico" value="S" onclick="document.getElementById('NIS').disabled = false;" <?php if($_SESSION['RECADASTRO']['CadUnico']=="S") echo "checked"; ?> />&nbsp;Sim 
+	 <input type="radio" name="CadUnico" value="N" onclick="document.getElementById('NIS').disabled = true; document.getElementById('NIS').value=null;" <?php if($_SESSION['RECADASTRO']['CadUnico']=="N") echo "checked"; ?> />&nbsp;Não<br />
+	 <strong>NIS:</strong>
+         <input type="text" name="NIS" id="NIS" value="<?php if(!empty($_SESSION['RECADASTRO']['NIS'])) echo $_SESSION['RECADASTRO']['NIS'];?>" class="form-control" placeholder="NIS" <?php if($_SESSION['RECADASTRO']['CadUnico']!="S") echo "disabled" ?> />
         </td>
        </tr>
        <tr>
         <td colspan="4"><label>Tempo de residência em Teófilo Otoni:</label><br />
-	<input type="radio" name="TimeRes" value="1" <?php if($_SESSION['RECADASTRO']['TimeRes']=="1")echo "checked"; ?> />&nbsp;ate 5 anos
-	<input type="radio" name="TimeRes" value="2" <?php if($_SESSION['RECADASTRO']['TimeRes']=="2")echo "checked"; ?> />&nbsp;mais de 5 anos ate 10 anos
-	<input type="radio" name="TimeRes" value="3" <?php if($_SESSION['RECADASTRO']['TimeRes']=="3")echo "checked"; ?> />&nbsp;mais de 10 anos
+         <input type="radio" name="TimeRes" value="1" <?php if(!empty($_SESSION['RECADASTRO']['TimeRes']) && ($_SESSION['RECADASTRO']['TimeRes']=="1")) echo "checked"; ?> />&nbsp;ate 5 anos
+         <input type="radio" name="TimeRes" value="2" <?php if(!empty($_SESSION['RECADASTRO']['TimeRes']) && ($_SESSION['RECADASTRO']['TimeRes']=="2")) echo "checked"; ?> />&nbsp;mais de 5 anos ate 10 anos
+         <input type="radio" name="TimeRes" value="3" <?php if(!empty($_SESSION['RECADASTRO']['TimeRes']) && ($_SESSION['RECADASTRO']['TimeRes']=="3")) echo "checked"; ?> />&nbsp;mais de 10 anos
         </td>
        </tr>
        <tr>
@@ -287,21 +290,23 @@
 	<td colspan="2">
          <div id="Trans_Tipo" style="display:<?php if(($_SESSION['RECADASTRO']['Trans_Forma']=="carro")||($_SESSION['RECADASTRO']['Trans_Forma']=="moto")) echo "block"; else echo "none"; ?>">
           <label>Próprio:</label><br />
-	  <input type="radio" name="Trans_Tipo" <?php if($_SESSION['RECADASTRO']['Trans_Tipo']=="sim") echo "checked"; ?> value="sim" />&nbsp;Sim
+	  <input type="radio" name="Trans_Tipo"<?php if($_SESSION['RECADASTRO']['Trans_Tipo']=="sim") echo "checked"; ?> value="sim" />&nbsp;Sim
 	  <input type="radio" name="Trans_Tipo" <?php if($_SESSION['RECADASTRO']['Trans_Tipo']=="nao") echo "checked"; ?> value="nao" />&nbsp;Não
          </div>
         </td>
        </tr>
        <tr>
         <td colspan="4"><label>Lingua estrangeira:</label><br />
-	<strong>Inglês:</strong><input type="radio" name="Ling_Ingles" <?php if($_SESSION['RECADASTRO']['Ling_Ingles']=="nenhum") echo "checked"; ?> value="nenhum" />&nbsp;Nenhum
-	 <input type="radio" name="Ling_Ingles" <?php if($_SESSION['RECADASTRO']['Ling_Ingles']=="basico") echo "checked"; ?> value="basico" />&nbsp;Básico
-	 <input type="radio" name="Ling_Ingles" <?php if($_SESSION['RECADASTRO']['Ling_Ingles']=="tecnico") echo "checked"; ?> value="tecnico" />&nbsp;Técnico
-	 <input type="radio" name="Ling_Ingles" <?php if($_SESSION['RECADASTRO']['Ling_Ingles']=="fluente") echo "checked"; ?> value="fluente" />&nbsp;Fluente <br />
-	 <strong>Espanhol:</strong><input type="radio" name="Ling_Espanhol" <?php if($_SESSION['RECADASTRO']['Ling_Espanhol']=="nenhum") echo "checked";?>  value="nenhum" />&nbsp;Nenhum
-	 <input type="radio" name="Ling_Espanhol" <?php if($_SESSION['RECADASTRO']['Ling_Espanhol']=="basico") echo "checked";?> value="basico" />&nbsp;Básico
-	 <input type="radio" name="Ling_Espanhol" <?php if($_SESSION['RECADASTRO']['Ling_Espanhol']=="tecnico") echo "checked"; ?> value="tecnico" />&nbsp;Técnico
-	 <input type="radio" name="Ling_Espanhol" <?php if($_SESSION['RECADASTRO']['Ling_Espanhol']=="fluente") echo "checked"; ?> value="fluente" />&nbsp;Fluente<br />
+         <strong>Inglês:</strong>
+         <input type="radio" name="Ling_Ingles" <?php if(!empty($_SESSION['RECADASTRO']['Ling_Ingles'])&&($_SESSION['RECADASTRO']['Ling_Ingles']=="nenhum")) echo "checked"; ?> value="nenhum" />&nbsp;Nenhum
+	 <input type="radio" name="Ling_Ingles" <?php if(!empty($_SESSION['RECADASTRO']['Ling_Ingles'])&&($_SESSION['RECADASTRO']['Ling_Ingles']=="basico")) echo "checked"; ?> value="basico" />&nbsp;Básico
+	 <input type="radio" name="Ling_Ingles" <?php if(!empty($_SESSION['RECADASTRO']['Ling_Ingles'])&&($_SESSION['RECADASTRO']['Ling_Ingles']=="tecnico")) echo "checked"; ?> value="tecnico" />&nbsp;Técnico
+	 <input type="radio" name="Ling_Ingles" <?php if(!empty($_SESSION['RECADASTRO']['Ling_Ingles'])&&($_SESSION['RECADASTRO']['Ling_Ingles']=="fluente")) echo "checked"; ?> value="fluente" />&nbsp;Fluente <br />
+         <strong>Espanhol:</strong>
+         <input type="radio" name="Ling_Espanhol" <?php if(!empty($_SESSION['RECADASTRO']['Ling_Espanhol'])&&($_SESSION['RECADASTRO']['Ling_Espanhol']=="nenhum")) echo "checked";?>  value="nenhum" />&nbsp;Nenhum
+	 <input type="radio" name="Ling_Espanhol" <?php if(!empty($_SESSION['RECADASTRO']['Ling_Espanhol'])&&($_SESSION['RECADASTRO']['Ling_Espanhol']=="basico")) echo "checked";?> value="basico" />&nbsp;Básico
+	 <input type="radio" name="Ling_Espanhol" <?php if(!empty($_SESSION['RECADASTRO']['Ling_Espanhol'])&&($_SESSION['RECADASTRO']['Ling_Espanhol']=="tecnico")) echo "checked"; ?> value="tecnico" />&nbsp;Técnico
+	 <input type="radio" name="Ling_Espanhol" <?php if(!empty($_SESSION['RECADASTRO']['Ling_Espanhol'])&&($_SESSION['RECADASTRO']['Ling_Espanhol']=="fluente")) echo "checked"; ?> value="fluente" />&nbsp;Fluente<br />
          <strong>Outros:</strong>
 	 <input type="text" name="Ling_extra" id="Ling_extra" value="<?php echo $_SESSION['RECADASTRO']['Ling_extra'];?>" class="form-control" placeholder="Outros Idiomas" />
         </td>
@@ -329,44 +334,44 @@
         <td colspan="4"><label>Você paga pensão alimentícia p/ filhos e/ou ex-conjuge?</label><br />
 	<input type="radio" name="Pensao_Paga" value="1" <?php if($_SESSION['RECADASTRO']['Pensao_Paga']=="1") echo "checked"; ?> onclick="document.getElementById('Pensao_Paga_Val').disabled = false;"/>&nbsp;Sim&nbsp;
  <input type="radio" name="Pensao_Paga" value="0" <?php if($_SESSION['RECADASTRO']['Pensao_Paga']=="0") echo "checked"; ?> onclick="document.getElementById('Pensao_Paga_Val').disabled = true;document.getElementById('Pensao_Paga_Val').value=null"/>&nbsp;Não<br />
-	 <label>Valor:</label><input type="text" name="Pensao_Paga_Val" id="Pensao_Paga_Val" value="<?php echo $_SESSION['RECADASTRO']['Pensao_Paga_Val']?>" class="form-control" placeholder="00000" onkeyup=moeda(this)  <?php if($_SESSION['RECADASTRO']['Pensao_Paga']!="1") echo "disabled" ?>/>
+	 <label>Valor:</label><input type="text" name="Pensao_Paga_Val" id="Pensao_Paga_Val" value="<?php if(!empty($_SESSION['RECADASTRO']['Pensao_Paga_Val'])) echo $_SESSION['RECADASTRO']['Pensao_Paga_Val']?>" class="form-control" placeholder="00000" onkeyup=moeda(this)  <?php if($_SESSION['RECADASTRO']['Pensao_Paga']!="1") echo "disabled" ?>/>
          </td>
         </tr>
         <tr>
          <td colspan="4"><label>Você recebe pensão alimentícia para seus filhos?</label><br />
 	 <input type="radio" name="Pensao_Recebe" value="1" <?php if($_SESSION['RECADASTRO']['Pensao_Recebe']=="1") echo "checked"; ?>  onclick="document.getElementById('Pensao_Recebe_Val').disabled = false;"/>&nbsp;Sim&nbsp;
  <input type="radio" name="Pensao_Recebe" value="0" <?php if($_SESSION['RECADASTRO']['Pensao_Recebe']=="0") echo "checked"; ?>   onclick="document.getElementById('Pensao_Recebe_Val').disabled = true;document.getElementById('Pensao_Recebe_Val').value=null"/>&nbsp;Não<br />
-	 <label>Valor:</label><input type="text" name="Pensao_Recebe_Val" id="Pensao_Recebe_Val" value="<?php echo $_SESSION['RECADASTRO']['Pensao_Recebe_Val']?>" class="form-control" placeholder="00000" onkeyup=moeda(this) <?php if($_SESSION['RECADASTRO']['Pensao_Recebe']!="1") echo "disabled" ?> />
+	 <label>Valor:</label><input type="text" name="Pensao_Recebe_Val" id="Pensao_Recebe_Val" value="<?php if(!empty($_SESSION['RECADASTRO']['Pensao_Recebe_Val']))  echo $_SESSION['RECADASTRO']['Pensao_Recebe_Val']?>" class="form-control" placeholder="00000" onkeyup=moeda(this) <?php if($_SESSION['RECADASTRO']['Pensao_Recebe']!="1") echo "disabled" ?> />
          </td>
         </tr>
         <tr>
          <td colspan="4"><label>Quem é a pessoa que mais contribui na renda familiar?</label><br />
-          <input type="radio" name="Renda_Maior" <?php if($_SESSION['RECADASTRO']['Renda_Maior']=="você") echo "checked"; ?> value="você" />&nbsp;Você&nbsp;
-          <input type="radio" name="Renda_Maior" <?php if($_SESSION['RECADASTRO']['Renda_Maior']=="conjuge") echo "checked"; ?>  value="conjuge" />&nbsp;Cônjuge/Companheiro(a)&nbsp;
-          <input type="radio" name="Renda_Maior" <?php if($_SESSION['RECADASTRO']['Renda_Maior']=="pai") echo "checked"; ?>  value="pai" />&nbsp;Pai&nbsp;
-          <input type="radio" name="Renda_Maior" <?php if($_SESSION['RECADASTRO']['Renda_Maior']=="mae") echo "checked"; ?>  value="mae" />&nbsp;Mãe&nbsp;
-          <input type="radio" name="Renda_Maior" <?php if($_SESSION['RECADASTRO']['Renda_Maior']=="outros") echo "checked"; ?>  value="outros" />&nbsp;Outros
+          <input type="radio" name="Renda_Maior" <?php if(!empty($_SESSION['RECADASTRO']['Renda_Maior'])&&($_SESSION['RECADASTRO']['Renda_Maior']=="você")) echo "checked"; ?> value="você" />&nbsp;Você&nbsp;
+          <input type="radio" name="Renda_Maior" <?php if(!empty($_SESSION['RECADASTRO']['Renda_Maior'])&&($_SESSION['RECADASTRO']['Renda_Maior']=="conjuge")) echo "checked"; ?>  value="conjuge" />&nbsp;Cônjuge/Companheiro(a)&nbsp;
+          <input type="radio" name="Renda_Maior" <?php if(!empty($_SESSION['RECADASTRO']['Renda_Maior'])&&($_SESSION['RECADASTRO']['Renda_Maior']=="pai")) echo "checked"; ?>  value="pai" />&nbsp;Pai&nbsp;
+          <input type="radio" name="Renda_Maior" <?php if(!empty($_SESSION['RECADASTRO']['Renda_Maior'])&&($_SESSION['RECADASTRO']['Renda_Maior']=="mae")) echo "checked"; ?>  value="mae" />&nbsp;Mãe&nbsp;
+          <input type="radio" name="Renda_Maior" <?php if(!empty($_SESSION['RECADASTRO']['Renda_Maior'])&&($_SESSION['RECADASTRO']['Renda_Maior']=="outros")) echo "checked"; ?>  value="outros" />&nbsp;Outros
          </td>
         </tr> 
         <tr>
          <td colspan="4"><label>Renda mensal individual</label><br />
-	 <input type="radio" name="Renda_Mensal_Individual" <?php if($_SESSION['RECADASTRO']['Renda_Mensal_Individual']==1) echo "checked" ?>  value="1" />&nbsp;Até 2 salários mínimos&nbsp;
-	  <input type="radio" name="Renda_Mensal_Individual" <?php if($_SESSION['RECADASTRO']['Renda_Mensal_Individual']==2) echo "checked" ?> value="2" />&nbsp;De 02 a 04 salários mínimos&nbsp;
-	  <input type="radio" name="Renda_Mensal_Individual" <?php if($_SESSION['RECADASTRO']['Renda_Mensal_Individual']==3) echo "checked" ?> value="3" />&nbsp;Superior a 5 salários mínimos
+	 <input type="radio" name="Renda_Mensal_Individual" <?php if(!empty($_SESSION['RECADASTRO']['Renda_Mensal_Individual'])&&($_SESSION['RECADASTRO']['Renda_Mensal_Individual']==1)) echo "checked" ?>  value="1" />&nbsp;Até 2 salários mínimos&nbsp;
+	  <input type="radio" name="Renda_Mensal_Individual" <?php if(!empty($_SESSION['RECADASTRO']['Renda_Mensal_Individual'])&&($_SESSION['RECADASTRO']['Renda_Mensal_Individual']==2)) echo "checked" ?> value="2" />&nbsp;De 02 a 04 salários mínimos&nbsp;
+	  <input type="radio" name="Renda_Mensal_Individual" <?php if(!empty($_SESSION['RECADASTRO']['Renda_Mensal_Individual'])&&($_SESSION['RECADASTRO']['Renda_Mensal_Individual']==3)) echo "checked" ?> value="3" />&nbsp;Superior a 5 salários mínimos
          </td>
         </tr> 
         <tr>
          <td colspan="4"><label>Renda mensal familiar (incluindo você)</label><br />
-	 <input type="radio" name="Renda_Mensal_Capita" <?php if($_SESSION['RECADASTRO']['Renda_Mensal_Capita']==1) echo "checked" ?> value="1" />&nbsp;Ate 2 salários mínimos&nbsp;
-	  <input type="radio" name="Renda_Mensal_Capita" <?php if($_SESSION['RECADASTRO']['Renda_Mensal_Capita']==2) echo "checked" ?> value="2" />&nbsp;De 02 a 04 salários mínimos&nbsp;
-	  <input type="radio" name="Renda_Mensal_Capita" <?php if($_SESSION['RECADASTRO']['Renda_Mensal_Capita']==3) echo "checked" ?> value="3" />&nbsp;Superior a 5 salários mínimos
+	 <input type="radio" name="Renda_Mensal_Capita" <?php if(!empty($_SESSION['RECADASTRO']['Renda_Mensal_Capita'])&&($_SESSION['RECADASTRO']['Renda_Mensal_Capita']==1)) echo "checked" ?> value="1" />&nbsp;Ate 2 salários mínimos&nbsp;
+	  <input type="radio" name="Renda_Mensal_Capita" <?php if(!empty($_SESSION['RECADASTRO']['Renda_Mensal_Capita'])&&($_SESSION['RECADASTRO']['Renda_Mensal_Capita']==2)) echo "checked" ?> value="2" />&nbsp;De 02 a 04 salários mínimos&nbsp;
+	  <input type="radio" name="Renda_Mensal_Capita" <?php if(!empty($_SESSION['RECADASTRO']['Renda_Mensal_Capita'])&&($_SESSION['RECADASTRO']['Renda_Mensal_Capita']==3)) echo "checked" ?> value="3" />&nbsp;Superior a 5 salários mínimos
          </td>
         </tr>
         <tr>
          <td colspan="4"><label>Existe em seu domicílio pessoa portadora de deficiência?</label><br />
 	 <input type="radio" name="Deficiente" value="1" <?php if($_SESSION['RECADASTRO']['Deficiente']==1) echo "checked" ?>  onclick="document.getElementById('Deficiente_Grau').disabled = false; document.getElementById('Deficiente_Qual').disabled = false"/>&nbsp;Sim
 	 <input type="radio" name="Deficiente" value="0" <?php if($_SESSION['RECADASTRO']['Deficiente']==0) echo "checked" ?> onclick="document.getElementById('Deficiente_Grau').disabled = true;document.getElementById('Deficiente_Grau').value=null"/>&nbsp;Não<br />
-	 Parentesco:<input type="text" name="Deficiente_Grau" id="Deficiente_Grau" value="<?php echo $_SESSION['RECADASTRO']['Deficiente_Grau']?>" class="form-control" placeholder="Parentesco" <?php if($_SESSION['RECADASTRO']['Deficiente']!="1") echo "disabled" ?> />
+	 Parentesco:<input type="text" name="Deficiente_Grau" id="Deficiente_Grau" value="<?php if(!empty($_SESSION['RECADASTRO']['Deficiente_Grau']))echo $_SESSION['RECADASTRO']['Deficiente_Grau']?>" class="form-control" placeholder="Parentesco" <?php if($_SESSION['RECADASTRO']['Deficiente']!="1") echo "disabled" ?> />
 	 Qual: <select name="Deficiente_Qual" id="Deficiente_Qual" class="form-control" onchange=deficienteOutra() <?php if($_SESSION['RECADASTRO']['Deficiente']!="1") echo "disabled" ?> >
 	   <option value="">Escolha...</option>
 	   <option value="Auditiva" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Auditiva") echo "selected"?>>Auditiva</option>
@@ -376,14 +381,19 @@
 	   <option value="Fala" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Fala") echo "selected"?>>Fala</option>
 	   <option value="Outra" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Outra") echo "selected"?>>Outra</option>
 	  </select>
-	  <span id="Def_tmp" style="display:<?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Outra") echo "block"; else echo "none";?>">Outra: <input type="text" class="form-control" value="<?php echo $_SESSION['RECADASTRO']['Deficiencia_Qual']?>" name="Def_Outra" id="Def_Outra" /></span>
+
+	  <span 
+           id="Def_tmp"
+           style="display:<?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Outra") echo "block"; else echo "none";?>">
+           Outra: <input type="text" class="form-control" value="<?php if(!empty($_SESSION['RECADASTRO']['Deficiente_Qual'])) echo $_SESSION['RECADASTRO']['Deficiencia_Qual']?>" name="Def_Outra" id="Def_Outra" /></span>
          </td>
         </tr>
         <tr>
-         <td colspan="4"><label>Existe em sua família alguem que recebe benefícios de transferência de renda?</label><br />
+         <td colspan="4"><label>Existe em sua família alguem que recebe benefícios de transferência de renda?(Ex: Bolsa Fámilia, Bolsa Escola, PETI, etc...)</label><br />
           <input type="radio" name="Transferencia" value="1" <?php if($_SESSION['RECADASTRO']['Transferencia']==1){ echo "checked"; }?> onclick="document.getElementById('Transferencia_Qual').disabled=false;" />&nbsp;Sim&nbsp;
-          <input type="radio" name="Transferencia" value="0" <?php if($_SESSION['RECADASTRO']['Transferencia']==0) echo "checked"; ?> onclick="document.getElementById('Transferencia_Qual').disabled = true; document.getElementById('Transferencia_Qual').value=null" />&nbsp;Não<br />
-	  <label>Qual?</label><input type="text" name="Transferencia_Qual" id="Transferencia_Qual" value="<?php echo $_SESSION['RECADASTRO']['Transferencia_Qual']?>" class="form-control" <?php if($_SESSION['RECADASTRO']['Transferencia']!="1") echo "disabled" ?> />
+	  <input type="radio" name="Transferencia" value="0" <?php if($_SESSION['RECADASTRO']['Transferencia']==0) echo "checked"; ?> onclick="document.getElementById('Transferencia_Qual').disabled = true; document.getElementById('Transferencia_Qual').value=null" />&nbsp;Não<br />
+	  <label>Qual?</label>
+          <input type="text" name="Transferencia_Qual" id="Transferencia_Qual" value="<?php if(!empty($_SESSION['RECADATRO']['Transferencia_Qual'])) echo $_SESSION['RECADASTRO']['Transferencia_Qual'] ?>" class="form-control" <?php if($_SESSION['RECADASTRO']['Transferencia']!="1") echo "disabled" ?> />
         </td>
        </tr>
 	<tr>
@@ -405,7 +415,7 @@
          <td colspan="4"><label>Você possui algum plano de assistência mêdica?:</label><br />
 	 <input type="radio" name="PlanoDeSaude" value="1" <?php if($_SESSION['RECADASTRO']['PlanoDeSaude']==1) echo "checked" ?>  onclick="document.getElementById('PlanoDeSaude_Qual').disabled = false;"/>&nbsp;Sim&nbsp;
          <input type="radio" name="PlanoDeSaude" value="0" <?php if($_SESSION['RECADASTRO']['PlanoDeSaude']==0) echo "checked" ?>   onclick="document.getElementById('PlanoDeSaude_Qual').disabled = true;document.getElementById('PlanoDeSaude_Qual').value=null"/>&nbsp;Não<br />
-	 <label>Qual?</label><input type="text" name="PlanoDeSaude_Qual" id="PlanoDeSaude_Qual" value="<?php echo $_SESSION['RECADASTRO']['PlanoDeSaude_Qual']?>" class="form-control" placeholder="Assistencia medica" <?php if($_SESSION['RECADASTRO']['PlanoDeSaude']!="1") echo "disabled" ?> /></td>
+	 <label>Qual?</label><input type="text" name="PlanoDeSaude_Qual" id="PlanoDeSaude_Qual" value="<?php if(!empty($_SESSION['RECADASTRO']['PlanoDeSaude_Qual'])) echo $_SESSION['RECADASTRO']['PlanoDeSaude_Qual']?>" class="form-control" placeholder="Assistencia medica" <?php if($_SESSION['RECADASTRO']['PlanoDeSaude']!="1") echo "disabled" ?> /></td>
        </tr>
        <tr>
         <td colspan="4">
@@ -414,6 +424,6 @@
         </td>
        </tr>
       </table>
-      <button class="btn btn-lg btn-primary" type="submit">Confirmar</button> 
-      <a href="/inc/sair.php" class="btn btn-lg btn-danger">Sair</i></a>
+      <button class="btn btn-lg btn-primary" type="submit">Salvar e Imprimir</button> 
+      <span class="pull-right"><a href="/inc/sair.php" class="btn btn-lg btn-danger">Sair</a></span>
      </form>

@@ -9,9 +9,27 @@ function adicionarLinha(){
 	var newCell1 = newRow.insertCell(1);
 	newCell1.innerHTML = '<td><input type="text" name="FamiliarDataNasc'+indice+'"  value="" class="form-control" maxlength="10" placeholder="Data de Nascimento" onkeyup=dataConta(this)></td>';
 	var newCell2 = newRow.insertCell(2);
-	newCell2.innerHTML = '<td><input type="text" name="FamiliarParentesco'+indice+'"  value="" class="form-control" placeholder="Parentesco"></td>';
+	var tmp12 = '<td><select class="form-control" name="FamiliarParentesco'+indice+'">'
+	tmp12 = tmp12+'<option value="">Escolha</option>'
+	tmp12 = tmp12+'<option value="Pai">Pai</option>'
+	tmp12 = tmp12+'<option value="Mãe">Mãe</option>'
+	tmp12 = tmp12+'<option value="Tio(a)">Tio(a)</option>'
+	tmp12 = tmp12+'<option value="Irmã(o)">Irmã(o)</option>'
+	tmp12 = tmp12+'<option value="Primo(a)">Primo(a)</option>'
+	tmp12 = tmp12+'<option value="Sobrinho">Sobrinho(a)</option>'
+	tmp12 = tmp12+'<option value="Avô(ó)">Avô(ó)</option></select></td>';
+	newCell2.innerHTML = tmp12;
 	var newCell3 = newRow.insertCell(3);
-	newCell3.innerHTML = '<td><input type="text" name="FamiliarEscolaridade'+indice+'"  value="" class="form-control" placeholder="Escolaridade"></td>';	
+	var tmp13 = '<td><select class="form-control" name="FamiliarEscolaridade'+indice+'">'
+	tmp13 = tmp13+'<option value="">Escolha</option>'
+	tmp13 = tmp13+'<option value="Ensino Fundamental">Ensino Fundamental</option>'
+	tmp13 = tmp13+'<option value="Ensino Médio">Ensino Médio</option>'
+	tmp13 = tmp13+'<option value="Superior">Superior</option>'
+	tmp13 = tmp13+'<option value="Pós-Graduação">Pos-Graduação</option>'
+	tmp13 = tmp13+'<option value="Mestrado">Mestrado</option>'
+	tmp13 = tmp13+'<option value="Doutorado">Doutorado</option>'
+	tmp13 = tmp13+'<option value="Pós-Doutorado">Pós-Doutorado</option>';
+	newCell3.innerHTML = tmp13;	
 	var newCell4 = newRow.insertCell(4);
 	newCell4.innerHTML = '<td><input type="text" name="FamiliarOcupacao'+indice+'"  value="" class="form-control" placeholder="Ocupação"></td>';
 	var newCell5 = newRow.insertCell(5);
@@ -134,3 +152,4 @@ function deficienteOutra(){
 		document.getElementById("Def_tmp").style.display="none";
 	}
 }
+

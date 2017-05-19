@@ -158,11 +158,13 @@
 				}
 
 				$RES=$PDO->query($SQLParente);
-
+			}
 		}
-	}
 		header('location: http://recadastro.teofilootoni.mg.gov.br/views/imprime.php');
+		exit;
 	}else{
 		header('location: http://recadastro.teofilootoni.mg.gov.br/?MSG=Erro ao Inserir, Entre em contato com o CPD');
+		exit;
 	}
+	
 ?>

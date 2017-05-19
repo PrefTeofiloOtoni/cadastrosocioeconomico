@@ -16,6 +16,8 @@
 <?php
 	if (isset($_SESSION['RECADASTRO'])){
 		include("views/formulario.php");
+	}elseif(!empty($_GET['IMPRIME'])){
+		include("views/reimpress.php");
 	}else{
 		include("views/login.php");
 	}
