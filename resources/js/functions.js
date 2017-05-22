@@ -17,11 +17,14 @@ function adicionarLinha(){
 	tmp12 = tmp12+'<option value="Irmã(o)">Irmã(o)</option>'
 	tmp12 = tmp12+'<option value="Primo(a)">Primo(a)</option>'
 	tmp12 = tmp12+'<option value="Sobrinho">Sobrinho(a)</option>'
-	tmp12 = tmp12+'<option value="Avô(ó)">Avô(ó)</option></select></td>';
+	tmp12 = tmp12+'<option value="Enteado(a)">Enteado(a)</option>'
+	tmp12 = tmp12+'<option value="Avô(ó)">Avô(ó)</option>'
+	tmp12 = tmp12+'<option value="Outro">Outro</option></select></td>';
 	newCell2.innerHTML = tmp12;
 	var newCell3 = newRow.insertCell(3);
 	var tmp13 = '<td><select class="form-control" name="FamiliarEscolaridade'+indice+'">'
 	tmp13 = tmp13+'<option value="">Escolha</option>'
+	tmp13 = tmp13+'<option value="Não Alfabetizado">Não Alfabetizado</option>'
 	tmp13 = tmp13+'<option value="Ensino Fundamental">Ensino Fundamental</option>'
 	tmp13 = tmp13+'<option value="Ensino Médio">Ensino Médio</option>'
 	tmp13 = tmp13+'<option value="Superior">Superior</option>'
@@ -148,6 +151,7 @@ function moeda(z){
 function deficienteOutra(){
 	if(document.getElementById("Deficiente_Qual").value=="Outra"){
 		document.getElementById("Def_tmp").style.display="block";
+		document.getElementById("Def_Outra").required=true;
 	}else{
 		document.getElementById("Def_tmp").style.display="none";
 	}

@@ -27,7 +27,7 @@
  <body>
   <div class="container">
    <div class="bg-info hidden-print" style="padding:3px 5px 3px 5px">
-   <h3>Após conferir todos os dados, clique no botão "Corrigir" no fim da página para editar os dados ou caso estejam corretos, clique no botão "Imprimir" para imprimir este formulário.</h3>
+   <h3>Após conferir todos os dados, você poderá clicar no botão "Corrigir" ao fim da página para editar os dados, ou caso estejam corretos, clique no botão "Confirmar e Imprimir" para imprimir este formulário.</h3>
    </div>
    <h3 class="page-header" align="center">RECADASTRAMENTO DOS SERVIDORES PÚBLICOS MUNICIPAIS</h3>
    <h4 align="center">QUESTIONÁRIO DE PERFIL SOCIOECONÔMICO</h4>
@@ -61,10 +61,11 @@
       <td><label>CPF:</label> <?php echo getCPF($_SESSION['RECADASTRO']['CPF'])?></td>
      </tr>
      <tr>
-      <td colspan="3">
+      <td colspan="2">
        <label>Grau de Excolaridade:</label> <?php echo ucfirst(getGrau_escolar($_SESSION['RECADASTRO']['Grau_escolar']));?> <?php echo ucfirst($_SESSION['RECADASTRO']['Status_escolar'])?>
       </td>
       <td><label>Formação Profissional:</label> <?php echo ucfirst($_SESSION['RECADASTRO']['Formacao'])?></td>
+      <td> <label>Função</label> <?php echo ucfirst($_SESSION['RECADASTRO']['Funcao']); ?></td>
      </tr>
      <tr>
       <td colspan="3"><label>Cargo Atual:</label> <?php echo ucfirst($_SESSION['RECADASTRO']['Cargo'])?></td>
@@ -176,7 +177,8 @@
       <td colspan="4">
        <label>Existe em seu domicílio pessoa portadora de deficiencia?</label> 
        <?php echo getSimNao($_SESSION['RECADASTRO']['Deficiente'])?><?php if($_SESSION['RECADASTRO']['Deficiente']==1){ ?>
-       <label>Parentesco:</label> <?php echo ucfirst($_SESSION['RECADASTRO']['Deficiente_Grau']); }?>
+       <label>Parentesco:</label> <?php echo ucfirst($_SESSION['RECADASTRO']['Deficiente_Grau']); ?>
+       <label>Deficiência:</label> <?php echo ucfirst($_SESSION['RECADASTRO']['Deficiente_Qual']); }?>
       </td>
      </tr>
      <tr><td colspan="4"><label>Existe em seu grupo familiar pessoa idosa?</label> <?php echo getSimNao($_SESSION['RECADASTRO']['Idoso'])?></td></tr>
@@ -210,7 +212,7 @@
     <table>
      <tr>
       <td>
-       <p>Após a impressão deste formulário, traga assinado junto com os documentos originais listados a baixo na Sede da Prefeitura de Teófilo Otoni:</p>
+       <p>Após a impressão deste formulário, leve-o assinado junto aos os documentos originais listados abaixo na Divisão de Pessoal na Sede da Prefeitura de Teófilo Otoni:</p>
        <p>[&nbsp;&nbsp;&nbsp;] Documento de Identificação com Foto (RG, CTPS, Passaporte).</p>
        <p>[&nbsp;&nbsp;&nbsp;] Compovante de Residência (Conta de Água, Luz, Telefone, etc)</p>
        <p>[&nbsp;&nbsp;&nbsp;] </p>
@@ -224,7 +226,7 @@
    </div>
   </div>
   <div class="hidden-print container bg-info">
-   <h3>Após conferir todos os dados, clique no botão "Corrigir" no fim da página para editar os dados ou caso estejam corretos, clique no botão "Imprimir" para imprimir este formulário.</h3>
+   <h3>Após conferir todos os dados, você poderá clicar no botão "Corrigir" ao fim da página para editar os dados, ou caso estejam corretos, clique no botão "Confirmar e Imprimir" para imprimir este formulário.</h3>
   </div>
   <div class="hidden-print container">
    <p>

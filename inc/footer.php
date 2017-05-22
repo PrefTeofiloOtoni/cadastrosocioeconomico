@@ -1,7 +1,7 @@
   <footer class="container hidden-print">
    <hr />
-   <p>Atenção é necessário imprimir o formulário, então após o preenchimento, certifique-se de está com a impressora funcionando!</p>
-   <p>Para a reimpressão do formulário, será necessário o comparecimento na Divisão de Pessoal portanto documento de identificação com foto(RG, CNH, CTPS), CPF, Comprovante de Residência!</p>
+   <p>Atenção! É necessário a impressão do formulário, no ato do preenchimento certifique-se de estar com uma impressora instalada e funcionando.</p>
+   <p>A reimpressão do formulário só será possível comparecendo pessoalmente na Divisão de Pessoal situado na sede da Prefeitura, portando documento de identificação com foto(RG, CNH, CTPS).</p>
    <p>&copy; CPD PMTO
     <span class="pull-right">Powered By: <i class="fa fa-github"></i><i class="fa fa-linux"></i><i class="fa fa-html5"></i><i class="fa fa-css3"></i></span>
    </p>

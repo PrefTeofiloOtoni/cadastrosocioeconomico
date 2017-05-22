@@ -14,12 +14,12 @@
          </div>
         </div>
        </div>
-       <h4>Procedimentos para preenchimento do formulário:</h4>
-       1-Insira o CPF para acessar o formulário.<br/>
-       2-Para o preenchimento será necessário as seguintes informações: RG, CPF, NIS, Endereço, Data de Nascimento e outros dados.<br/>
-       3-Após o preenchimento do formulário clique em CONFIRMAR para ir para proxima página.<br/>
-       4-Após CONFIRMAR você pode EDITAR as informações se houver algum erro, ou pode SALVAR e IMPRIMIR o formulário.<br/>
-       5-Após ter realizado todas etapas, compareça a Prefeitura Municipal de Teófilo Otoni no setor de Departamento pessoal, munido dos seguintes documentos: RG, CPF, Comprovante de Residência e Formulário Impresso.<br/> 
-       6-Se não conseguir realizar a impressão vá ao Departamento Pessoal da Prefeitura Municipal de Teófilo Otoni portando RG, CPF e Comprovante de Residência.      
+       <h4>Procedimentos para preenchimento do formulário:</h4
+	<p>1- Insira o CPF para acessar o formulário.</p>
+	<p>2- Para o preenchimento, serão necessárias as seguintes informações: RG, CPF, NIS (caso possua CADUNICO), endereço completo, Data de Nascimento e outros dados.</p>
+	<p>3- Após o preenchimento do formulário, clique em "Salvar e Imprimir" para ir para a página de revisão e impressão.</p>
+	<p>4- Após "Salvar", você poderá "Corrigir" as informações se houver algum erro, ou poderá "Confirmar e Imprimir" o formulário.
+	<p>5- Após ter realizado todas etapas, compareça à Prefeitura de Teófilo Otoni no setor de Departamento pessoal, munido dos seguintes documentos: RG, CPF, Comprovante de Residência e Formulário Impresso.</p>
+	<p>6- Se não conseguir realizar a impressão após o total preenchimento, vá ao Departamento Pessoal da Prefeitura de Teófilo Otoni portando documento de identificação com foto(RG, CNH, CTPS).</p>      
       </div>
      </div>

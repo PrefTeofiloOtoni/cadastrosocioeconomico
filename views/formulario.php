@@ -1,4 +1,4 @@
-     <h4>Todos os dados obtidos deste questionário serão confidenciais!</h4>
+     <h4>Os dados obtidos deste questionário serão confidenciais!</h4>
      <form class="form-signin" action="inc/inserir.php" method="POST">
       <table class='table table-striped table-bordered table-hover'>
        <tr>
@@ -117,7 +117,7 @@
         </td>
        </tr>
        <tr>
-        <td colspan="3">
+        <td>
          13. <label>Grau de Escolaridade:</label>
          <select class="form-control" name="Grau_escolar">
           <option value="">Escolha...</option>
@@ -128,16 +128,36 @@
           <option value="mes" <?php if($_SESSION['RECADASTRO']['Grau_escolar']=="mes")echo "selected"; ?>>Mestrado</option>
           <option value="doc" <?php if($_SESSION['RECADASTRO']['Grau_escolar']=="doc")echo "selected"; ?>>Doutorado</option>
           <option value="posdoc" <?php if($_SESSION['RECADASTRO']['Grau_escolar']=="posdoc")echo "selected"; ?>>Pós-Doutorado</option>
-         </select>
-         <input type="radio" name="Status_escolar" value="completo" <?php if(!empty($_SESSION['RECADASTRO']['Status_escolar'])&&($_SESSION['RECADASTRO']['Status_escolar']=="completo"))echo "checked";  ?> required />&nbsp;Completo
-         <input type="radio" name="Status_escolar" value="incompleto" <?php if(!empty($_SESSION['RECADASTRO']['Status_escolar'])&&($_SESSION['RECADASTRO']['Status_escolar']=="incompleto")) echo "checked";?> />&nbsp;Incompleto
+	 </select>
         </td>
-        <td>14. <label>Formação Profissional:</label><input type="text" name="Formacao" id="Formacao" value="<?php echo $_SESSION['RECADASTRO']['Formacao'];?>" class="form-control" placeholder="Formação Profissional" /></td>
+	<td>
+         <label>Completo ou Incompleto?</label><br />
+         <input type="radio" name="Status_escolar" value="completo" <?php if(!empty($_SESSION['RECADASTRO']['Status_escolar'])&&($_SESSION['RECADASTRO']['Status_escolar']=="completo"))echo "checked";  ?> required />&nbsp;Completo <br />
+         <input type="radio" name="Status_escolar" value="incompleto" <?php if(!empty($_SESSION['RECADASTRO']['Status_escolar'])&&($_SESSION['RECADASTRO']['Status_escolar']=="incompleto")) echo "checked";?> />&nbsp;Incompleto 
+        </td>
+	<td>14. <label>Formação Profissional:</label><input type="text" name="Formacao" id="Formacao" value="<?php echo $_SESSION['RECADASTRO']['Formacao'];?>" class="form-control" placeholder="Formação Profissional" /></td>
+       <td>
+	15. <label>Função</label>
+	<?php if(!empty($_SESSION['RECADASTRO']['Funcao'])){ echo $_SESSION['RECADASTRO']['Funcao'];  ?>
+        <input type="hidden" name="Funcao" id="Funcao" value="<?php echo $_SESSION['RECADASTRO']['Funcao']; ?>" />
+        <?php } ?> 
        </tr>
        <tr>
-       <td colspan="3">15. <label>Cargo Atual:</label><input type="text" name="Cargo" id="Cargo" value="<?php echo $_SESSION['RECADASTRO']['Cargo'];?>" class="form-control" placeholder="Cargo Atual" required /></td>
-       <td>16. <label>Secretaria de Lotaçao:</label><input type="text" name="Lotacao" id="Lotacao" value="<?php echo $_SESSION['RECADASTRO']['Lotacao'];?>" class="form-control" placeholder="Secretaria de Lotação" required /></td>
-       </tr>
+       <td colspan="2">
+	15. <label>Cargo</label>
+      	<?php if(!empty($_SESSION['RECADASTRO']['Cargo'])){ echo $_SESSION['RECADASTRO']['Cargo'];  ?>
+        <input type="hidden" name="Cargo" id="Cargo" value="<?php echo $_SESSION['RECADASTRO']['Cargo']; ?>" />
+        <?php } ?> 
+
+       </td>
+       <td colspan="2">
+	16. <label>Secretaria de Lotaçao:</label>
+      	<?php if(!empty($_SESSION['RECADASTRO']['Lotacao'])){ echo $_SESSION['RECADASTRO']['Lotacao'];  ?>
+        <input type="hidden" name="Lotacao" id="Lotacao" value="<?php echo $_SESSION['RECADASTRO']['Lotacao']; ?>" />
+        <?php } ?> 
+
+       </td>      
+ </tr>
        <tr>
        <td colspan="2">17. <label>Endereço:</label><input type="text" name="End_Rua" id="End_Rua" value="<?php echo $_SESSION['RECADASTRO']['End_Rua'];?>" class="form-control" placeholder="Rua" required /></td>
        <td>18. <label>Número:</label><input type="text" name="End_Num" id="End_Num" value="<?php echo $_SESSION['RECADASTRO']['End_Num'];?>" class="form-control" placeholder="Número" required /></td>
@@ -197,12 +217,14 @@
        </tr>
        <tr>
        <td colspan="3">27. <label>E-Mail:</label><input type="email" name="Email" id="Email" value="<?php echo $_SESSION['RECADASTRO']['Email'];?>" class="form-control" placeholder="E-Mail" /></td>
-        <td>28. <label>Sexo:</label>
+	<td>28. <label>Sexo:</label>
+         <?php  if(!empty($_SESSION['RECADASTRO']['Sexo'])){ echo getSexo($_SESSION['RECADASTRO']['Sexo']); } else{?>
          <select class="form-control" name="Sexo">
           <option value="">Escolha...</option>
           <option value="F" <?php if($_SESSION['RECADASTRO']['Sexo']=="F")echo "selected"; ?>>Feminino</option>
           <option value="M" <?php if($_SESSION['RECADASTRO']['Sexo']=="M")echo "selected"; ?>>Masculino</option>
-         </select>
+	 </select>
+         <?php } ?>
         </td>
        </tr>
        <tr>
@@ -270,7 +292,7 @@
         </td>
         <td>
          <div id="Hab_valor" style="display:<?php if(($_SESSION['RECADASTRO']['Hab_Modo']=="alugada")||($_SESSION['RECADASTRO']['Hab_Quit']=="nao")) echo "block"; else echo "none"; ?>">
-         <label>Valor:</label>
+         <label>Valor Mensal:</label>
 	 <input type="text" name="Hab_Valor" value="<?php echo $_SESSION['RECADASTRO']['Hab_Valor'];?>" class="form-control" onkeyup=moeda(this) placeholder="000000" />
          </div>
         </td>
@@ -373,7 +395,7 @@
 	 <label>Existe em seu domicílio pessoa portadora de deficiência?</label><br />
 	 <input type="radio" name="Deficiente" id="DeficienteS" value="1" onclick="document.getElementById('Deficiente_Grau').disabled = false; document.getElementById('Deficiente_Qual').disabled = false" required />&nbsp;Sim
 
-	 <input type="radio" name="Deficiente" id="DeficienteN" value="0" onclick="document.getElementById('Deficiente_Grau').disabled = true; document.getElementById('Deficiente_Grau').value=null" />&nbsp;Não<br />
+	 <input type="radio" name="Deficiente" id="DeficienteN" value="0" onclick="document.getElementById('Deficiente_Qual').disabled = true; document.getElementById('Deficiente_Grau').disabled=true;document.getElementById('Deficiente_Grau').value=null"/>&nbsp;Não<br />
 	 <?php
 		if($_SESSION['RECADASTRO']['Deficiente']=="1") echo "<script>document.getElementById(\"DeficienteS\").checked=true;</script>";
 		if($_SESSION['RECADASTRO']['Deficiente']=="0") echo "<script>document.getElementById(\"DeficienteN\").checked=true;</script>";
@@ -381,16 +403,15 @@
 	 Parentesco:<input type="text" name="Deficiente_Grau" id="Deficiente_Grau" value="<?php if(!empty($_SESSION['RECADASTRO']['Deficiente_Grau']))echo $_SESSION['RECADASTRO']['Deficiente_Grau']?>" class="form-control" placeholder="Parentesco" <?php if($_SESSION['RECADASTRO']['Deficiente']!="1") echo "disabled" ?> />
 	 Qual: <select name="Deficiente_Qual" id="Deficiente_Qual" class="form-control" onchange=deficienteOutra() <?php if($_SESSION['RECADASTRO']['Deficiente']!="1") echo "disabled" ?> >
 	   <option value="">Escolha...</option>
-	   <option value="Auditiva" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Auditiva") echo "selected"?>>Auditiva</option>
-	   <option value="Motora" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Motora") echo "selected"?>>Motora</option>
-	   <option value="Intelectual" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Intelectual") echo "selected"?>>Intelectual</option>
-	   <option value="Visão" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Visão") echo "selected"?>>Visão</option>
-	   <option value="Fala" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Fala") echo "selected"?>>Fala</option>
-	   <option value="Outra" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Outra") echo "selected"?>>Outra</option>
+	   <option value="Auditiva" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Auditiva"){ $a=1; echo "selected" ;}else $a=0;?>>Auditiva</option>
+	   <option value="Motora" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Motora"){ $a=1; echo "selected"; }else $a=0; ?>>Motora</option>
+	   <option value="Intelectual" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Intelectual"){ $a=1; echo "selected"; }else $a=0;?>>Intelectual</option>
+	   <option value="Visão" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Visão"){ $a=1; echo "selected"; }else $a=0;?>>Visão</option>
+	   <option value="Fala" <?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Fala"){ $a=1; echo "selected"; }else $a=0;?>>Fala</option>
+	   <option value="Outra" <?php if($a!=1); ?>>Outra</option>
 	  </select>
-
-	  <span id="Def_tmp" style="display:<?php if($_SESSION['RECADASTRO']['Deficiente_Qual']=="Outra") echo "block"; else echo "none";?>">
-           Outra: <input type="text" class="form-control" value="<?php if(!empty($_SESSION['RECADASTRO']['Deficiente_Qual'])) echo $_SESSION['RECADASTRO']['Deficiencia_Qual']?>" name="Def_Outra" id="Def_Outra" /></span>
+	  <span id="Def_tmp" style="display:<?php if(($a!=1)&&(isset($_SESSION['RECADASTRO']['Deficiente_Qual'])))echo "block"; else echo "none";?>">
+           Outra: <input type="text" class="form-control" value="<?php if(isset($_SESSION['RECADASTRO']['Deficiente_Qual'])) echo $_SESSION['RECADASTRO']['Deficiente_Qual']?>" name="Def_Outra" id="Def_Outra" /></span>
          </td>
         </tr>
         <tr>
@@ -446,3 +467,4 @@
       <button class="btn btn-lg btn-primary">Salvar e Imprimir</button> 
       <span class="pull-right"><a href="/inc/sair.php" class="btn btn-lg btn-danger">Sair</a></span>
      </form>
+

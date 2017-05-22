@@ -176,11 +176,14 @@ function getComposicaoFamiliar($var,$opt){
 			$tmp1 = $tmp1."<option value=\"Irmã(o)\">Irmã(o)</option>";
 			$tmp1 = $tmp1."<option value=\"Primo(a)\">Primo(a)</option>";
 			$tmp1 = $tmp1."<option value=\"Sobrinho\">Sobrinho(a)</option>";
-			$tmp1 = $tmp1."<option value=\"Avô(ó)\">Avô(ó)</option></select></td>";
+			$tmp1 = $tmp1."<option value=\"Enteado(a)\">Enteado(a)</option>";
+			$tmp1 = $tmp1."<option value=\"Avô(ó)\">Avô(ó)</option>";
+			$tmp1 = $tmp1."<option value=\"Outro\">Outro</option></select></td>";
 			echo $tmp1;
 
 			$tmp2 = "<td><select class=\"form-control\" name=\"FamiliarEscolaridade".$i."\" id=\"FamiliarEscolaridade".$i."\">";
 			$tmp2 = $tmp2."<option value=\"\">Escolha</option>";
+			$tmp2 = $tmp2."<option value=\"Não Alfabetizado\">Não Alfabetizado</option>";
 			$tmp2 = $tmp2."<option value=\"Ensino Fundamental\">Ensino Fundamental</option>";
 			$tmp2 = $tmp2."<option value=\"Ensino Médio\">Ensino Médio</option>";
 			$tmp2 = $tmp2."<option value=\"Superior\">Superior</option>";
