@@ -28,10 +28,12 @@
   <div class="container">
    <table class='table table-striped table-bordered'>
     <tr>
+     <td><strong>MATR</strong></td>
      <td><strong>CPF</strong></td>
      <td><strong>NOME</strong></td>
      <td><strong>MÃE</strong></td>
      <td><strong>PAI</strong></td>
+     <td><strong>SEXO</strong></td>
     </tr>
     <?php listarFuncionarios() ?>
    </table> 
@@ -39,7 +41,13 @@
   <footer class="container hidden-print">
    <hr />
    <p>&copy; CPD PMTO
-    <span class="pull-right">Powered By: <i class="fa fa-github"></i><i class="fa fa-linux"></i><i class="fa fa-html5"></i><i class="fa fa-css3"></i></span>
+    <span class="pull-right">
+     Powered By:
+     <a href="https://github.com/PrefeituraTO/cadastrosocioeconomico" target="_BLANK"><i class="fa fa-github"></i></a>
+     <a href="https://linux.org" target="_BLANK"><i class="fa fa-linux"></i></a>
+     <a href="https://www.w3schools.com/html/html5_intro.asp" target="_BLANK"><i class="fa fa-html5"></i></a>
+     <a href="https://www.w3schools.com/css/css3_intro.asp" target="_BLANK"><i class="fa fa-css3"></i></a>
+    </span>
    </p>
   </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

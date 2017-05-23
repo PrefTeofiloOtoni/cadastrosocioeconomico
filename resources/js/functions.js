@@ -125,7 +125,7 @@ function dataConta(c){
 }
 
 function mostraimovel(){
-	if(document.getElementById("Hab_Modo").value=="propria"){
+	if(document.getElementById("Hab_Modo").value=="proprio"){
 		document.getElementById("Hab_propria").style.display="block";
 		document.getElementById("Hab_valor").style.display="none";
 	}else{
@@ -137,9 +137,18 @@ function mostraimovel(){
 		document.getElementById("Hab_valor").style.display="block";
 	}else{
 		document.getElementById("Hab_valor").style.display="none";
-	}			
-}
+	}
 
+	if(
+		(document.getElementById("Hab_Modo").value=="invadida")||
+		(document.getElementById("Hab_Modo").value=="cedida")
+	){
+		document.getElementById("Hab_propria").style.display="none";
+		document.getElementById("Hab_valor").style.display="none";
+		document.getElementById("Hab_Quit").value="";
+		document.getElementById("Hab_Valor").value=null;
+	}
+}
 
 function moeda(z){ 
 	v = z.value; 

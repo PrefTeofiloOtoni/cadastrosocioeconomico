@@ -84,7 +84,6 @@
 	$SQL.="\n 	Fone_Tipo='".@utf8_encode($Fone_Tipo)."',";
 	$SQL.="\n	Fone_Cel='".@utf8_encode($Fone_Cel)."',";
 	$SQL.="\n	Email='".@utf8_encode(strtoupper($Email))."',";
-	$SQL.="\n	Sexo='".@utf8_encode($Sexo)."',";
 	$SQL.="\n	Cor='".@utf8_encode($Cor)."',";
 	$SQL.="\n	EstCivil='".@utf8_encode($EstCivil)."',";
 	$SQL.="\n	CadUnico='".@utf8_encode($CadUnico)."',";

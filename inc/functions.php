@@ -1,5 +1,4 @@
 <?php
-@include("conecta.php");
 	
 function conecta(){
 	try{
@@ -145,15 +144,17 @@ function getCPF($var){
 
 function listarFuncionarios(){
 	$PDO=conecta();
-	$SQL="SELECT CPF,Nome,Mae,Pai FROM funcionarios ORDER BY Nome";
+	$SQL="SELECT Matricula,CPF,Nome,Mae,Pai,Sexo FROM funcionarios ORDER BY Nome";
 	$result = $PDO->query($SQL);
 	$rows   = $result->fetchAll();
 		for ($i=0;$i<sizeof($rows);$i++){
 		echo "<tr>";
+		echo "<td>".$rows[$i]['Matricula']."</td>";
 		echo "<td>".$rows[$i]['CPF']."</td>";
 		echo "<td>".utf8_encode($rows[$i]['Nome'])."</td>";
 		echo "<td>".utf8_encode($rows[$i]['Mae'])."</td>";
 		echo "<td>".utf8_encode($rows[$i]['Pai'])."</td>";
+		echo "<td>".utf8_encode($rows[$i]['Sexo'])."</td>";
 		echo "</tr>";
 	}
 }

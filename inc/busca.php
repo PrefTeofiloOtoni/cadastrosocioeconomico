@@ -1,7 +1,8 @@
 <?php
-	include ("conecta.php");
+	include ("functions.php");
 	session_start();
-
+	
+	$PDO=conecta();
 	if($_POST['CPF']){
 		$sql = "SELECT * FROM funcionarios WHERE CPF='".$_POST['CPF']."'";
 		$result = $PDO->query($sql);
