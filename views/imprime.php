@@ -62,7 +62,7 @@
      </tr>
      <tr>
       <td colspan="3">
-       13. <label>Grau de Excolaridade:</label> <?php echo strtoupper(getGrau_escolar($_SESSION['RECADASTRO']['Grau_escolar']));?> <?php echo "14. ".strtoupper($_SESSION['RECADASTRO']['Status_escolar'])?>
+       13. <label>Grau de Escolaridade:</label> <?php echo strtoupper(getGrau_escolar($_SESSION['RECADASTRO']['Grau_escolar']));?> <?php echo "14. ".strtoupper($_SESSION['RECADASTRO']['Status_escolar'])?>
       </td>
       <td>15. <label>Formação Profissional:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Formacao'])?></td>
      </tr>
@@ -79,8 +79,10 @@
      <tr>
       <td>22. <label>Bairro:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Bairro'])?></td>
       <td>23. <label>CEP:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_CEP'])?></td>
-      <td>24. <label>Cidade:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Cidade'])?></td>
-      <td>25. <label>UF:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_UF'])?></td>
+      <td colspan="2">
+       <p>24. <label>Cidade:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Cidade'])?> </p>
+       <p>25. <label>UF:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_UF'])?></p>
+      </td>
      </tr>
      <tr>
       <td>26. <label>Telefone Fixo:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Fone_Fixo'])?></td>
@@ -93,8 +95,8 @@
      </tr>
      <tr>
       <td>31. <label>Cor/Etnia:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Cor'])?></td>
-      <td>32. <label>Estado Civíl:</label> <?php echo strtoupper(getEstCivil($_SESSION['RECADASTRO']['EstCivil']))?> </td>
-      <td colspan="2">
+      <td colspan="2">32. <label>Estado Civíl:</label> <?php echo strtoupper(getEstCivil($_SESSION['RECADASTRO']['EstCivil']))?> </td>
+      <td>
        33. <label>Possui CadUnico:</label> <?php echo ucfirst(getSimNao($_SESSION['RECADASTRO']['CadUnico']))?>
        <?php if($_SESSION['RECADASTRO']['CadUnico']=="S") echo "<br />34. <label>NIS:</label> ". strtoupper($_SESSION['RECADASTRO']['NIS'])?>
       </td> 

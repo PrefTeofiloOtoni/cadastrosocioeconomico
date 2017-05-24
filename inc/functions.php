@@ -173,6 +173,8 @@ function getComposicaoFamiliar($var,$opt){
 			$tmp1 = $tmp1."<option value=\"\">Escolha</option>";
 			$tmp1 = $tmp1."<option value=\"Pai\">Pai</option>";
 			$tmp1 = $tmp1."<option value=\"Mãe\">Mãe</option>";
+			$tmp1 = $tmp1."<option value=\"Filho(a)\">Filho(a)</option>";
+			$tmp1 = $tmp1."<option value=\"Cônjuje/Companheiro(a)\">Cônjuje/Companheiro(a)</option>";
 			$tmp1 = $tmp1."<option value=\"Tio(a)\">Tio(a)</option>";
 			$tmp1 = $tmp1."<option value=\"Irmã(o)\">Irmã(o)</option>";
 			$tmp1 = $tmp1."<option value=\"Primo(a)\">Primo(a)</option>";
@@ -202,7 +204,7 @@ function getComposicaoFamiliar($var,$opt){
 		}
 	}elseif($opt=1){
 		for ($i=0;$i<sizeof($rows);$i++){
-			echo "<tr><td>".$rows[$i]['Nome']."</td><td>".$rows[$i]['DataNasc']."</td><td>".$rows[$i]['Parentesco']."</td><td>".$rows[$i]['Escolaridade']."</td><td>".$rows[$i]['Ocupacao']."</td><td>".$rows[$i]['Remuneracao']."</td></tr>";
+			echo "<tr><td>".$rows[$i]['Nome']."</td><td>".$rows[$i]['DataNasc']."</td><td>".$rows[$i]['Parentesco']."</td><td>".$rows[$i]['Escolaridade']."</td><td>".$rows[$i]['Ocupacao']."</td><td>R$ ".$rows[$i]['Remuneracao']."</td></tr>";
 		}
 	}
 }

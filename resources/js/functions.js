@@ -13,6 +13,8 @@ function adicionarLinha(){
 	tmp12 = tmp12+'<option value="">Escolha</option>'
 	tmp12 = tmp12+'<option value="Pai">Pai</option>'
 	tmp12 = tmp12+'<option value="Mãe">Mãe</option>'
+	tmp12 = tmp12+'<option value="Filho(a)">Filho(a)</option>'
+	tmp12 = tmp12+'<option value="Cônjuge/Companheiro(a)">Cônjuge/Companheiro(a)</option>'
 	tmp12 = tmp12+'<option value="Tio(a)">Tio(a)</option>'
 	tmp12 = tmp12+'<option value="Irmã(o)">Irmã(o)</option>'
 	tmp12 = tmp12+'<option value="Primo(a)">Primo(a)</option>'
