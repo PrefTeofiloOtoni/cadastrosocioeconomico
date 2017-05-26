@@ -132,18 +132,10 @@
 				$tmpOcupacao="FamiliarOcupacao".$i;
 				$tmpRemuneracao="FamiliarRemuneracao".$i;
 
-				if(isset($$tmpID)){
-					$SQLParente="UPDATE familiares SET 
-						Nome='".$$tmpNome."',
-						DataNasc='".$$tmpNascto."',
-						Parentesco='".$$tmpParentesco."',
-						Escolaridade='".$$tmpEscolaridade."',
-						Ocupacao='".$$tmpOcupacao."',
-						Remuneracao='".$$tmpRemuneracao."'
-					WHERE CPF='".$CPF."' AND
-						ID=".$$tmpID."";
-				}else{
-					$SQLParente="INSERT INTO familiares (
+
+			$SQLDelete="DELETE FROM familiares WHERE CPF = '".$CPF."'"; 
+	
+			$SQLInsert="INSERT INTO familiares (
 						CPF,
 						Nome,
 						DataNasc,
@@ -161,14 +153,22 @@
 							'".$$tmpRemuneracao."');";
 				}
 
-				$RES=$PDO->query($SQLParente);
-			}
+
+			$RES1=$PDO->query($SQLDelete);
+			$RES2=$PDO->query($SQLInsert);
+
+
+
+			/*** Gambiarra de Teste de Edição END */
+
+
 		}
 		header('location: http://recadastro.teofilootoni.mg.gov.br/views/imprime.php');
 		exit;
 	}else{
 		header('location: http://recadastro.teofilootoni.mg.gov.br/?MSG=Erro ao Inserir, Entre em contato com o CPD');
 		exit;
+	
 	}
 	
 ?>
