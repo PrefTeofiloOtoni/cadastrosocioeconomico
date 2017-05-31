@@ -2,14 +2,14 @@ function adicionarLinha(){
 	var local=document.getElementById('TabParentesco');
 	var tblBody = local.tBodies[0];
 	var newRow = tblBody.insertRow(-1);  
-	var indice = document.getElementById('familiaqnt').value;
+	var total  = document.getElementById('familiatotal').value;
 	var newCell0 = newRow.insertCell(0);
-	newCell0.innerHTML = '<td><input type="text" name="FamiliarNome'+indice+'"  value="" class="form-control" placeholder="Nome"></td>'; 
+	newCell0.innerHTML = '<td><input type="text" name="FamiliarNome'+total+'"  value="" class="form-control" placeholder="Nome"></td>'; 
 	
 	var newCell1 = newRow.insertCell(1);
-	newCell1.innerHTML = '<td><input type="text" name="FamiliarDataNasc'+indice+'"  value="" class="form-control" maxlength="10" placeholder="Data de Nascimento" onkeyup=dataConta(this)></td>';
+	newCell1.innerHTML = '<td><input type="text" name="FamiliarDataNasc'+total+'"  value="" class="form-control" maxlength="10" placeholder="Data de Nascimento" onkeyup=dataConta(this)></td>';
 	var newCell2 = newRow.insertCell(2);
-	var tmp12 = '<td><select class="form-control" name="FamiliarParentesco'+indice+'">'
+	var tmp12 = '<td><select class="form-control" name="FamiliarParentesco'+total+'">'
 	tmp12 = tmp12+'<option value="">Escolha</option>'
 	tmp12 = tmp12+'<option value="Pai">Pai</option>'
 	tmp12 = tmp12+'<option value="Mãe">Mãe</option>'
@@ -24,7 +24,7 @@ function adicionarLinha(){
 	tmp12 = tmp12+'<option value="Outro">Outro</option></select></td>';
 	newCell2.innerHTML = tmp12;
 	var newCell3 = newRow.insertCell(3);
-	var tmp13 = '<td><select class="form-control" name="FamiliarEscolaridade'+indice+'">'
+	var tmp13 = '<td><select class="form-control" name="FamiliarEscolaridade'+total+'">'
 	tmp13 = tmp13+'<option value="">Escolha</option>'
 	tmp13 = tmp13+'<option value="Não Alfabetizado">Não Alfabetizado</option>'
 	tmp13 = tmp13+'<option value="Ensino Fundamental">Ensino Fundamental</option>'
@@ -36,17 +36,17 @@ function adicionarLinha(){
 	tmp13 = tmp13+'<option value="Pós-Doutorado">Pós-Doutorado</option></select></td>';
 	newCell3.innerHTML = tmp13;	
 	var newCell4 = newRow.insertCell(4);
-	newCell4.innerHTML = '<td><input type="text" name="FamiliarOcupacao'+indice+'"  value="" class="form-control" placeholder="Ocupação"></td>';
+	newCell4.innerHTML = '<td><input type="text" name="FamiliarOcupacao'+total+'"  value="" class="form-control" placeholder="Ocupação"></td>';
 	var newCell5 = newRow.insertCell(5);
-	newCell5.innerHTML = '<td><input type="text" name="FamiliarRemuneracao'+indice+'" onkeyup=moeda(this)  value="" class="form-control" placeholder="Remuneração"></td>';
+	newCell5.innerHTML = '<td><input type="text" name="FamiliarRemuneracao'+total+'" onkeyup=moeda(this)  value="" class="form-control" placeholder="Remuneração"></td>';
 	var newCell6 = newRow.insertCell(6);
 	newCell6.innerHTML = '<td><button class="btn btn-large btn-danger fa fa-trash" onclick="deleteRow(this.parentNode.parentNode.rowIndex)"></button></td>';
-	var indice=document.getElementById('familiaqnt').value++;
+	var total=document.getElementById('familiatotal').value++;
+
 }
+
 function deleteRow(i){
-	var indice = document.getElementById('familiaqnt').value;
 	document.getElementById('TabParentesco').deleteRow(i);
-	var indice=document.getElementById('familiaqnt').value--;
 }
 
 function mascara(o,f){

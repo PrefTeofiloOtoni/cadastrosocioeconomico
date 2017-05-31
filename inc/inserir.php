@@ -121,10 +121,11 @@
 	$SQL.="\nWHERE CPF='".@utf8_encode($CPF)."';";
 
 	$PDO=conecta();
+	$SQLDelete="DELETE FROM familiares WHERE CPF = '".$CPF."'"; 
+	$RES1=$PDO->query($SQLDelete);
 	if($result = $PDO->query($SQL)){
-		if($familiaqnt>0){
-			for ($i=0;$i<$familiaqnt;$i++){
-				$tmpID='FamiliarID'.$i;
+		if($familiatotal>0){
+			for ($i=0;$i<$familiatotal;$i++){
 				$tmpNome='FamiliarNome'.$i;
 				$tmpNascto="FamiliarDataNasc".$i;
 				$tmpParentesco="FamiliarParentesco".$i;
@@ -132,43 +133,35 @@
 				$tmpOcupacao="FamiliarOcupacao".$i;
 				$tmpRemuneracao="FamiliarRemuneracao".$i;
 
-
-			$SQLDelete="DELETE FROM familiares WHERE CPF = '".$CPF."'"; 
+				if(!empty($$tmpNome)){
 	
-			$SQLInsert="INSERT INTO familiares (
-						CPF,
-						Nome,
-						DataNasc,
-						Parentesco,
-						Escolaridade,
-						Ocupacao,
-						Remuneracao)
-						VALUES(
-							'".$CPF."',
-							'".$$tmpNome."',	
-							'".$$tmpNascto."',	
-							'".$$tmpParentesco."',	
-							'".$$tmpEscolaridade."',	
-							'".$$tmpOcupacao."',	
-							'".$$tmpRemuneracao."');";
+					$SQLInsert="INSERT INTO familiares (
+							CPF,
+							Nome,
+							DataNasc,
+							Parentesco,
+							Escolaridade,
+							Ocupacao,
+							Remuneracao)
+							VALUES(
+								'".$CPF."',
+								'".$$tmpNome."',	
+								'".$$tmpNascto."',	
+								'".$$tmpParentesco."',	
+								'".$$tmpEscolaridade."',	
+								'".$$tmpOcupacao."',	
+								'".$$tmpRemuneracao."');";
+
+					$RES2=$PDO->query($SQLInsert);
 				}
 
-
-			$RES1=$PDO->query($SQLDelete);
-			$RES2=$PDO->query($SQLInsert);
-
-
-
-			/*** Gambiarra de Teste de Edição END */
-
-
+			}
 		}
 		header('location: http://recadastro.teofilootoni.mg.gov.br/views/imprime.php');
 		exit;
 	}else{
 		header('location: http://recadastro.teofilootoni.mg.gov.br/?MSG=Erro ao Inserir, Entre em contato com o CPD');
 		exit;
-	
 	}
 	
 ?>

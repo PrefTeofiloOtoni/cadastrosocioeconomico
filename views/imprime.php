@@ -111,7 +111,7 @@
        36. <label>Condições de Moradia:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Hab_Tipo'])?>
        <?php echo ", ".strtoupper($_SESSION['RECADASTRO']['Hab_Modo'])?>
       </td>
-      <td><?php if($_SESSION['RECADASTRO']['Hab_Modo']=="propria"){?><label>Quitada:</label> <?php echo ucfirst(getSimNao($_SESSION['RECADASTRO']['Hab_Quit'])); }?></td>
+      <td><?php if($_SESSION['RECADASTRO']['Hab_Modo']=="proprio"){?><label>Quitada:</label><?php echo ucfirst(getSimNao($_SESSION['RECADASTRO']['Hab_Quit']));}?></td>
       <td>
        <?php if(($_SESSION['RECADASTRO']['Hab_Quit']=="nao")||($_SESSION['RECADASTRO']['Hab_Modo']=="alugada")){?> <label>Valor:</label> R$<?php echo strtoupper($_SESSION['RECADASTRO']['Hab_Valor']); }?></td>
     </tr>

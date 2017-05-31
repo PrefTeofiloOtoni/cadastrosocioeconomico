@@ -165,67 +165,117 @@ function getComposicaoFamiliar($var,$opt){
 	$result = $PDO->query($SQL);
 	$rows   = $result->fetchAll();
 		if($opt==0){
-		for ($i=0;$i<sizeof($rows);$i++){
-			echo "<tr>";
-			echo "<td><input type=\"hidden\" name=\"FamiliarID".$i."\" value=\"".$rows[$i]['ID']."\" /> <input type=\"text\" name=\"FamiliarNome".$i."\"  value=\"".$rows[$i]['Nome']."\" class=\"form-control\" placeholder=\"Nome\"></td>";
-			echo "<td><input type=\"text\" name=\"FamiliarDataNasc".$i."\"  value=\"".$rows[$i]['DataNasc']."\" class=\"form-control\" maxlength=\"10\" placeholder=\"Data de Nascimento\" onkeyup=dataConta(this)></td>";
-			$tmp1 = "<td><select class=\"form-control\" name=\"FamiliarParentesco".$i."\" id=\"FamiliarParentesco".$i."\">";
-			$tmp1 = $tmp1."<option value=\"\">Escolha</option>";
-			$tmp1 = $tmp1."<option value=\"Pai\">Pai</option>";
-			$tmp1 = $tmp1."<option value=\"Mãe\">Mãe</option>";
-			$tmp1 = $tmp1."<option value=\"Filho(a)\">Filho(a)</option>";
-			$tmp1 = $tmp1."<option value=\"Cônjuje/Companheiro(a)\">Cônjuje/Companheiro(a)</option>";
-			$tmp1 = $tmp1."<option value=\"Tio(a)\">Tio(a)</option>";
-			$tmp1 = $tmp1."<option value=\"Irmã(o)\">Irmã(o)</option>";
-			$tmp1 = $tmp1."<option value=\"Primo(a)\">Primo(a)</option>";
-			$tmp1 = $tmp1."<option value=\"Sobrinho\">Sobrinho(a)</option>";
-			$tmp1 = $tmp1."<option value=\"Enteado(a)\">Enteado(a)</option>";
-			$tmp1 = $tmp1."<option value=\"Avô(ó)\">Avô(ó)</option>";
-			$tmp1 = $tmp1."<option value=\"Outro\">Outro</option></select></td>";
-			echo $tmp1;
+	for ($i=0;$i<sizeof($rows);$i++){
+		echo "<tr>";
+		echo "<td><input type=\"hidden\" name=\"FamiliarID".$i."\" value=\"".$rows[$i]['ID']."\" /><input type=\"text\" name=\"FamiliarNome".$i."\"  value=\"".$rows[$i]['Nome']."\" class=\"form-control\" placeholder=\"Nome\"></td>";
+		echo "<td><input type=\"text\" name=\"FamiliarDataNasc".$i."\"  value=\"".$rows[$i]['DataNasc']."\" class=\"form-control\" maxlength=\"10\" placeholder=\"Data de Nascimento\" onkeyup=dataConta(this)></td>";
+		$tmp1 = "<td><select class=\"form-control\" name=\"FamiliarParentesco".$i."\" id=\"FamiliarParentesco".$i."\">";
+		$tmp1 = $tmp1."<option value=\"\">Escolha</option>";
+		$tmp1 = $tmp1."<option value=\"Pai\">Pai</option>";
+		$tmp1 = $tmp1."<option value=\"Mãe\">Mãe</option>";
+		$tmp1 = $tmp1."<option value=\"Filho(a)\">Filho(a)</option>";
+		$tmp1 = $tmp1."<option value=\"Cônjuje/Companheiro(a)\">Cônjuje/Companheiro(a)</option>";
+		$tmp1 = $tmp1."<option value=\"Tio(a)\">Tio(a)</option>";
+		$tmp1 = $tmp1."<option value=\"Irmã(o)\">Irmã(o)</option>";
+		$tmp1 = $tmp1."<option value=\"Primo(a)\">Primo(a)</option>";
+		$tmp1 = $tmp1."<option value=\"Sobrinho\">Sobrinho(a)</option>";
+		$tmp1 = $tmp1."<option value=\"Enteado(a)\">Enteado(a)</option>";
+		$tmp1 = $tmp1."<option value=\"Avô(ó)\">Avô(ó)</option>";
+		$tmp1 = $tmp1."<option value=\"Outro\">Outro</option></select></td>";
+		echo $tmp1;
 
-			$tmp2 = "<td><select class=\"form-control\" name=\"FamiliarEscolaridade".$i."\" id=\"FamiliarEscolaridade".$i."\">";
-			$tmp2 = $tmp2."<option value=\"\">Escolha</option>";
-			$tmp2 = $tmp2."<option value=\"Não Alfabetizado\">Não Alfabetizado</option>";
-			$tmp2 = $tmp2."<option value=\"Ensino Fundamental\">Ensino Fundamental</option>";
-			$tmp2 = $tmp2."<option value=\"Ensino Médio\">Ensino Médio</option>";
-			$tmp2 = $tmp2."<option value=\"Superior\">Superior</option>";
-			$tmp2 = $tmp2."<option value=\"Pós-Graduação\">Pos-Graduação</option>";
-			$tmp2 = $tmp2."<option value=\"Mestrado\">Mestrado</option>";
-			$tmp2 = $tmp2."<option value=\"Doutorado\">Doutorado</option>";
-			$tmp2 = $tmp2."<option value=\"Pós-Doutorado\">Pós-Doutorado</option></select></td>";
-			echo $tmp2;
-		
-			echo "<td><input type=\"text\" name=\"FamiliarOcupacao".$i."\"  value=\"".$rows[$i]['Ocupacao']."\" class=\"form-control\" placeholder=\"Ocupação\"></td>";
-			echo "<td><input type=\"text\" name=\"FamiliarRemuneracao".$i."\" onkeyup=moeda(this) value=\"".$rows[$i]['Remuneracao']."\" class=\"form-control\" placeholder=\"Remuneração\"></td>";
-			echo "<td><button class=\"btn btn-large btn-danger fa fa-trash\" onclick=\"deleteRow(this.parentNode.parentNode.rowIndex)\"></button></td>";
-			if(isset($rows[$i]['Parentesco'])) echo "<script>document.getElementById(\"FamiliarParentesco".$i."\").value=\"".$rows[$i]['Parentesco']."\"</script>";
-			if(isset($rows[$i]['Escolaridade'])) echo "<script>document.getElementById(\"FamiliarEscolaridade".$i."\").value=\"".$rows[$i]['Escolaridade']."\"</script>";
-		}
-	}elseif($opt=1){
-		for ($i=0;$i<sizeof($rows);$i++){
-			echo "<tr><td>".$rows[$i]['Nome']."</td><td>".$rows[$i]['DataNasc']."</td><td>".$rows[$i]['Parentesco']."</td><td>".$rows[$i]['Escolaridade']."</td><td>".$rows[$i]['Ocupacao']."</td><td>R$ ".$rows[$i]['Remuneracao']."</td></tr>";
-		}
+		$tmp2 = "<td><select class=\"form-control\" name=\"FamiliarEscolaridade".$i."\" id=\"FamiliarEscolaridade".$i."\">";
+		$tmp2 = $tmp2."<option value=\"\">Escolha</option>";
+		$tmp2 = $tmp2."<option value=\"Não Alfabetizado\">Não Alfabetizado</option>";
+		$tmp2 = $tmp2."<option value=\"Ensino Fundamental\">Ensino Fundamental</option>";
+		$tmp2 = $tmp2."<option value=\"Ensino Médio\">Ensino Médio</option>";
+		$tmp2 = $tmp2."<option value=\"Superior\">Superior</option>";
+		$tmp2 = $tmp2."<option value=\"Pós-Graduação\">Pos-Graduação</option>";
+		$tmp2 = $tmp2."<option value=\"Mestrado\">Mestrado</option>";
+		$tmp2 = $tmp2."<option value=\"Doutorado\">Doutorado</option>";
+		$tmp2 = $tmp2."<option value=\"Pós-Doutorado\">Pós-Doutorado</option></select></td>";
+		echo $tmp2;
+	
+		echo "<td><input type=\"text\" name=\"FamiliarOcupacao".$i."\"  value=\"".$rows[$i]['Ocupacao']."\" class=\"form-control\" placeholder=\"Ocupação\"></td>";
+		echo "<td><input type=\"text\" name=\"FamiliarRemuneracao".$i."\" onkeyup=moeda(this) value=\"".$rows[$i]['Remuneracao']."\" class=\"form-control\" placeholder=\"Remuneração\"></td>";
+		echo "<td><button class=\"btn btn-large btn-danger fa fa-trash\" onclick=\"deleteRow(this.parentNode.parentNode.rowIndex)\"></button></td>"; 
+		if(isset($rows[$i]['Parentesco'])) echo "<script>document.getElementById(\"FamiliarParentesco".$i."\").value=\"".$rows[$i]['Parentesco']."\"</script>";
+		if(isset($rows[$i]['Escolaridade'])) echo "<script>document.getElementById(\"FamiliarEscolaridade".$i."\").value=\"".$rows[$i]['Escolaridade']."\"</script>";
 	}
+}elseif($opt=1){
+	for ($i=0;$i<sizeof($rows);$i++){
+		echo "<tr><td>".$rows[$i]['Nome']."</td><td>".$rows[$i]['DataNasc']."</td><td>".$rows[$i]['Parentesco']."</td><td>".$rows[$i]['Escolaridade']."</td><td>".$rows[$i]['Ocupacao']."</td><td>R$ ".$rows[$i]['Remuneracao']."</td></tr>";
+	}
+}
 }
 
 function ifExisteText($data,$field,$label){
-	if(!empty($data)){
-		echo "<strong>".$label.": </strong>". utf8_encode($data);
-		echo "<input type=\"hidden\" name=\"".$field."\" id=\"".$field."\" value=\"".utf8_encode($data)."\" />";
-	}else{  
-		echo "<label>".$label.": </label>". utf8_encode($data);
-		echo "<input type=\"text\" name=\"".$field."\" id=\"".$field."\" class=\"form-control\" placeholder=\"".$label."\" />";
-	}
+if(!empty($data)){
+	echo "<strong>".$label.": </strong>". utf8_encode($data);
+	echo "<input type=\"hidden\" name=\"".$field."\" id=\"".$field."\" value=\"".utf8_encode($data)."\" />";
+}else{  
+	echo "<label>".$label.": </label>". utf8_encode($data);
+	echo "<input type=\"text\" name=\"".$field."\" id=\"".$field."\" class=\"form-control\" placeholder=\"".$label."\" />";
+}
 }
 
 function getEstCivil($var){
-	switch($var){
-		case 'solteiro':	return "Solteiro";	break;
-		case 'casado':		return "Casado";	break;
-		case 'separado':	return "Separado";	break;
-		case 'viuvo':		return "Viúvo";		break;
-		case 'uniao_estavel':	return "União Estável";	break;
-	}
+switch($var){
+	case 'solteiro':	return "Solteiro";	break;
+	case 'casado':		return "Casado";	break;
+	case 'separado':	return "Separado";	break;
+	case 'viuvo':		return "Viúvo";		break;
+	case 'uniao_estavel':	return "União Estável";	break;
 }
+}
+
+function getStatsSexo(){
+$PDO=conecta();
+$SQL1="SELECT count(Sexo) AS CountSexM FROM funcionarios WHERE Sexo='M'";
+$SQL2="SELECT count(Sexo) AS CountSexF FROM funcionarios WHERE Sexo='F'";
+$result1 = $PDO->query($SQL1);
+$result2 = $PDO->query($SQL2);
+	$rows1   = $result1->fetchAll();
+	$rows2   = $result2->fetchAll();
+
+	$total=$rows1[0]['CountSexM']+$rows2[0]['CountSexF'];
+	$M=($rows1[0]['CountSexM']*100)/$total;
+	$F=($rows2[0]['CountSexF']*100)/$total;
+
+	$tmp="<p>Funcionários por Sexo</p>";
+	$tmp.="<div class=\"progress\">";
+	$tmp.="<div class=\"progress-bar progress-bar-success\" style=\"width: ".$M."%\">";
+      	$tmp.="<span>".$rows1[0]['CountSexM']." Funcionários do Sexo Masculino </span>";
+        $tmp.="</div>";
+	$tmp.="<div class=\"progress-bar progress-bar-danger\" style=\"width: ".$F."%\">";
+      	$tmp.="<span>".$rows2[0]['CountSexF']." Funcionários do Sexo Feminino </span>";
+	$tmp.="</div>";
+	$tmp.="</div>";
+	echo $tmp;
+}
+
+function getStatsPreenchido(){
+	$PDO=conecta();
+	$SQL1="SELECT count(CPF) AS Total FROM funcionarios WHERE Sexo='M'";
+	$result1 = $PDO->query($SQL1);
+	$result2 = $PDO->query($SQL2);
+	$rows1   = $result1->fetchAll();
+	$rows2   = $result2->fetchAll();
+
+	$total=$rows1[0]['CountSexM']+$rows2[0]['CountSexF'];
+	$M=($rows1[0]['CountSexM']*100)/$total;
+	$F=($rows2[0]['CountSexF']*100)/$total;
+
+	$tmp="<p>Funcionários por Sexo</p>";
+	$tmp.="<div class=\"progress\">";
+	$tmp.="<div class=\"progress-bar progress-bar-success\" style=\"width: ".$M."%\">";
+      	$tmp.="<span>".$rows1[0]['CountSexM']." Funcionários do Sexo Masculino </span>";
+        $tmp.="</div>";
+	$tmp.="<div class=\"progress-bar progress-bar-danger\" style=\"width: ".$F."%\">";
+      	$tmp.="<span>".$rows2[0]['CountSexF']." Funcionários do Sexo Feminino </span>";
+	$tmp.="</div>";
+	$tmp.="</div>";
+	echo $tmp;
+}
+
 ?>

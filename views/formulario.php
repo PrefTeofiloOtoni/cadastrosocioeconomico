@@ -382,7 +382,7 @@
       </tr>
       <tr>
        <td colspan ="4">
-        <input type="hidden" name="familiaqnt" id="familiaqnt" value="<?php if(empty($_SESSION['RECADASTRO']['familiaqnt'])) echo 0; else echo $_SESSION['RECADASTRO']['familiaqnt'] ?>" />
+	<input type="hidden" name="familiatotal" id="familiatotal" value="<?php if(empty($_SESSION['RECADASTRO']['familiatotal'])) echo 0; else echo $_SESSION['RECADASTRO']['familiatotal'] ?>" />
         <table class='table table-striped table-bordered table-hover' id="TabParentesco">
          <tr><td colspan="6" align="center">40. <strong>Composição Familiar</strong></td></tr>
          <tr>
@@ -514,10 +514,8 @@
        </tr>
        <tr>
         <td colspan="4">
-         <p>51. Use este espaço para alguma observação que julgue necessária:</p>
-         <textarea name="Observacoes" id="Observacoes" class="form-control" rows="7">
-          <?php echo $_SESSION['RECADASTRO']['Observacoes'];?>
-         </textarea>
+         <p>51.<b>Use este espaço para alguma observação que julgue necessária:</p>
+         <textarea name="Observacoes" id="Observacoes" class="form-control" rows="7"><?php echo $_SESSION['RECADASTRO']['Observacoes'];?></textarea>
         </td>
        </tr>
       </table>
