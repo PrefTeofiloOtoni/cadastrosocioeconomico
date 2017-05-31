@@ -72,43 +72,47 @@
       <td>18. <label>Secretaria de Lotação:</label> <?php if(!empty($_SESSION['RECADASTRO']['Lotacao'])) echo strtoupper($_SESSION['RECADASTRO']['Lotacao'])?></td>
      </tr>
      <tr>
-      <td colspan="2">19. <label>Endereço:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Rua'])?></td>
-      <td>20. <label>Número:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Num'])?></td>
-      <td>21. <label>Complemento:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Comp'])?></td>
+     <td colspan="3">19. <label>Onde está lotado atualmente?</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Lotado'])?></td>
+     <td>20. <label>Quem é o superior imediato?</label><?php echo strtoupper($_SESSION['RECADASTRO']['Sup_Imediato'])?></td>
+     </tr>
+      <tr>
+      <td colspan="2">21. <label>Endereço:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Rua'])?></td>
+      <td>22. <label>Número:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Num'])?></td>
+      <td>23. <label>Complemento:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Comp'])?></td>
      </tr>
      <tr>
-      <td>22. <label>Bairro:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Bairro'])?></td>
-      <td>23. <label>CEP:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_CEP'])?></td>
+      <td>24. <label>Bairro:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Bairro'])?></td>
+      <td>25. <label>CEP:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_CEP'])?></td>
       <td colspan="2">
-       <p>24. <label>Cidade:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Cidade'])?> </p>
-       <p>25. <label>UF:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_UF'])?></p>
+       <p>26. <label>Cidade:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_Cidade'])?> </p>
+       <p>27. <label>UF:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['End_UF'])?></p>
       </td>
      </tr>
      <tr>
-      <td>26. <label>Telefone Fixo:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Fone_Fixo'])?></td>
-      <td>27. <label>Tipo:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Fone_Tipo'])?></td>
-      <td colspan="2">28. <label>Celular:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Fone_Cel'])?></td>
+      <td>28. <label>Telefone Fixo:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Fone_Fixo'])?></td>
+      <td>29. <label>Tipo:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Fone_Tipo'])?></td>
+      <td colspan="2">30. <label>Celular:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Fone_Cel'])?></td>
      </tr>
      <tr>
-      <td colspan="3">29. <label>E-Mail:</label> <?php echo $_SESSION['RECADASTRO']['Email']?></td>
-      <td>30. <label>Sexo:</label> <?php echo strtoupper(getSexo($_SESSION['RECADASTRO']['Sexo']))?></td>
+      <td colspan="3">31. <label>E-Mail:</label> <?php echo $_SESSION['RECADASTRO']['Email']?></td>
+      <td>32. <label>Sexo:</label> <?php echo strtoupper(getSexo($_SESSION['RECADASTRO']['Sexo']))?></td>
      </tr>
      <tr>
-      <td>31. <label>Cor/Etnia:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Cor'])?></td>
-      <td colspan="2">32. <label>Estado Civíl:</label> <?php echo strtoupper(getEstCivil($_SESSION['RECADASTRO']['EstCivil']))?> </td>
+      <td>33. <label>Cor/Etnia:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Cor'])?></td>
+      <td colspan="2">34. <label>Estado Civíl:</label> <?php echo strtoupper(getEstCivil($_SESSION['RECADASTRO']['EstCivil']))?> </td>
       <td>
-       33. <label>Possui CadUnico:</label> <?php echo ucfirst(getSimNao($_SESSION['RECADASTRO']['CadUnico']))?>
+       35. <label>Possui CadUnico:</label> <?php echo ucfirst(getSimNao($_SESSION['RECADASTRO']['CadUnico']))?>
        <?php if($_SESSION['RECADASTRO']['CadUnico']=="S") echo "<br />34. <label>NIS:</label> ". strtoupper($_SESSION['RECADASTRO']['NIS'])?>
       </td> 
      </tr>
      <tr>
       <td colspan="4">
-       35. <label>Tempo de residência em Teófilo Otoni:</label> <?php echo strtoupper(getTimeRes($_SESSION['RECADASTRO']['TimeRes']))?>
+       36. <label>Tempo de residência em Teófilo Otoni:</label> <?php echo strtoupper(getTimeRes($_SESSION['RECADASTRO']['TimeRes']))?>
       </td>
      </tr>
      <tr>
       <td colspan="2">
-       36. <label>Condições de Moradia:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Hab_Tipo'])?>
+       37. <label>Condições de Moradia:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Hab_Tipo'])?>
        <?php echo ", ".strtoupper($_SESSION['RECADASTRO']['Hab_Modo'])?>
       </td>
       <td><?php if($_SESSION['RECADASTRO']['Hab_Modo']=="proprio"){?><label>Quitada:</label><?php echo ucfirst(getSimNao($_SESSION['RECADASTRO']['Hab_Quit']));}?></td>
@@ -116,7 +120,7 @@
        <?php if(($_SESSION['RECADASTRO']['Hab_Quit']=="nao")||($_SESSION['RECADASTRO']['Hab_Modo']=="alugada")){?> <label>Valor:</label> R$<?php echo strtoupper($_SESSION['RECADASTRO']['Hab_Valor']); }?></td>
     </tr>
     <tr>
-     <td colspan="4">37. <label>Tipo de transporte que você utiliza pra trabalhar:</label>
+     <td colspan="4">38. <label>Tipo de transporte que você utiliza pra trabalhar:</label>
       <?php echo strtoupper($_SESSION['RECADASTRO']['Trans_Forma'])?>
       <?php
       if(($_SESSION['RECADASTRO']['Trans_Forma']=="carro")||($_SESSION['RECADASTRO']['Trans_Forma']=="moto")){
@@ -125,14 +129,14 @@
      </td>
     </tr>
     <tr>
-     <td colspan="4">38. <label>Lingua estrangeira:</label><br />
+     <td colspan="4">39. <label>Lingua estrangeira:</label><br />
       <label>Inglês:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Ling_Ingles'])?><br />
       <label>Espanhol:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Ling_Espanhol'])?><br />
       <?php echo "<label>Outras:</label> ".$_SESSION['RECADASTRO']['Ling_extra'];?>
      </td>
     </tr>
     <tr>
-     <td colspan="4">39. <label>Informática:</label><br>
+     <td colspan="4">40. <label>Informática:</label><br>
       <?php echo getInfo($_SESSION['RECADASTRO']['Info_word'])?> <label>Word</label><br />
       <?php echo getInfo($_SESSION['RECADASTRO']['Info_excel'])?> <label>Excel</label><br />
       <?php echo getInfo($_SESSION['RECADASTRO']['Info_internet'])?> <label>Internet</label><br />
@@ -142,7 +146,7 @@
     <tr>
      <td colspan ="4">
       <table class='table table-striped table-bordered table-hover'>
-       <tr><td colspan="6" align="center"><strong>40. Composicao Familiar</strong></td></tr>
+       <tr><td colspan="6" align="center"><strong>41. Composicao Familiar</strong></td></tr>
        <tr><td><strong>Nome</strong></td><td><strong>Idade</strong></td><td><strong>Parentesco</strong></td><td><strong>Escolaridade</strong></td><td><strong>Ocupação</strong></td><td><strong>Remuneração</strong></td></tr>
        <?php getComposicaoFamiliar($_SESSION['RECADASTRO']['CPF'],1) ?>
       </table>
@@ -150,36 +154,36 @@
     </tr>
     <tr>
      <td colspan="4">
-      41. <label>Você paga pensão alimentícia p/ filhos e/ou ex-conjuge?:</label> <?php echo ucfirst(getSimNao($_SESSION['RECADASTRO']['Pensao_Paga']))?>
+      42. <label>Você paga pensão alimentícia p/ filhos e/ou ex-conjuge?:</label> <?php echo ucfirst(getSimNao($_SESSION['RECADASTRO']['Pensao_Paga']))?>
       <?php if($_SESSION['RECADASTRO']['Pensao_Paga']==1){ ?> , <label>Valor:</label> R$<?php echo strtoupper($_SESSION['RECADASTRO']['Pensao_Paga_Val']); } ?>
      </td>
     </tr>
     <tr>
-     <td colspan="4">42. <label>Você recebe pensão alimentícia para seus filhos?</label> <?php echo ucfirst(getSimNao($_SESSION['RECADASTRO']['Pensao_Recebe']))?>
+     <td colspan="4">43. <label>Você recebe pensão alimentícia para seus filhos?</label> <?php echo ucfirst(getSimNao($_SESSION['RECADASTRO']['Pensao_Recebe']))?>
      <?php if($_SESSION['RECADASTRO']['Pensao_Recebe']==1){ ?>, <label>Valor:</label> R$<?php echo strtoupper($_SESSION['RECADASTRO']['Pensao_Recebe_Val']); }?>
      </td>
     </tr>
     <tr>
      <td colspan="4">
-      43. <label>Quem é a pessoa que mais contribui na renda familiar?</label> 
+      44. <label>Quem é a pessoa que mais contribui na renda familiar?</label> 
       <?php echo strtoupper($_SESSION['RECADASTRO']['Renda_Maior'])?>
      </td>
      </tr>
      <tr>
       <td colspan="4">
-       44. <label>Renda mensal individual:</label> 
+       45. <label>Renda mensal individual:</label> 
        <?php echo getRenda($_SESSION['RECADASTRO']['Renda_Mensal_Individual'])?>
       </td>
      </tr>
      <tr>
       <td colspan="4">
-       45. <label>Renda mensal familiar (incluindo você):</label> 
+       46. <label>Renda mensal familiar (incluindo você):</label> 
        <?php echo getRenda($_SESSION['RECADASTRO']['Renda_Mensal_Capita'])?>
       </td>
      </tr>
      <tr>
       <td colspan="4">
-       46. <label>Existe em seu domicílio pessoa portadora de deficiência?</label> 
+       47. <label>Existe em seu domicílio pessoa portadora de deficiência?</label> 
        <?php echo getSimNao($_SESSION['RECADASTRO']['Deficiente'])?><?php if($_SESSION['RECADASTRO']['Deficiente']==1){ ?>
        <label>Parentesco:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Deficiente_Grau']); ?>
        <label>Deficiência:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Deficiente_Qual']); }?>
@@ -187,21 +191,21 @@
      </tr>
      <tr>
       <td colspan="4">
-       47. <label>Existe em sua família alguem que recebe benefícios de transferências de Renda?</label> <?php echo getSimNao($_SESSION['RECADASTRO']['Transferencia'])?><?php if($_SESSION['RECADASTRO']['Transferencia']==1){ ?>
+       48. <label>Existe em sua família alguem que recebe benefícios de transferências de Renda?</label> <?php echo getSimNao($_SESSION['RECADASTRO']['Transferencia'])?><?php if($_SESSION['RECADASTRO']['Transferencia']==1){ ?>
        <br /><label>Qual Programa:</label> <?php echo strtoupper($_SESSION['RECADASTRO']['Transferencia_Qual']); } ?>
       </td>
      </tr>
-     <tr><td colspan="4">48. <label>Existe em seu grupo familiar pessoa idosa?</label> <?php echo getSimNao($_SESSION['RECADASTRO']['Idoso'])?></td></tr>
-     <tr><td colspan="4">49. <label>Qual dos itens há na sua casa?</label><?php getTemEmCasa($_SESSION['RECADASTRO']['TemEmCasa'],1)?></td></tr>
+     <tr><td colspan="4">49. <label>Existe em seu grupo familiar pessoa idosa?</label> <?php echo getSimNao($_SESSION['RECADASTRO']['Idoso'])?></td></tr>
+     <tr><td colspan="4">50. <label>Qual dos itens há na sua casa?</label><?php getTemEmCasa($_SESSION['RECADASTRO']['TemEmCasa'],1)?></td></tr>
      <tr>
       <td colspan="4">
-       50. <label>Você possui algum plano de assistência médica?:</label> <?php echo getSimNao($_SESSION['RECADASTRO']['PlanoDeSaude'])?>
+       51. <label>Você possui algum plano de assistência médica?:</label> <?php echo getSimNao($_SESSION['RECADASTRO']['PlanoDeSaude'])?>
     <?php if($_SESSION['RECADASTRO']['PlanoDeSaude']==1){ ?> <label>Qual?</label> <?php echo strtoupper($_SESSION['RECADASTRO']['PlanoDeSaude_Qual']); }?>
       </td>
      </tr>
      <tr>
       <td colspan="4">
-       <p>51. <label>Use este espaço para alguma observação que julgue necessária:</label></p>
+       <p>52. <label>Use este espaço para alguma observação que julgue necessária:</label></p>
        <p><?php echo strtoupper($_SESSION['RECADASTRO']['Observacoes'])?></p> 
       </td>
      </tr>
