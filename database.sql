@@ -73,6 +73,8 @@ CREATE TABLE `funcionarios` (
   `Cargo` varchar(45) DEFAULT NULL,
   `Funcao` varchar(45) DEFAULT NULL,
   `Lotacao` varchar(45) DEFAULT NULL,
+  `Lotado` varchar(45) DEFAULT NULL,
+  `Sup_Imediato` varchar(45) DEFAULT NULL,
   `End_Rua` varchar(45) DEFAULT NULL,
   `End_Num` varchar(20) DEFAULT NULL,
   `End_Comp` varchar(45) DEFAULT NULL,
@@ -143,4 +145,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-23 11:56:34
+-- Dump completed on 2017-05-31 15:13:06
