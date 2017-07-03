@@ -26,7 +26,6 @@
  </head>
  <body>
   <div class="container">
-	<?php getStatsSexo(); ?>
 
   </div>
   <footer class="container hidden-print">

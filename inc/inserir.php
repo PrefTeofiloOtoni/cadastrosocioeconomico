@@ -58,7 +58,6 @@
 	}
 
 
-
 	$_SESSION['RECADASTRO']['TemEmCasa']=$TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13;
 	$TemEmCasa=$TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13;
 
@@ -73,6 +72,8 @@
 	$SQL.="\n 	Grau_escolar='".@utf8_encode($Grau_escolar)."',";
 	$SQL.="\n 	Status_escolar='".@utf8_encode($Status_escolar)."',";
 	$SQL.="\n 	Formacao='".@utf8_encode(strtoupper($Formacao))."',";
+	$SQL.="\n       Lotado='".@utf8_encode(strtoupper($Lotado))."',";
+	$SQL.="\n       Sup_Imediato='".@utf8_encode(strtoupper($Sup_Imediato))."',";
 	$SQL.="\n 	End_Rua='".@utf8_encode(strtoupper($End_Rua))."',";
 	$SQL.="\n 	End_Num='".@utf8_encode(strtoupper($End_Num))."',";
 	$SQL.="\n 	End_Comp='".@utf8_encode(strtoupper($End_Comp))."',";
@@ -117,7 +118,8 @@
 	$SQL.="\n	PlanoDeSaude=".@utf8_encode($PlanoDeSaude).",";
 	$SQL.="\n	PlanoDeSaude_Qual='".@utf8_encode($PlanoDeSaude_Qual)."',";
 	$SQL.="\n	Observacoes='".@utf8_encode($Observacoes)."',";
-	$SQL.="\n	Preenchido=1 ";
+	$SQL.="\n	Preenchido=1, ";
+	$SQL.="\n	Quando=NOW() ";
 	$SQL.="\nWHERE CPF='".@utf8_encode($CPF)."';";
 
 	$PDO=conecta();
@@ -154,7 +156,6 @@
 
 					$RES2=$PDO->query($SQLInsert);
 				}
-
 			}
 		}
 		header('location: http://recadastro.teofilootoni.mg.gov.br/views/imprime.php');
@@ -163,5 +164,4 @@
 		header('location: http://recadastro.teofilootoni.mg.gov.br/?MSG=Erro ao Inserir, Entre em contato com o CPD');
 		exit;
 	}
-	
 ?>

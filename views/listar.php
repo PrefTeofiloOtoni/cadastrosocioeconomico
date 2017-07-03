@@ -26,6 +26,9 @@
  </head>
  <body>
   <div class="container">
+   <?php getStatsSexo(); ?>
+   <?php getStatsPreenchido(); ?>
+   <?php getStatsEscolar(); ?>
    <table class='table table-striped table-bordered'>
     <tr>
      <td><strong>MATR</strong></td>
@@ -34,6 +37,7 @@
      <td><strong>MÃE</strong></td>
      <td><strong>PAI</strong></td>
      <td><strong>SEXO</strong></td>
+     <td><strong>P</strong></td>
     </tr>
     <?php listarFuncionarios() ?>
    </table> 

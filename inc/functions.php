@@ -144,10 +144,11 @@ function getCPF($var){
 
 function listarFuncionarios(){
 	$PDO=conecta();
-	$SQL="SELECT Matricula,CPF,Nome,Mae,Pai,Sexo FROM funcionarios ORDER BY Nome";
+	$SQL="SELECT Matricula,CPF,Nome,Mae,Pai,Sexo,Preenchido FROM funcionarios ORDER BY Preenchido DESC, Nome ASC";
 	$result = $PDO->query($SQL);
 	$rows   = $result->fetchAll();
-		for ($i=0;$i<sizeof($rows);$i++){
+	for ($i=0;$i<sizeof($rows);$i++){
+		if($rows[$i]['Preenchido']==0) $P="Não"; else $P="Sim";
 		echo "<tr>";
 		echo "<td>".$rows[$i]['Matricula']."</td>";
 		echo "<td>".$rows[$i]['CPF']."</td>";
@@ -155,6 +156,7 @@ function listarFuncionarios(){
 		echo "<td>".utf8_encode($rows[$i]['Mae'])."</td>";
 		echo "<td>".utf8_encode($rows[$i]['Pai'])."</td>";
 		echo "<td>".utf8_encode($rows[$i]['Sexo'])."</td>";
+		echo "<td>".$P."</td>";
 		echo "</tr>";
 	}
 }
@@ -220,13 +222,13 @@ if(!empty($data)){
 }
 
 function getEstCivil($var){
-switch($var){
-	case 'solteiro':	return "Solteiro";	break;
-	case 'casado':		return "Casado";	break;
-	case 'separado':	return "Separado";	break;
-	case 'viuvo':		return "Viúvo";		break;
-	case 'uniao_estavel':	return "União Estável";	break;
-}
+	switch($var){
+		case 'solteiro':	return "Solteiro";	break;
+		case 'casado':		return "Casado";	break;
+		case 'separado':	return "Separado";	break;
+		case 'viuvo':		return "Viúvo";		break;
+		case 'uniao_estavel':	return "União Estável";	break;
+	}
 }
 
 function getStatsSexo(){
@@ -244,7 +246,7 @@ $result2 = $PDO->query($SQL2);
 
 	$tmp="<p>Funcionários por Sexo</p>";
 	$tmp.="<div class=\"progress\">";
-	$tmp.="<div class=\"progress-bar progress-bar-success\" style=\"width: ".$M."%\">";
+	$tmp.="<div class=\"progress-bar progress-bar-primary\" style=\"width: ".$M."%\">";
       	$tmp.="<span>".$rows1[0]['CountSexM']." Funcionários do Sexo Masculino </span>";
         $tmp.="</div>";
 	$tmp.="<div class=\"progress-bar progress-bar-danger\" style=\"width: ".$F."%\">";
@@ -256,25 +258,80 @@ $result2 = $PDO->query($SQL2);
 
 function getStatsPreenchido(){
 	$PDO=conecta();
-	$SQL1="SELECT count(CPF) AS Total FROM funcionarios WHERE Sexo='M'";
+	$SQL1="SELECT count(CPF) AS Total FROM funcionarios WHERE Preenchido='0'";
+	$SQL2="SELECT count(CPF) AS Total FROM funcionarios WHERE Preenchido='1'";
 	$result1 = $PDO->query($SQL1);
 	$result2 = $PDO->query($SQL2);
 	$rows1   = $result1->fetchAll();
 	$rows2   = $result2->fetchAll();
 
-	$total=$rows1[0]['CountSexM']+$rows2[0]['CountSexF'];
-	$M=($rows1[0]['CountSexM']*100)/$total;
-	$F=($rows2[0]['CountSexF']*100)/$total;
+	$total=$rows1[0]['Total']+$rows2[0]['Total'];
+	$S=($rows1[0]['Total']*100)/$total;
+	$N=($rows2[0]['Total']*100)/$total;
 
-	$tmp="<p>Funcionários por Sexo</p>";
+	$tmp="<p>Preenchidos</p>";
 	$tmp.="<div class=\"progress\">";
-	$tmp.="<div class=\"progress-bar progress-bar-success\" style=\"width: ".$M."%\">";
-      	$tmp.="<span>".$rows1[0]['CountSexM']." Funcionários do Sexo Masculino </span>";
+	$tmp.="<div class=\"progress-bar progress-bar-danger\" style=\"width: ".$S."%\">";
+      	$tmp.="<span>".$rows1[0]['Total']." Não Preenchidos </span>";
         $tmp.="</div>";
-	$tmp.="<div class=\"progress-bar progress-bar-danger\" style=\"width: ".$F."%\">";
-      	$tmp.="<span>".$rows2[0]['CountSexF']." Funcionários do Sexo Feminino </span>";
+	$tmp.="<div class=\"progress-bar progress-bar-success\" style=\"width: ".$N."%\">";
+      	$tmp.="<span>".$rows2[0]['Total']." Preenchidos </span>";
 	$tmp.="</div>";
 	$tmp.="</div>";
+	echo $tmp;
+}
+
+function getStatsEscolar(){
+#	'fund','medio','sup','esp','mes','doc','posdoc'
+	$PDO=conecta();
+	$SQL="SELECT
+		count(CPF) AS total,
+		(SELECT count(CPF) AS CPF From funcionarios WHERE Grau_escolar='fund') AS fund,
+		(SELECT count(CPF) AS CPF From funcionarios WHERE Grau_escolar='medio') AS medio,
+		(SELECT count(CPF) AS CPF From funcionarios WHERE Grau_escolar='sup') AS sup,
+		(SELECT count(CPF) AS CPF From funcionarios WHERE Grau_escolar='esp') AS esp,
+		(SELECT count(CPF) AS CPF From funcionarios WHERE Grau_escolar='mes') AS mes,
+		(SELECT count(CPF) AS CPF From funcionarios WHERE Grau_escolar='doc') AS doc,
+		(SELECT count(CPF) AS CPF From funcionarios WHERE Grau_escolar='posdoc') AS posdoc
+	     FROM funcionarios;";
+	$result = $PDO->query($SQL);
+	$rows   = $result->fetchAll();
+	
+	$total=$rows['0']['fund']+$rows['0']['medio']+$rows['0']['sup']+$rows['0']['esp']+$rows['0']['mes']+$rows['0']['doc']+$rows['0']['posdoc'];
+
+	$Fund=($rows['0']['fund']*100)/$total;
+	$Medio=($rows['0']['medio']*100)/$total;
+	$Sup=($rows['0']['sup']*100)/$total;
+	$Esp=($rows['0']['esp']*100)/$total;
+	$Mes=($rows['0']['mes']*100)/$total;
+	$Doc=($rows['0']['doc']*100)/$total;
+	$Posdoc=($rows['0']['posdoc']*100)/$total;
+
+	$tmp="<p>Grau de Escolaridade</p>";
+	$tmp.="<div class=\"progress\">";
+	$tmp.="<div class=\"progress-bar progress-bar-primary\" style=\"width: ".$Fund."%\">";
+      	$tmp.="<span>".$rows[0]['fund']." Ens Fundamental </span>";
+        $tmp.="</div>";
+	$tmp.="<div class=\"progress-bar progress-bar-success\" style=\"width: ".$Medio."%\">";
+      	$tmp.="<span>".$rows[0]['medio']." Ens Médio </span>";
+        $tmp.="</div>";
+	$tmp.="<div class=\"progress-bar progress-bar-info\" style=\"width: ".$Sup."%\">";
+      	$tmp.="<span>".$rows[0]['sup']." Ens Superior  </span>";
+        $tmp.="</div>";
+	$tmp.="<div class=\"progress-bar progress-bar-warning\" style=\"width: ".$Esp."%\">";
+      	$tmp.="<span>".$rows[0]['esp']." Pós Graduação  </span>";
+        $tmp.="</div>";
+	$tmp.="<div class=\"progress-bar progress-bar-danger\" style=\"width: ".$Mes."%\">";
+      	$tmp.="<span>".$rows[0]['mes']." Mestrado </span>";
+        $tmp.="</div>";
+	$tmp.="<div class=\"progress-bar progress-bar-primary progress-bar-striped\" style=\"width: ".$Doc."%\">";
+      	$tmp.="<span>".$rows[0]['doc']." Doutorado </span>";
+        $tmp.="</div>";
+	$tmp.="<div class=\"progress-bar progress-bar-success progress-bar-striped\" style=\"width: ".$Posdoc."%\">";
+      	$tmp.="<span>".$rows[0]['posdoc']." Pós Doutorado </span>";
+        $tmp.="</div>";
+	$tmp.="</div>";
+
 	echo $tmp;
 }
 
