@@ -14,6 +14,11 @@ Install on CentOS 7.3 >
 		(httpd)
 	MARIADB 5.5 >
 		(mariadb-libs, mariadb-server, mariadb)
+```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
 ´´´# yum install php-cli php-pdo php-mysql php-common php httpd mariadb-libs mariadb-server mariadb´´´
 Install on Debian 8.0 >
 	PHP 5.4 >
