@@ -17,7 +17,7 @@ cadastrosocioeconomico utiliza php-pdo para manipulação do banco de dados.
 ```bash
 # yum install php-cli php-pdo php-mysql php-common php httpd mariadb-libs mariadb-server mariadb
 ```
-*Install on Debian 8.0 >
+* Install on Debian 8.0 >
 	* PHP 5.4 >
 		* (php-cli, php-pdo, php-mysql, php-common, php)
 	* APACHE2 2.4.6 >
