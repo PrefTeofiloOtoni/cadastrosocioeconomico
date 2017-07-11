@@ -7,23 +7,23 @@ Com [Bootstrap]+[FontAwesome]
 cadastrosocioeconomico utiliza php-pdo para manipulação do banco de dados.
 
 ### Instalação
-Install on CentOS 7.3 >
-	PHP 5.4 >
-		(php-cli, php-pdo, php-mysql, php-common, php)
-	HTTPD 2.4.6 >
-		(httpd)
-	MARIADB 5.5 >
-		(mariadb-libs, mariadb-server, mariadb)
+* Install on CentOS 7.3 >
+	* PHP 5.4 >
+		* (php-cli, php-pdo, php-mysql, php-common, php)
+	* HTTPD 2.4.6 >
+		* (httpd)
+	* MARIADB 5.5 >
+		* (mariadb-libs, mariadb-server, mariadb)
 ```bash
 # yum install php-cli php-pdo php-mysql php-common php httpd mariadb-libs mariadb-server mariadb
 ```
-Install on Debian 8.0 >
-	PHP 5.4 >
-		(php-cli, php-pdo, php-mysql, php-common, php)
-	APACHE2 2.4.6 >
-		(apache2)
-	MARIADB 5.5 >
-		(mariadb-libs, mariadb-server, mariadb)
+*Install on Debian 8.0 >
+	* PHP 5.4 >
+		* (php-cli, php-pdo, php-mysql, php-common, php)
+	* APACHE2 2.4.6 >
+		* (apache2)
+	* MARIADB 5.5 >
+		* (mariadb-libs, mariadb-server, mariadb)
 ```bash
 # apt install php-cli php-pdo php-mysql php-common php apache2 mariadb-libs mariadb-server mariadb
 ```
