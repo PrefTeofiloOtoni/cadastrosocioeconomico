@@ -35,7 +35,7 @@
      <td><strong>SEXO</strong></td>
      <td><strong>P</strong></td>
     </tr>
-    <?php listarFuncionariosP() ?>
+    <?php listarPensionistas()?>
    </table> 
   </div>
   <footer class="container hidden-print">
