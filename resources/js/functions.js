@@ -152,6 +152,7 @@ function mostraimovel(){
 	}
 }
 
+
 function moeda(z){ 
 	v = z.value; 
 	v=v.replace(/\D/g,"")
@@ -167,7 +168,6 @@ function deficienteOutra(){
 		document.getElementById("Def_tmp").style.display="none";
 	}
 }
-
 function SetRequired(){
 /*	document.getElementById("Status_escolar").attributes="required";
 	document.getElementById("CadUnico").attributes"required";

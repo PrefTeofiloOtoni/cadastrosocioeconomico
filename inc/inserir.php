@@ -57,9 +57,8 @@
 		$_SESSION['RECADASTRO']['NIS']=NULL;
 	}
 
-
-	$_SESSION['RECADASTRO']['TemEmCasa']=$TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13;
 	$TemEmCasa=$TemEmCasa1.$TemEmCasa2.$TemEmCasa3.$TemEmCasa4.$TemEmCasa5.$TemEmCasa6.$TemEmCasa7.$TemEmCasa8.$TemEmCasa9.$TemEmCasa10.$TemEmCasa11.$TemEmCasa12.$TemEmCasa13;
+	$_SESSION['RECADASTRO']['TemEmCasa']=$TemEmCasa;
 
 	$SQL="UPDATE funcionarios SET ";
 	$SQL.="\n 	Mae='".@utf8_encode(strtoupper($Mae))."',";
@@ -69,6 +68,8 @@
 	$SQL.="\n 	RG_NUM='".@utf8_encode(strtoupper($RG_NUM))."',";
 	$SQL.="\n 	RG_ORG='".@utf8_encode(strtoupper($RG_ORG))."',";
 	$SQL.="\n 	RG_UF='".@utf8_encode($RG_UF)."',";
+	$SQL.="\n 	Deficiente='".@utf8_encode($Deficiente)."',";
+	$SQL.="\n 	Deficiente_Qual='".@utf8_encode($Deficiente_Qual)."',";
 	$SQL.="\n 	Grau_escolar='".@utf8_encode($Grau_escolar)."',";
 	$SQL.="\n 	Status_escolar='".@utf8_encode($Status_escolar)."',";
 	$SQL.="\n 	Formacao='".@utf8_encode(strtoupper($Formacao))."',";
@@ -107,6 +108,8 @@
 	$SQL.="\n	Pensao_Paga=".@utf8_encode($Pensao_Paga).",";
 	$SQL.="\n	Pensao_Paga_Val='".@utf8_encode($Pensao_Paga_Val)."',";
 	$SQL.="\n	Pensao_Recebe_Val='".@utf8_encode($Pensao_Recebe_Valor)."',";
+	$SQL.="\n	Transferencia='".@utf8_encode($Transferencia)."',";
+	$SQL.="\n	Transferencia_Qual='".@utf8_encode($Transferencia_Qual)."',";
 	$SQL.="\n	Pensao_Recebe='".@utf8_encode($Pensao_Recebe)."',";
 	$SQL.="\n	Renda_Mensal_Individual=".@utf8_encode($Renda_Mensal_Individual).",";
 	$SQL.="\n	Renda_Mensal_Capita=".@utf8_encode($Renda_Mensal_Capita).",";
@@ -158,10 +161,10 @@
 				}
 			}
 		}
-		header('location: http://recadastro.teofilootoni.mg.gov.br/views/imprime.php');
+		header('location: '.getURL().'/views/imprime.php');
 		exit;
 	}else{
-		header('location: http://recadastro.teofilootoni.mg.gov.br/?MSG=Erro ao Inserir, Entre em contato com o CPD');
+		header('location: '.getURL().'/?MSG=Erro ao Inserir, Entre em contato com o CPD');
 		exit;
 	}
 ?>

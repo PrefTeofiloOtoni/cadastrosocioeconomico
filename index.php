@@ -18,6 +18,8 @@
 		include("views/formulario.php");
 	}elseif(!empty($_GET['IMPRIME'])){
 		include("views/reimpress.php");
+	}elseif(!empty($_SESSION['PENSIONISTA'])){
+		include("views/formularioPensionista.php");
 	}else{
 		include("views/login.php");
 	}

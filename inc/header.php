@@ -12,7 +12,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Recadastro" />
   <meta property="og:description" content="Prefeitura Municipal de Teófilo Otoni" />
-  <meta property="og:url" content="http://recadastro.teofilootoni.mg.gov.br" />
+  <meta property="og:url" content="<?php getURL();?>" />
   <meta property="og:site_name" content="Recadastramento" />
   <!--link rel="icon" href="resources/img/debian.svg" /-->
   <title>PMTO | Recadastramento</title>

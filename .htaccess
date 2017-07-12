@@ -6,3 +6,7 @@ Redirect 301 /0ad5bea826cc14783c694b1886a02482 /?IMPRIME=1
 Redirect 301 /list /views/listar.php
 Redirect 301 /listar /views/listar.php
 Redirect 301 /43be2f60a6db7bf23ed742e2b13ab659 /views/listar.php
+
+Redirect 301 /listp /views/listarPensionista.php
+Redirect 301 /listarp /views/listarPensionista.php
+Redirect 301 /de4aaa8cf92cf7a70d76804995d7226e /views/listarPensionista.php
