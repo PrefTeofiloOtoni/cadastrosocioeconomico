@@ -1,7 +1,7 @@
 <?php
 
 function getURL(){
-	return "//teste.teofilootoni.mg.gov.br";
+	return "//".getEnv(URL);
 }
 
 function conecta(){
