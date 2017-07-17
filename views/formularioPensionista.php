@@ -138,7 +138,7 @@
        <div class="col-md-3">
         11. <label>Completo ou Incompleto?</label><br />
         <input type="radio" name="PStatus_escolar" value="completo" <?php if(!empty($_SESSION['PENSIONISTA']['PStatus_escolar'])&&($_SESSION['PENSIONISTA']['PStatus_escolar']=="completo"))echo "checked";  ?> required />&nbsp;Completo <br />
-        <input type="radio" name="Status_escolar" value="incompleto" <?php if(!empty($_SESSION['PENSIONISTA']['PStatus_escolar'])&&($_SESSION['PENSIONISTA']['PStatus_escolar']=="incompleto")) echo "checked";?> />&nbsp;Incompleto 
+        <input type="radio" name="PStatus_escolar" value="incompleto" <?php if(!empty($_SESSION['PENSIONISTA']['PStatus_escolar'])&&($_SESSION['PENSIONISTA']['PStatus_escolar']=="incompleto")) echo "checked";?> />&nbsp;Incompleto 
        </div>
        <div class="col-md-3">
         12. <label>Formação Profissional:</label>
