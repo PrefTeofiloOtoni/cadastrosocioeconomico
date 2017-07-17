@@ -28,6 +28,7 @@ cadastrosocioeconomico utiliza php-pdo para manipulação do banco de dados.
 # apt install php-cli php-pdo php-mysql php-common php apache2 mariadb-libs mariadb-server mariadb
 ```
 
+Create a vhost file on apache2/httpd with [template].
 
 ### Dev Team
 * [Diego Neves]
@@ -40,5 +41,7 @@ cadastrosocioeconomico utiliza php-pdo para manipulação do banco de dados.
 [CSS 3]:https://www.w3schools.com/css/css3_intro.asp
 [Bootstrap]:http://getbootstrap.com
 [FontAwesome]:http://fontawesome.io
+[template]:https://github.com/PrefeituraTO/cadastrosocioeconomico/blob/master/contrib/001-VHOST_Template.conf
 [Diego Neves]:https://github.com/diegoaceneves
 [Frankley Santos]:https://github.com/frankleysantos
+
